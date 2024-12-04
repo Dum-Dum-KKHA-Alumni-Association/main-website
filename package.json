@@ -6,14 +6,28 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "fix:all": "yarn lint:fix && yarn prettier:fix && yarn prettier && yarn lint && yarn build"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.6.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.465.0",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@eslint/compat": "^1.2.4",
     "@eslint/js": "^9.16.0",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -23,8 +37,10 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "globals": "^15.13.0",
+    "husky": "^9.1.7",
     "postcss": "^8",
     "prettier": "3.4.1",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "typescript-eslint": "^8.17.0"

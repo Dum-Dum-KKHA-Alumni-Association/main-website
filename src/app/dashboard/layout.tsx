@@ -1,4 +1,4 @@
-export default function PrivacyPolicyLayout({
+export default function DashboardLayout({
 	children, // will be a page or nested layout
 }: {
 	children: React.ReactNode;
@@ -7,6 +7,7 @@ export default function PrivacyPolicyLayout({
 		<section>
 			{/* Include shared UI here e.g. a header or sidebar */}
 			<nav></nav>
+
 			{children}
 		</section>
 	);

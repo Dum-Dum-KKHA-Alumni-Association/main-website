@@ -1,11 +1,13 @@
-import React from 'react'
+import Navbar from '@/components/Navbar';
+import React from 'react';
 
-const TncPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const TnCPage = () => {
+	return (
+		<div>
+			<Navbar />
+			Terms And Condition
+		</div>
+	);
+};
 
-export default TncPage;
+export default TnCPage;

@@ -1,7 +1,13 @@
-import React from 'react'
+import Navbar from '@/components/Navbar';
+import React from 'react';
 
 const PrivacyPolicyPage = () => {
-  return <div>Donation</div>;
+	return (
+		<main>
+			<Navbar />
+			Donation
+		</main>
+	);
 };
 
 export default PrivacyPolicyPage;

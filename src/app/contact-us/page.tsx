@@ -1,13 +1,13 @@
 import Navbar from '@/components/Navbar';
 import React from 'react';
 
-const DonationPage = () => {
+const ContactUsPage = () => {
 	return (
 		<main>
 			<Navbar />
-			Donation
+			Contact Us
 		</main>
 	);
 };
 
-export default DonationPage;
+export default ContactUsPage;
