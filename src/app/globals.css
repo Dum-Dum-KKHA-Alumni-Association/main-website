@@ -74,11 +74,11 @@ body {
 		@apply h-screen w-full font-sora bg-background font-open-sans text-foreground;
 	} */
 	body {
-		@apply h-screen w-full bg-background font-sora text-foreground;
+		@apply h-screen w-full bg-background font-sora text-foreground antialiased; 
 	}
 
 	p {
-		@apply text-start font-open-sans text-base leading-[24px];
+		@apply text-start font-sora text-base leading-[24px];
 	}
 	h1 {
 		@apply font-sora text-4xl font-semibold leading-[48px] lg:text-6xl lg:leading-[64px];
@@ -95,6 +95,6 @@ body {
 		@apply font-sora text-lg font-semibold leading-[27px];
 	}
 	h6 {
-		@apply font-sora text-lg font-semibold font-semibold;
+		@apply font-sora text-lg font-semibold ;
 	}
 }
