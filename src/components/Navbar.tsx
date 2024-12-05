@@ -6,8 +6,8 @@ import UserProfile from './UserProfile';
 
 const Navbar = () => {
 	return (
-		<div className="w-full bg-primary">
-			<div className="m-auto flex w-full max-w-[90rem] items-center justify-between py-3">
+		<div className="fixed z-50 w-full bg-primary font-sora">
+			<div className="m-auto flex h-[5rem] w-full max-w-[90rem] items-center justify-between">
 				<section className="flex items-center gap-5">
 					<Link href={'/'}>
 						<Image src={'/logo.png'} height={0} width={70} alt="Logo"></Image>
