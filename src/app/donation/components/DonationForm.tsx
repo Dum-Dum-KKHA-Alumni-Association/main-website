@@ -84,7 +84,7 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 				}
 			);
 
-			console.log(data.data.paymentPageUrl);
+			console.log(data);
 
 			if (data.data && data.data.paymentPageUrl) {
 				router.push(data.data.paymentPageUrl);

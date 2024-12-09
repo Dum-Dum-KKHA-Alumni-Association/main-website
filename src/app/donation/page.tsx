@@ -19,17 +19,18 @@ const DonationPage = async () => {
 			<section className="w-full">
 				<section className="mx-auto flex w-full max-w-[90rem] gap-7 px-5 py-16">
 					<section className="grid w-full grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-						{donationPages.map((donationPage: any) => (
-							<DonationCard
-								key={donationPage.id}
-								slug={donationPage.slug}
-								title={donationPage.title}
-								description={donationPage.description}
-								thumbnail={donationPage?.thumbnail || ''}
-								targetAmount={donationPage.targetAmount}
-								collectedAmount={donationPage.collectedAmount}
-							/>
-						))}
+						{donationPages &&
+							donationPages.map((donationPage: any) => (
+								<DonationCard
+									key={donationPage.id}
+									slug={donationPage.slug}
+									title={donationPage.title}
+									description={donationPage.description}
+									thumbnail={donationPage?.thumbnail || ''}
+									targetAmount={donationPage.targetAmount}
+									collectedAmount={donationPage.collectedAmount}
+								/>
+							))}
 
 						{/* <DonationCard
 							slug="Grand-Reunion-of-DDKKHA-Alumnies"
