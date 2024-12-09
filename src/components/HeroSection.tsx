@@ -27,34 +27,7 @@ const HeroSection = () => {
 						height={0}
 						alt="image"
 						className="w-full"
-						src="https://swiperjs.com/demos/images/nature-1.jpg"
-					/>
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image
-						width={1000}
-						height={0}
-						alt="image"
-						className="w-full"
-						src="https://swiperjs.com/demos/images/nature-2.jpg"
-					/>
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image
-						width={1000}
-						height={0}
-						alt="image"
-						className="w-full"
-						src="https://swiperjs.com/demos/images/nature-3.jpg"
-					/>
-				</SwiperSlide>
-				<SwiperSlide>
-					<Image
-						width={1000}
-						height={0}
-						alt="image"
-						className="w-full"
-						src="https://swiperjs.com/demos/images/nature-4.jpg"
+						src="/ddkkha.jpg"
 					/>
 				</SwiperSlide>
 			</Swiper>

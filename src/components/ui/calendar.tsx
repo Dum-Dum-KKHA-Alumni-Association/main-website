@@ -18,6 +18,9 @@ function Calendar({
 	return (
 		<DayPicker
 			showOutsideDays={showOutsideDays}
+			captionLayout="dropdown"
+			fromYear={2015}
+			toYear={2025}
 			className={cn('p-3', className)}
 			classNames={{
 				months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
@@ -64,6 +67,20 @@ function Calendar({
 				IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+				// Dropdown: ({ ...props }) => (
+				// 	<SelectContent position="popper">
+				// 		<ScrollArea className="h-80 overflow-auto">
+				// 			{props.map((option, id: number) => (
+				// 				<SelectItem
+				// 					key={`${option.props.value}-${id}`}
+				// 					value={option.props.value?.toString() ?? ''}
+				// 				>
+				// 					{option.props.children}
+				// 				</SelectItem>
+				// 			))}
+				// 		</ScrollArea>
+				// 	</SelectContent>
+				// ),
 			}}
 			{...props}
 		/>

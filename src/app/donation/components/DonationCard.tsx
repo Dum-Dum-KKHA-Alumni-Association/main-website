@@ -16,7 +16,8 @@ interface DonationCardProps {
 	title: string;
 	description: string;
 	thumbnail: string;
-	progressValue: number;
+	targetAmount: number;
+	collectedAmount: number;
 }
 
 const DonationCard: FC<DonationCardProps> = ({
@@ -24,13 +25,15 @@ const DonationCard: FC<DonationCardProps> = ({
 	title,
 	description,
 	thumbnail,
-	progressValue,
+	targetAmount,
+	collectedAmount,
 }) => {
+	const value = Math.floor((24 / targetAmount) * 100);
+	console.log('value', value);
 	return (
 		<Card className="font-sora">
 			<CardHeader className="px-0 pt-0">
-				{/* <Link href={`/donation/${slug}`}> */}
-				<Link href={`/donation/Grand-Reunion-of-DDKKHA-Alumnies`}>
+				<Link href={`/donation/${slug}`}>
 					<Image
 						src={thumbnail}
 						width={1000}
@@ -47,10 +50,10 @@ const DonationCard: FC<DonationCardProps> = ({
 				<CardDescription>{description}</CardDescription>
 			</CardContent>
 			<CardFooter className="flex flex-col gap-3">
-				<Progress value={progressValue} />
+				<Progress value={Math.floor((collectedAmount / targetAmount) * 100)} />
 				<section className="flex w-full items-center justify-between">
-					<span>$0</span>
-					<span>$300</span>
+					<span>₹{collectedAmount}</span>
+					<span>₹{targetAmount}</span>
 				</section>
 			</CardFooter>
 		</Card>
