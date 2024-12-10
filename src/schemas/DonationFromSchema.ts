@@ -4,7 +4,7 @@ export const donationFormSchema = z.object({
 	firstName: z.string().min(2).max(50),
 	lastName: z.string().min(2).max(50),
 	email: z.coerce.string().email().min(5),
-	mobile: z
+	primaryNumber: z
 		.string({
 			required_error: 'Phone number is required',
 		})
