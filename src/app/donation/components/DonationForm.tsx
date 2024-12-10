@@ -54,15 +54,15 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 	async function onSubmit(values: z.infer<typeof donationFormSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+		console.log('FormValues----->', values);
 
 		const donationValues = {
 			donationPageId,
 			firstName: values.firstName,
 			lastName: values.lastName,
 			email: values.email,
+			primaryNumber: values.primaryNumber,
 			whatsappNumber: values.whatsappNumber,
-			alternativeNumber: values.mobile,
 			gender: values.gender,
 			madyamikYear: values.madyamikYear,
 			higherSecondaryYear: values.higherSecondaryYear,
@@ -150,6 +150,27 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 				/>
 				<FormField
 					control={form.control}
+					name="primaryNumber"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>
+								<span className="text-red-600">*</span> Primary Number
+							</FormLabel>
+							<FormControl>
+								<PhoneInput
+									{...field}
+									international
+									defaultCountry="IN"
+									id="phone"
+									className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
 					name="whatsappNumber"
 					render={({ field }) => (
 						<FormItem>
@@ -169,26 +190,6 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 						</FormItem>
 					)}
 				/>
-				<FormField
-					control={form.control}
-					name="mobile"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Alternative Number</FormLabel>
-							<FormControl>
-								<PhoneInput
-									{...field}
-									international
-									defaultCountry="IN"
-									id="phone"
-									className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-
 				<div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
 					{/* User can't select both NA in form */}
 					<FormField
@@ -317,9 +318,9 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 										</SelectTrigger>
 									</FormControl>
 									<SelectContent>
-										<SelectItem value="m@example.com">MALE</SelectItem>
-										<SelectItem value="m@google.com">FEMALE</SelectItem>
-										<SelectItem value="m@support.com">OTHERS</SelectItem>
+										<SelectItem value="MALE">MALE</SelectItem>
+										<SelectItem value="FEMALE">FEMALE</SelectItem>
+										<SelectItem value="OTHERS">OTHERS</SelectItem>
 									</SelectContent>
 								</Select>
 
