@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import UserProfile from './UserProfile';
 
 const Navbar = () => {
 	return (
@@ -19,9 +18,7 @@ const Navbar = () => {
 						<Link href={'/contact-us'}>Contact</Link>
 					</section>
 				</section>
-				<section>
-					<UserProfile />
-				</section>
+				<section>{/* <UserProfile /> */}</section>
 			</div>
 		</div>
 	);
