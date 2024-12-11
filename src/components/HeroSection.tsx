@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 const HeroSection = () => {
 	return (
-		<div className="aspect-[16/7] w-full pt-[5rem]">
+		<div className="c aspect-[16/7] w-full">
 			<Swiper
 				slidesPerView={1}
 				spaceBetween={30}
