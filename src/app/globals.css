@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -88,7 +84,9 @@ select::-webkit-scrollbar {
 	body {
 		@apply h-screen w-full bg-background font-sora text-foreground antialiased; 
 	}
-
+  main{
+    @apply pt-[5rem]
+  }
 	p {
 		@apply text-start font-sora text-base leading-[24px];
 	}
@@ -97,7 +95,7 @@ select::-webkit-scrollbar {
 	}
 
 	h2 {
-		@apply font-sora text-3xl font-semibold leading-[36px] lg:text-4xl lg:leading-[46px];
+		@apply  font-sora text-3xl font-semibold leading-[36px] lg:text-5xl lg:leading-[46px];
 	}
 
 	h4 {

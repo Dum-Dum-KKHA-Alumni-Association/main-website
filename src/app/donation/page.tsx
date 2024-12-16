@@ -7,7 +7,10 @@ import DonationCard from './components/DonationCard';
 
 const DonationPage = async () => {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/donation/page`
+		`${process.env.NEXT_PUBLIC_API_URL}/donation/page`,
+		{
+			cache: 'no-cache',
+		}
 	);
 	const { data: donationPages } = await response.json();
 	console.log(donationPages);
@@ -31,23 +34,6 @@ const DonationPage = async () => {
 									collectedAmount={donationPage.collectedAmount}
 								/>
 							))}
-
-						{/* <DonationCard
-							slug="Grand-Reunion-of-DDKKHA-Alumnies"
-							title=" Grand Reunion of DDKKHA Alumnies"
-							description="This is donation for upcomming 19 january 2025. A grand reunion of
-						all  ex-students and teachers"
-							thumbnail="/ddkkha.jpg"
-							progressValue={50}
-						/>
-						<DonationCard
-							slug="Grand-Reunion-of-DDKKHA-Alumnies"
-							title=" Grand Reunion of DDKKHA Alumnies"
-							description="This is donation for upcomming 19 january 2025. A grand reunion of
-						all  ex-students and teachers"
-							thumbnail="/ddkkha.jpg"
-							progressValue={20}
-						/> */}
 					</section>
 					{/* <FilterSection /> */}
 				</section>

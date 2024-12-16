@@ -26,7 +26,7 @@ const DonationDetailsPage = async ({
 	return (
 		<main>
 			<Navbar />
-			<div className="absolute left-0 top-0 -z-10 aspect-[16/4] w-full bg-slate-400">
+			<div className="absolute left-0 top-0 -z-10 w-full bg-slate-400 lg:aspect-[16/4]">
 				<Image
 					src={'/ddkkha.jpg'}
 					width={1000}

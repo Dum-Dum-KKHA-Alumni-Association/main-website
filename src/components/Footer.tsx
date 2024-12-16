@@ -3,8 +3,8 @@ import React from 'react';
 
 const Footer = () => {
 	return (
-		<footer className="mt-40 border-t p-4 dark:bg-gray-800 sm:p-6">
-			<div className="mx-auto w-full max-w-[90rem]">
+		<footer className="mt-32 border-t p-4 dark:bg-gray-800 sm:p-6">
+			<div className="mx-auto w-full max-w-7xl">
 				<div className="md:flex md:justify-between">
 					<div className="mb-6 md:mb-0">
 						<Link href="https://flowbite.com" className="flex items-center">
@@ -21,18 +21,30 @@ const Footer = () => {
 							<h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
 								Resources
 							</h2>
-							<ul className="text-white dark:text-gray-400">
+							<ul className="text-gray-600 dark:text-gray-400">
 								<li className="mb-4">
-									<Link href="https://flowbite.com" className="hover:underline">
+									<Link href="/" className="hover:underline">
+										Home
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link href="/about" className="hover:underline">
 										About
 									</Link>
 								</li>
-								<li>
-									<Link
-										href="https://tailwindcss.com/"
-										className="hover:underline"
-									>
-										Tailwind CSS
+								<li className="mb-4">
+									<Link href="/donation" className="hover:underline">
+										Donation
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link href="/events" className="hover:underline">
+										Events
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link href="/contact" className="hover:underline">
+										Contact
 									</Link>
 								</li>
 							</ul>
@@ -44,7 +56,7 @@ const Footer = () => {
 							<ul className="text-gray-600 dark:text-gray-400">
 								<li className="mb-4">
 									<Link
-										href="https://github.com/themesberg/flowbite"
+										href="https://www.facebook.com/ddkkhaaaofficial"
 										className="hover:underline"
 									>
 										Facebook
