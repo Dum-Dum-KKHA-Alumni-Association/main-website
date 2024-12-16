@@ -64,7 +64,6 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 			email: values.email,
 			primaryNumber: values.primaryNumber,
 			whatsappNumber: values.whatsappNumber,
-			gender: values.gender,
 			madyamikYear: values.madyamikYear,
 			higherSecondaryYear: values.higherSecondaryYear,
 			dateOfBirth: values.dateOfBirth,
@@ -155,7 +154,8 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>
-								<span className="text-red-600">*</span> Primary Number
+								<span className="text-red-600">*</span> Primary Number (For
+								Sending OTP)
 							</FormLabel>
 							<FormControl>
 								<PhoneInput
@@ -191,8 +191,12 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 						</FormItem>
 					)}
 				/>
+				<div className="text-sm">
+					{' '}
+					eg. If your completed Madyamik year and HS/Metric in DDKKHA. Then fill
+					respective fields otherwise fill NA.{' '}
+				</div>
 				<div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-					{/* User can't select both NA in form */}
 					<FormField
 						control={form.control}
 						name="madyamikYear"
@@ -301,7 +305,7 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 							</FormItem>
 						)}
 					/>
-					<FormField
+					{/* <FormField
 						control={form.control}
 						name="gender"
 						render={({ field }) => (
@@ -328,7 +332,7 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 								<FormMessage />
 							</FormItem>
 						)}
-					/>
+					/> */}
 				</div>
 				<FormField
 					control={form.control}
@@ -385,7 +389,7 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>
-								<span className="text-red-600">*</span> Amount
+								<span className="text-red-600">*</span> Donation Amount
 							</FormLabel>
 							<FormControl>
 								<Input type="number" placeholder="₹ in Rupees" {...field} />

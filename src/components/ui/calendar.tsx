@@ -20,9 +20,11 @@ function Calendar({
 			showOutsideDays={showOutsideDays}
 			captionLayout="dropdown"
 			fromYear={1920}
-			toYear={2025}
+			toYear={new Date().getFullYear() - 12}
 			className={cn('p-3', className)}
 			classNames={{
+				dropdown: 'border rounded-lg p-2 w-full',
+				caption_dropdowns: 'flex gap-3',
 				months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
 				month: 'space-y-4',
 				caption: 'flex justify-center pt-1 relative items-center',
@@ -67,20 +69,6 @@ function Calendar({
 				IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
-				// Dropdown: ({ ...props }) => (
-				// 	<SelectContent position="popper">
-				// 		<ScrollArea className="h-80 overflow-auto">
-				// 			{props.map((option, id: number) => (
-				// 				<SelectItem
-				// 					key={`${option.props.value}-${id}`}
-				// 					value={option.props.value?.toString() ?? ''}
-				// 				>
-				// 					{option.props.children}
-				// 				</SelectItem>
-				// 			))}
-				// 		</ScrollArea>
-				// 	</SelectContent>
-				// ),
 			}}
 			{...props}
 		/>
