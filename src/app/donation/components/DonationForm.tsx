@@ -37,6 +37,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 // import { DatePicker } from '@/components/ui/date-picker';
 
 interface DonationFormProps {
@@ -91,6 +92,7 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 			}
 		} catch (error) {
 			console.log(error);
+			toast.error('Something error Happening');
 		}
 	}
 	return (
@@ -193,8 +195,8 @@ const DonationForm: FC<DonationFormProps> = ({ donationPageId }) => {
 				/>
 				<div className="text-sm">
 					{' '}
-					eg. If your completed Madyamik year and HS/Metric in DDKKHA. Then fill
-					respective fields otherwise fill NA.{' '}
+					eg. If you didn&apos;t pass out Madhyamik/HS from K. K. Hindu Academy.
+					Then select <strong>NA</strong>.
 				</div>
 				<div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
 					<FormField

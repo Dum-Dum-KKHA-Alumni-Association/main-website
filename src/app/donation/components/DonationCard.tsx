@@ -35,7 +35,7 @@ const DonationCard: FC<DonationCardProps> = ({
 			<CardHeader className="px-0 pt-0">
 				<Link href={`/donation/${slug}`}>
 					<Image
-						src={thumbnail}
+						src={thumbnail ? thumbnail : '/ddkkha.jpg'}
 						width={1000}
 						height={0}
 						className="aspect-video w-full rounded-t-xl"
