@@ -8,7 +8,7 @@ const Gallery = () => {
 				<section>
 					<h2 className="text-white">Gallery</h2>
 				</section>
-				<section className="grid w-full grid-cols-3 gap-6">
+				<section className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
 					<Image
 						src={'/event.jpg'}
 						width={1000}

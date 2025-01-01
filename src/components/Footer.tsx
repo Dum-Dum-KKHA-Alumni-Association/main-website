@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,13 +8,18 @@ const Footer = () => {
 			<div className="mx-auto w-full max-w-7xl">
 				<div className="md:flex md:justify-between">
 					<div className="mb-6 md:mb-0">
-						<Link href="https://flowbite.com" className="flex items-center">
-							<img
-								src="/longLogo.png"
-								className="mr-3 h-8"
-								alt="FlowBite Logo"
+						<Link href={'/'} className="flex items-center gap-3">
+							<Image
+								src={'/logo.png'}
+								height={0}
+								width={40}
+								alt="Logo"
+								className="w-auto"
 							/>
-							<span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"></span>
+							<div className="font-baloo-da-2 flex flex-col text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+								<span>Dum Dum K. K. Hindu Academy</span>
+								<span>Alumni Association</span>
+							</div>
 						</Link>
 					</div>
 					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
@@ -32,14 +38,7 @@ const Footer = () => {
 										About
 									</Link>
 								</li>
-								<li className="mb-4">
-									<Link
-										href="https://ddkkhaaa.blogspot.com"
-										className="hover:underline"
-									>
-										Magazine
-									</Link>
-								</li>
+
 								<li className="mb-4">
 									<Link href="/donation" className="hover:underline">
 										Donation
@@ -100,11 +99,20 @@ const Footer = () => {
 								</li>
 								<li className="mb-4">
 									<Link
-										href="https://twitter.com/ddkkhaaa"
+										href="https://ddkkhaaa.blogspot.com"
 										target="_blank"
 										className="hover:underline"
 									>
 										Magazine
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link
+										href="https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E"
+										target="_blank"
+										className="hover:underline"
+									>
+										WhatsApp
 									</Link>
 								</li>
 							</ul>

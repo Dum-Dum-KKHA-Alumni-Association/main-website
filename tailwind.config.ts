@@ -57,8 +57,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)',
 			},
 			fontFamily: {
-				'open-sans': 'Open Sans, serif',
 				sora: 'Sora, sans-serif',
+				'baloo-da-2': 'Baloo Da 2, serif',
 			},
 			keyframes: {
 				'accordion-down': {

@@ -5,6 +5,7 @@ import Banner from './Banner';
 import Gallery from './Gallery';
 import InitiativeSection from './InitiativeSection';
 import Faq from './Faq';
+import PublicationSection from './PublicationSection';
 
 export default function Home() {
 	return (
@@ -14,6 +15,7 @@ export default function Home() {
 			<Banner />
 			<InitiativeSection />
 			<Gallery />
+			<PublicationSection />
 			<Faq />
 			<Footer />
 		</main>

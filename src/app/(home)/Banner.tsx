@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 
 const Banner = () => {
 	return (
-		<section className="mx-auto my-20 flex w-full max-w-7xl flex-col gap-20">
-			<section className="flex w-full gap-7">
-				<div className="w-1/2 text-5xl font-bold">
+		<section className="mx-auto my-20 flex w-full max-w-7xl flex-col gap-20 px-5">
+			<section className="mf:flex-row flex w-full flex-col gap-7">
+				<div className="w-full text-5xl font-bold md:w-1/2">
 					<motion.div
 						initial={{ opacity: 0, y: '30%' }}
 						whileInView={{ opacity: 1, y: '0' }}
@@ -43,12 +43,12 @@ const Banner = () => {
 						Generations
 					</motion.div>
 				</div>
-				<div className="flex w-1/2 flex-col justify-between">
+				<div className="flex w-full flex-col justify-between md:w-1/2">
 					<section className="w-full text-lg font-medium">
 						Join our vibrant alumni community and reconnect with old friends.
 						Share your journey and contribute to the legacy of our school.
 					</section>
-					<section className="flex w-full gap-3">
+					<section className="mt-6 flex w-full gap-3 md:mt-0">
 						<Link href={'/members'} className="w-1/3">
 							<Button className="w-full p-6">Join</Button>
 						</Link>
@@ -95,7 +95,7 @@ const Banner = () => {
 						delay: 0.6,
 					}}
 					viewport={{ margin: '-150px', once: true }}
-					className="flex w-full flex-col items-center rounded-xl py-10 text-primary antialiased transition-colors duration-500 ease-in-out hover:bg-primary hover:text-white"
+					className="flex w-full flex-col items-center rounded-xl py-10 antialiased transition-colors duration-500 ease-in-out hover:bg-primary hover:text-white"
 				>
 					<span>
 						<Clock size={50} />

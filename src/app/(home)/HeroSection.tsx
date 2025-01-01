@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 const HeroSection = () => {
 	return (
-		<section className="relative flex w-full flex-1 p-5 pt-9">
+		<section className="relative flex w-full flex-1 p-5 pt-14">
 			<section className="mx-auto w-full max-w-[90rem] rounded-xl border">
 				<Swiper
 					slidesPerView={1}

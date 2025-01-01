@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'swiperjs.com',
+				hostname: 'blogger.googleusercontent.com',
 			},
 			{
 				protocol: 'https',

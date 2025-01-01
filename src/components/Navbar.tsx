@@ -67,140 +67,53 @@ const events: { title: string; href: string; description?: string }[] = [
 
 const Navbar = () => {
 	return (
-		<nav className="fixed top-0 z-50 w-full border-b bg-background font-sora">
-			<section className="m-auto flex h-[4rem] w-full max-w-[90rem] items-center justify-between gap-3 px-5">
-				<section className="flex w-full justify-between gap-8 md:w-auto">
-					<Link href={'/'} className="flex items-center gap-3">
-						<Image
-							src={'/longLogo.png'}
-							height={0}
-							width={50}
-							alt="Logo"
-							className=""
-						/>
-					</Link>
-					<NavigationMenu className="hidden md:flex">
-						<NavigationMenuList>
-							<NavigationMenuItem>
-								<Link href="/about" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										About
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<Link
-									href="https://ddkkhaaa.blogspot.com"
-									legacyBehavior
-									passHref
-								>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Magazine
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<NavigationMenuTrigger>
-									<Link href="/donation" legacyBehavior passHref>
-										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
-										>
-											Community
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuTrigger>
-								<NavigationMenuContent>
-									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-										{components.map((component) => (
-											<ListItem
-												key={component.title}
-												title={component.title}
-												href={component.href}
-											>
-												{component.description}
-											</ListItem>
-										))}
-									</ul>
-								</NavigationMenuContent>
-							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<NavigationMenuTrigger>Events</NavigationMenuTrigger>
-								<NavigationMenuContent>
-									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-										{events.map((component) => (
-											<ListItem
-												key={component.title}
-												title={component.title}
-												href={component.href}
-											>
-												{component.description}
-											</ListItem>
-										))}
-									</ul>
-								</NavigationMenuContent>
-							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<NavigationMenuTrigger>
-									<Link href="/donation" legacyBehavior passHref>
-										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
-										>
-											Donation
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuTrigger>
-								<NavigationMenuContent>
-									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-										{components.map((component) => (
-											<ListItem
-												key={component.title}
-												title={component.title}
-												href={component.href}
-											>
-												{component.description}
-											</ListItem>
-										))}
-									</ul>
-								</NavigationMenuContent>
-							</NavigationMenuItem>
+		<nav className="fixed top-0 z-50 w-full bg-background font-sora">
+			<section className="mx-auto flex h-[4rem] w-full max-w-[90rem] items-center justify-between gap-3 px-5">
+				<section className="m-auto flex h-[4rem] w-full items-center justify-between gap-3">
+					<section className="flex w-full justify-between gap-8 md:w-auto">
+						<Link href={'/'} className="flex items-center gap-3">
+							<Image
+								src={'/logo.png'}
+								height={0}
+								width={40}
+								alt="Logo"
+								className="w-auto"
+							/>
+							<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+								<span>Dum Dum K. K. Hindu Academy</span>
+								<span>Alumni Association</span>
+							</div>
+						</Link>
 
-							<NavigationMenuItem>
-								<Link href="/contact" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Contact
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
-						</NavigationMenuList>
-					</NavigationMenu>
-					<Sheet>
-						<SheetTrigger className={'md:hidden'}>
-							<Menu />
-						</SheetTrigger>
-						<SheetContent>
-							<SheetHeader>
-								<Link href={'/'}>Home</Link>
-								<Link href={'/about'}>About</Link>
-								<Link href={'/donation'}>Donation</Link>
-								<Link href={'/events'}>Events</Link>
-								<Link href={'/contact-us'}>Contact</Link>
-							</SheetHeader>
-						</SheetContent>
-					</Sheet>
-				</section>
-				<section className="hidden gap-3 md:flex">
-					<Button className="border-[#FFD700]" variant={'outline'}>
-						{' '}
-						Join in
-					</Button>
-					<Button className="bg-[#FFD700] font-semibold text-secondary">
-						{' '}
-						Log in
-					</Button>
+						<Sheet>
+							<SheetTrigger className={'md:hidden'}>
+								<Menu />
+							</SheetTrigger>
+							<SheetContent>
+								<SheetHeader>
+									<Link href={'/'}>Home</Link>
+									<Link href={'/about'}>About</Link>
+									<Link href={'/donation'}>Donation</Link>
+									<Link href={'/events'}>Events</Link>
+									<Link href={'/contact-us'}>Contact</Link>
+								</SheetHeader>
+							</SheetContent>
+						</Sheet>
+					</section>
+					<section className="hidden gap-3 md:flex">
+						<Button className="border-[#FFD700]" variant={'outline'}>
+							{' '}
+							Join in
+						</Button>
+						<Button className="bg-[#FFD700] font-semibold text-secondary">
+							{' '}
+							Log in
+						</Button>
+					</section>
 				</section>
 			</section>
-			<section className="m-auto flex h-[4rem] w-full max-w-[90rem] items-center justify-between gap-3 border-b px-5">
-				<section className="flex w-full justify-between gap-8 md:w-auto">
+			<section className="w-full bg-secondary px-5 py-0.5">
+				<section className="m-auto flex h-auto w-full max-w-[90rem] items-center justify-start gap-3 pl-16">
 					<NavigationMenu className="hidden md:flex">
 						<NavigationMenuList>
 							<NavigationMenuItem>
@@ -295,30 +208,6 @@ const Navbar = () => {
 							</NavigationMenuItem>
 						</NavigationMenuList>
 					</NavigationMenu>
-					<Sheet>
-						<SheetTrigger className={'md:hidden'}>
-							<Menu />
-						</SheetTrigger>
-						<SheetContent>
-							<SheetHeader>
-								<Link href={'/'}>Home</Link>
-								<Link href={'/about'}>About</Link>
-								<Link href={'/donation'}>Donation</Link>
-								<Link href={'/events'}>Events</Link>
-								<Link href={'/contact-us'}>Contact</Link>
-							</SheetHeader>
-						</SheetContent>
-					</Sheet>
-				</section>
-				<section className="hidden gap-3 md:flex">
-					<Button className="border-[#FFD700]" variant={'outline'}>
-						{' '}
-						Join in
-					</Button>
-					<Button className="bg-[#FFD700] font-semibold text-secondary">
-						{' '}
-						Log in
-					</Button>
 				</section>
 			</section>
 		</nav>
