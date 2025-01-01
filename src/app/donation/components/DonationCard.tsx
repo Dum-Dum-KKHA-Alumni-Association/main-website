@@ -12,7 +12,7 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 
 interface DonationCardProps {
-	slug: string;
+	donationPageId: string;
 	title: string;
 	description: string;
 	thumbnail: string;
@@ -21,7 +21,7 @@ interface DonationCardProps {
 }
 
 const DonationCard: FC<DonationCardProps> = ({
-	slug,
+	donationPageId,
 	title,
 	description,
 	thumbnail,
@@ -33,7 +33,7 @@ const DonationCard: FC<DonationCardProps> = ({
 	return (
 		<Card className="font-sora">
 			<CardHeader className="px-0 pt-0">
-				<Link href={`/donation/${slug}`}>
+				<Link href={`/donation/${donationPageId}`}>
 					<Image
 						src={thumbnail ? thumbnail : '/ddkkha.jpg'}
 						width={1000}
@@ -44,7 +44,7 @@ const DonationCard: FC<DonationCardProps> = ({
 				</Link>
 			</CardHeader>
 			<CardContent className="space-y-3">
-				<Link href={`/donation/${slug}`}>
+				<Link href={`/donation/${donationPageId}`}>
 					<CardTitle> {title}</CardTitle>
 				</Link>
 				<CardDescription>{description}</CardDescription>

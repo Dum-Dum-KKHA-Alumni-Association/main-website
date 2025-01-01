@@ -33,6 +33,14 @@ const Footer = () => {
 									</Link>
 								</li>
 								<li className="mb-4">
+									<Link
+										href="https://ddkkhaaa.blogspot.com"
+										className="hover:underline"
+									>
+										Magazine
+									</Link>
+								</li>
+								<li className="mb-4">
 									<Link href="/donation" className="hover:underline">
 										Donation
 									</Link>
@@ -57,6 +65,7 @@ const Footer = () => {
 								<li className="mb-4">
 									<Link
 										href="https://www.facebook.com/ddkkhaaaofficial"
+										target="_blank"
 										className="hover:underline"
 									>
 										Facebook
@@ -65,6 +74,7 @@ const Footer = () => {
 								<li className="mb-4">
 									<Link
 										href="https://www.youtube.com/@ddkkhaaaofficial"
+										target="_blank"
 										className="hover:underline"
 									>
 										Youtube
@@ -73,9 +83,28 @@ const Footer = () => {
 								<li className="mb-4">
 									<Link
 										href="https://www.instagram.com/ddkkhaaaofficial"
+										target="_blank"
 										className="hover:underline"
 									>
 										Instagram
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link
+										href="https://twitter.com/ddkkhaaa"
+										target="_blank"
+										className="hover:underline"
+									>
+										Twitter
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link
+										href="https://twitter.com/ddkkhaaa"
+										target="_blank"
+										className="hover:underline"
+									>
+										Magazine
 									</Link>
 								</li>
 							</ul>
@@ -113,7 +142,7 @@ const Footer = () => {
 						</span>
 						. All Rights Reserved.
 					</span>
-					<div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+					<div className="mt-4 hidden space-x-6 sm:mt-0 sm:justify-center">
 						<Link
 							href="/"
 							className="text-gray-500 hover:text-gray-900 dark:hover:text-white"

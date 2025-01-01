@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import Heading from '@/components/Heading';
+import Heading from '@/components/Header';
 import Navbar from '@/components/Navbar';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
