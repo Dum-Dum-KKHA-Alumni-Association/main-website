@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import Heading from '@/components/Heading';
+import Heading from '@/components/Header';
 import Navbar from '@/components/Navbar';
 
 import React from 'react';
@@ -26,7 +26,7 @@ const DonationPage = async () => {
 							donationPages.map((donationPage: any) => (
 								<DonationCard
 									key={donationPage.id}
-									slug={donationPage.slug}
+									donationPageId={donationPage.id}
 									title={donationPage.title}
 									description={donationPage.description}
 									thumbnail={donationPage?.thumbnail || ''}

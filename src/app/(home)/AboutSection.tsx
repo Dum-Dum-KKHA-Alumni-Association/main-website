@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutSection = () => {
 	return (
-		<section className="my-24 w-full">
+		<section className="my-24 w-full bg-slate-400 py-10">
 			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between gap-10 px-5">
 				<section>
 					<h2 className="">About Us</h2>

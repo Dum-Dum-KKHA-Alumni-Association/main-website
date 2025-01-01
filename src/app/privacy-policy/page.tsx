@@ -2,6 +2,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { Separator } from '@/components/ui/separator';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -13,14 +14,70 @@ const PrivacyPolicyPage = () => {
 	return (
 		<main>
 			<Navbar />
-
-			<section className="mx-auto h-auto w-full max-w-6xl px-5 py-20">
+			<section className="mx-auto h-auto w-full max-w-4xl px-5 py-20">
 				<section className="flex w-full flex-col justify-start space-y-5">
 					<h1>Privacy Policy</h1>
 					<span>Last updated: December 20,2024 </span>
 				</section>
 				<Separator className="my-4" />
-				<div className="text-sm"></div>
+				<div className="">
+					<p>
+						Dum Dum Krishna Kumar Hindu Academy Alumni Association values your
+						privacy and ensures the protection of your personal information.
+					</p>
+					<div className="my-5 flex flex-col gap-3">
+						<h4>1. Information Collection</h4>
+						We collect personal information when you:
+						<ol className="list-disc pl-6">
+							<li>Register on the website.</li>
+							<li>Post content, comments, or feedback.</li>
+						</ol>
+					</div>
+					<div className="my-5 flex flex-col gap-3">
+						<h4>2. Use of Information</h4>
+						We collect data to:
+						<ol className="list-disc pl-6">
+							<li>Manage user accounts.</li>
+							<li>Improve website functionality.</li>
+							<li>Communicate updates and announcements.</li>
+						</ol>
+					</div>
+					<div className="my-5 flex flex-col gap-3">
+						<h4>3. Data Sharing</h4>
+						We do not share your data with third parties except:
+						<ol className="list-disc pl-6">
+							<li>When required by law.</li>
+							<li>To trusted partners aiding website operations.</li>
+						</ol>
+					</div>
+					<div className="my-5 flex flex-col gap-3">
+						<h4>4. Cookies and Tracking</h4>
+						<p>
+							Cookies may be used to enhance user experience. You can manage
+							cookie preferences in your browser settings.
+						</p>
+					</div>
+					<div className="my-5 flex flex-col gap-3">
+						<h4>5. Data Security</h4>
+						<p>
+							Cookies may be used to enhance user experience. You can manage
+							cookie preferences in your browser settings.
+						</p>
+					</div>
+					<div className="my-5 flex flex-col gap-3">
+						<h4>6. Contact Us</h4>
+						<p>
+							For privacy-related concerns, contact us at:{' '}
+							<Link
+								className="text-semibold text-primary"
+								href={'mailto:ddkkhaaahelp@gmail.com'}
+							>
+								ddkkhaaahelp@gmail.com
+							</Link>
+							.
+						</p>
+					</div>
+				</div>
 			</section>
 
 			<Footer />

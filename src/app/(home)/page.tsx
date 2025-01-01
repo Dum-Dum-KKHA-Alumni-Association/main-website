@@ -1,19 +1,22 @@
 import Footer from '@/components/Footer';
 import HeroSection from '@/app/(home)/HeroSection';
 import Navbar from '@/components/Navbar';
-import EventsSection from './EventsSection';
-import BlogSection from './PublicationSection';
-import AboutSection from './AboutSection';
+import Banner from './Banner';
+import Gallery from './Gallery';
+import InitiativeSection from './InitiativeSection';
+import Faq from './Faq';
+import PublicationSection from './PublicationSection';
 
 export default function Home() {
 	return (
 		<main>
 			<Navbar />
 			<HeroSection />
-			<AboutSection />
-			<EventsSection />
-			{/* <GallerySection /> */}
-			<BlogSection />
+			<Banner />
+			<InitiativeSection />
+			<Gallery />
+			<PublicationSection />
+			<Faq />
 			<Footer />
 		</main>
 	);
