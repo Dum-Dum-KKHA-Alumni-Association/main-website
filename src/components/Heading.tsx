@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Header = ({ name }: { name: string }) => {
+const Heading = ({ name }: { name: string }) => {
 	return (
-		<section className="w-full">
-			<div className="w-full py-10 text-center lg:py-14">
+		<section className="w-full pt-10">
+			<div className="w-full bg-slate-200 py-10 text-center lg:py-14">
 				<div className="mx-auto flex w-full max-w-[90rem] justify-center px-5 lg:justify-start">
 					<h2>{name}</h2>
 				</div>
@@ -12,4 +12,4 @@ const Header = ({ name }: { name: string }) => {
 	);
 };
 
-export default Header;
+export default Heading;

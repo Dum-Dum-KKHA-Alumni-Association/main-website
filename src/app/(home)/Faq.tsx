@@ -20,7 +20,7 @@ const Faq = () => {
 			<section className="flex w-full flex-col gap-5 pr-20 md:w-1/2">
 				<h2>FAQ</h2>
 				<p>
-					We face Common problems and Queries from our Alumines So We Answer
+					We face Common problems and Queries from our Alumines. So We Answer
 					most common Queries{' '}
 				</p>
 			</section>

@@ -1,38 +1,67 @@
+'use client';
 import React from 'react';
-
+import { motion } from 'motion/react';
+import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
 const AboutSection = () => {
 	return (
-		<section className="my-24 w-full bg-slate-400 py-10">
-			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between gap-10 px-5">
-				<section>
-					<h2 className="">About Us</h2>
-				</section>
-				<section className="w-full max-w-3xl">
-					Welcome to our alumni community! We are dedicated to fostering
-					connections between past students and creating opportunities for
-					networking and growth.
-				</section>
-				<section className="grid w-full grid-cols-1 gap-8 text-xl font-bold text-white md:grid-cols-3">
-					<section className="flex w-full flex-col items-center rounded-lg bg-primary py-10">
-						<span>2000+</span>
-						<span>Alumni</span>
-					</section>
-					<section className="flex w-full flex-col items-center rounded-lg bg-primary py-10">
-						<span>10+</span>
-						<span>Events</span>
-					</section>
-					<section className="flex w-full flex-col items-center rounded-lg bg-primary py-10">
-						<span>2000+</span>
-						<span>Alumni</span>
-					</section>
-				</section>
+		<section className="my-24 w-full bg-primary py-12">
+			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between px-5">
+				<h2 className="font-medium text-white">
+					We are Alumins of K.K Hindu Academy
+				</h2>
+				<p className="mt-7 w-full max-w-3xl text-center font-mono text-2xl text-white">
+					We are ex-Students of Dum Dum Krishna Kumar Hindu Academy. This is the
+					Official Registered Association of Dum Dum Krishna Kumar Hindu
+					Academy. Our Mission is Re-Unite our proudly and established Student
+					from all over world to help our next Generation junior Students.
+				</p>
 			</section>
-			{/* <section className="m-auto mt-40 flex w-full max-w-[90rem] flex-col items-center justify-between gap-10 px-5">
-				<section className="w-full border flex">
-					<section className="w-[60%] border border-blue-600"> </section>
-					<section className="w-[40%] border border-red-600 aspect-[3/4]"> <Image/> </section>
-				</section>
-			</section> */}
+			<section className="mx-auto mt-7 grid w-full max-w-7xl grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+				<motion.section
+					initial={{ opacity: 0, y: '30%' }}
+					whileInView={{ opacity: 1, y: '0' }}
+					transition={{
+						type: 'spring',
+					}}
+					viewport={{ margin: '-150px', once: true }}
+					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-white antialiased transition-colors duration-500 ease-in-out"
+				>
+					<GraduationCap size={50} />
+
+					<span className="my-2 text-5xl font-medium">200+</span>
+					<span className="text-lg">Total Registered Alumines</span>
+				</motion.section>
+				<motion.section
+					initial={{ opacity: 0, y: '30%' }}
+					whileInView={{ opacity: 1, y: '0' }}
+					transition={{
+						type: 'spring',
+						delay: 0.6,
+					}}
+					viewport={{ margin: '-150px', once: true }}
+					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-white antialiased transition-colors duration-500 ease-in-out"
+				>
+					<Clock size={45} />
+
+					<span className="my-2 text-5xl font-medium">5</span>
+					<span className="text-lg">Years of Legacy</span>
+				</motion.section>
+				<motion.section
+					initial={{ opacity: 0, y: '30%' }}
+					whileInView={{ opacity: 1, y: '0' }}
+					transition={{
+						type: 'spring',
+						delay: 0.3,
+					}}
+					viewport={{ margin: '-150px', once: true }}
+					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-white antialiased transition-colors duration-500 ease-in-out"
+				>
+					<CalendarCheck2 size={40} />
+
+					<span className="my-2 text-5xl font-medium">10</span>
+					<span className="text-lg">Active Communities</span>
+				</motion.section>
+			</section>
 		</section>
 	);
 };

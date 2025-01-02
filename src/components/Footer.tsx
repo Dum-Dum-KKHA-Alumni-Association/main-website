@@ -16,7 +16,7 @@ const Footer = () => {
 								alt="Logo"
 								className="w-auto"
 							/>
-							<div className="font-baloo-da-2 flex flex-col text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+							<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
 								<span>Dum Dum K. K. Hindu Academy</span>
 								<span>Alumni Association</span>
 							</div>
@@ -47,6 +47,14 @@ const Footer = () => {
 								<li className="mb-4">
 									<Link href="/events" className="hover:underline">
 										Events
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link
+										href="https://ddkkhaaa.blogspot.com"
+										className="hover:underline"
+									>
+										Magazine
 									</Link>
 								</li>
 								<li className="mb-4">
@@ -97,15 +105,7 @@ const Footer = () => {
 										Twitter
 									</Link>
 								</li>
-								<li className="mb-4">
-									<Link
-										href="https://ddkkhaaa.blogspot.com"
-										target="_blank"
-										className="hover:underline"
-									>
-										Magazine
-									</Link>
-								</li>
+
 								<li className="mb-4">
 									<Link
 										href="https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E"
