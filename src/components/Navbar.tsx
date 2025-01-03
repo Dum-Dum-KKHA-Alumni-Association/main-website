@@ -75,16 +75,16 @@ const socialPlatform: {
 		description: 'Follow our Official Twitter Page',
 	},
 ];
-const donations: { title: string; href: string; description?: string }[] = [
-	{
-		title: 'Active Donation',
-		href: '/donation/active',
-	},
-	{
-		title: 'Expired Donations',
-		href: '/donation/expired',
-	},
-];
+// const donations: { title: string; href: string; description?: string }[] = [
+// 	{
+// 		title: 'Active Donation',
+// 		href: '/donation/active',
+// 	},
+// 	{
+// 		title: 'Expired Donations',
+// 		href: '/donation/expired',
+// 	},
+// ];
 
 // const events: { title: string; href: string; description?: string }[] = [
 // 	{
@@ -229,8 +229,15 @@ const Navbar = () => {
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
+								<Link href="/donation" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Donation
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+							{/* <NavigationMenuItem>
 								<NavigationMenuTrigger>
-									<Link href="/donation" legacyBehavior passHref>
+									<Link href="" legacyBehavior passHref>
 										<NavigationMenuLink
 											className={navigationMenuTriggerStyle()}
 										>
@@ -251,7 +258,7 @@ const Navbar = () => {
 										))}
 									</ul>
 								</NavigationMenuContent>
-							</NavigationMenuItem>
+							</NavigationMenuItem> */}
 							<NavigationMenuItem>
 								<NavigationMenuTrigger>
 									<Link href="/donation" legacyBehavior passHref>

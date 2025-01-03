@@ -11,7 +11,7 @@ const SkeletonCard = () => {
 	return (
 		<Card className="font-sora">
 			<CardHeader className="px-0 pt-0">
-				<Skeleton className="aspect-video w-full rounded-none" />
+				<Skeleton className="aspect-video w-full rounded-b-none" />
 			</CardHeader>
 			<CardContent className="space-y-3">
 				<Skeleton className="h-4 w-[150px]" />

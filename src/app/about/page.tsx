@@ -7,22 +7,22 @@ import React from 'react';
 
 const AboutPage = () => {
 	return (
-		<main>
+		<main className="pt-10 md:pt-[4rem]">
 			<Navbar />
 			{/* <Heading name={'About'} /> */}
-			<section className="mx-auto my-16 flex w-full max-w-7xl flex-col">
+			<section className="mx-auto flex w-full max-w-7xl flex-col px-5 lg:my-16">
 				{/* aboutUs */}
 				<section className="flex w-full flex-col items-center gap-16">
 					<Image
 						src={'/ddkkha.jpg'}
 						width={1000}
 						height={0}
-						className="mx-auto w-full max-w-5xl rounded-2xl"
+						className="mx-auto w-full max-w-6xl rounded-2xl"
 						alt={'dwa'}
 					/>
 					<section className="flex flex-col items-center gap-5">
 						<h2>About Us</h2>
-						<section className="w-full max-w-4xl">
+						<section className="w-full max-w-4xl sm:px-10">
 							<p className="text-center text-lg">
 								In the year 1933, the collective vision of five illustrious
 								luminaries—Sri Karunakishore Kargupta, Dr. Surendramohan
@@ -37,51 +37,10 @@ const AboutPage = () => {
 					</section>
 				</section>
 
-				{/* <section className="grid w-full grid-cols-3 gap-5">
-					<Card>
-						<CardContent className="flex aspect-video flex-col items-center justify-center gap-2 p-6">
-							<span className="text-5xl font-semibold">200+</span>
-							<span className="text-lg font-medium">Active Students</span>
-						</CardContent>
-					</Card>
-					<Card>
-						<CardContent className="flex aspect-video flex-col items-center justify-center gap-2 p-6">
-							<span className="text-5xl font-semibold">200+</span>
-							<span className="text-lg font-medium">Active Students</span>
-						</CardContent>
-					</Card>
-					<Card>
-						<CardContent className="flex aspect-video flex-col items-center justify-center gap-2 p-6">
-							<span className="text-5xl font-semibold">200+</span>
-							<span className="text-lg font-medium">Active Students</span>
-						</CardContent>
-					</Card>
-				</section> */}
-
-				{/* Our Goals  */}
-				{/* <section className="grid w-full grid-cols-2 gap-5">
-					<section className="w-full space-y-4 py-14">
-						<h6 className="text-red-500">Our Goals</h6>
-						<h2 className="">Our Goals</h2>
-						<section>
-							{' '}
-							Our Mission is reunite all ex-students and upcomming ex-students
-							of Dum Dum Krishna Kumar Hindu Academy's Student in one place
-						</section>
-					</section>
-					<section className="w-full p-6">
-
-						<div className='w-40 bg-yellow-400'>
-							dwada
-						</div>
-
-					</section>
-				</section> */}
-
 				{/* Teacher Sppeches */}
-				<section className="mt-20 flex w-full flex-col gap-10 pb-20">
-					<section className="mt-10 flex w-full justify-between">
-						<section className="flex w-[40%] justify-center">
+				<section className="mx-auto mt-20 flex w-full max-w-6xl flex-col gap-10 lg:pb-20">
+					<section className="mt-10 flex w-full flex-col justify-between lg:flex-row">
+						<section className="flex w-full justify-start lg:w-[50%]">
 							<Image
 								src={'/assets/about-2.jpg'}
 								className="aspect-square w-full max-w-md rounded-lg"
@@ -90,9 +49,9 @@ const AboutPage = () => {
 								alt={''}
 							/>
 						</section>
-						<section className="flex w-[60%] flex-col justify-center gap-8 p-20">
-							<section className="w-full max-w-xl">
-								<p className="text-lg">
+						<section className="flex flex-col justify-center gap-8 pt-10 sm:px-10 lg:w-[50%]">
+							<section className="w-full lg:max-w-xl">
+								<p className="text-center text-lg lg:text-left">
 									Each branch and tendril of this grand arboreal entity
 									proclaims its glories far and wide, transcending the confines
 									of national boundaries. Amongst its illustrious progeny, a
@@ -108,10 +67,10 @@ const AboutPage = () => {
 							</section>
 						</section>
 					</section>
-					<section className="mt-10 flex w-full justify-between">
-						<section className="flex w-[60%] flex-col justify-center gap-8 p-20">
-							<section className="w-full max-w-xl">
-								<p className="text-lg">
+					<section className="mt-10 flex w-full flex-col-reverse justify-between lg:flex-row">
+						<section className="flex flex-col justify-center gap-8 pt-10 sm:px-10 lg:w-[50%]">
+							<section className="w-full lg:max-w-xl">
+								<p className="text-center text-lg lg:text-left">
 									Observances such as Teacher&apos;s Day, Bijayar Adda,
 									Children&apos;s Day, and the Bandhu Chal Sports Festival serve
 									as sanctuaries for this confluence of unity and duty. Through
@@ -123,7 +82,7 @@ const AboutPage = () => {
 								</p>
 							</section>
 						</section>
-						<section className="flex w-[40%] justify-center">
+						<section className="flex justify-end lg:w-[50%]">
 							<Image
 								src={'/assets/about-3.jpg'}
 								className="aspect-square w-full max-w-md rounded-lg"

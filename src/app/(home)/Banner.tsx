@@ -1,9 +1,7 @@
 'use client';
-// import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
+
 import React from 'react';
 import { motion } from 'motion/react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 
 const Banner = () => {
 	return (
@@ -49,9 +47,9 @@ const Banner = () => {
 						Share your journey and contribute to the legacy of our school.
 					</section>
 					<section className="mt-6 flex w-full gap-3 md:mt-0">
-						<Link href={'/members'} className="w-full md:w-1/3">
+						{/* <Link href={'/members'} className="w-full md:w-1/3">
 							<Button className="w-full p-6 text-lg font-bold">Join</Button>
-						</Link>
+						</Link> */}
 					</section>
 				</div>
 			</section>

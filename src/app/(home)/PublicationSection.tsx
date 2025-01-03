@@ -102,7 +102,7 @@ const PublicationSection = () => {
 
 							<CardFooter className="p-3">
 								<Link href={publication.link} target="_black">
-									<Button variant={'outline'}>Read More</Button>
+									<Button variant={'default'}>Read More</Button>
 								</Link>
 							</CardFooter>
 						</Card>

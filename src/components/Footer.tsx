@@ -2,11 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import logo from '../../public/logo.png';
+import { Separator } from './ui/separator';
 const Footer = () => {
 	return (
 		<footer className="mt-32 border-t p-4 dark:bg-gray-800 sm:p-6">
 			<div className="mx-auto w-full max-w-7xl">
-				<div className="flex flex-col gap-8 md:justify-between lg:flex-col">
+				<div className="flex flex-col gap-8 md:justify-between lg:flex-row">
 					<div className="mb-6 w-fit md:mb-0">
 						<Link href={'/'} className="flex items-center gap-3">
 							<Image
@@ -141,7 +142,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<hr className="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" />
+				<Separator className="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" />
 				<div className="sm:flex sm:items-center sm:justify-between">
 					<span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
 						© 2024{' '}
