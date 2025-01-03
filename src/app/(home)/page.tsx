@@ -6,17 +6,20 @@ import Gallery from './Gallery';
 import InitiativeSection from './InitiativeSection';
 import PublicationSection from './PublicationSection';
 import AboutSection from './AboutSection';
-import SpeechSection from './SpeechSection';
+import { sanityFetch } from '@/sanity/lib/client';
+import { HOMEPAGE_QUERY } from '@/sanity/actions/queries';
+import { HomePage } from '@/types/sanity';
 
-export default function Home() {
+export default async function Home() {
+	const homePageData = await sanityFetch<HomePage>({ query: HOMEPAGE_QUERY });
+
 	return (
 		<main>
 			<Navbar />
-			<HeroSection />
-			<AboutSection />
+			<HeroSection hero={homePageData.hero!} />
+			<AboutSection about={homePageData.about} />
 			<Banner />
 			<InitiativeSection />
-			<SpeechSection />
 			<Gallery />
 			<PublicationSection />
 			{/* <Faq /> */}

@@ -1,19 +1,20 @@
 'use client';
-import React from 'react';
+import React, { FC } from 'react';
 import { motion } from 'motion/react';
 import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
-const AboutSection = () => {
+
+interface AboutSectionProps {
+	about?: string;
+}
+const AboutSection: FC<AboutSectionProps> = ({ about }) => {
 	return (
-		<section className="my-24 w-full bg-primary py-12">
+		<section className="mt-0 w-full bg-primary py-12 md:my-24">
 			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between px-5">
-				<h2 className="font-medium text-white">
+				<h2 className="text-center text-4xl font-medium text-slate-300">
 					We are Alumins of Dum Dum K. K. Hindu Academy
 				</h2>
-				<p className="mt-7 w-full max-w-3xl text-center font-mono text-2xl text-white">
-					We are ex-Students of Dum Dum Krishna Kumar Hindu Academy. This is the
-					Official Registered Association of Dum Dum Krishna Kumar Hindu
-					Academy. Our Mission is Re-Unite our proudly and established Student
-					from all over world to help our next Generation junior Students.
+				<p className="mt-7 w-full max-w-6xl text-center font-mono text-lg leading-relaxed text-slate-400 md:text-2xl">
+					{about}
 				</p>
 			</section>
 			<section className="mx-auto mt-7 grid w-full max-w-7xl grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
@@ -24,7 +25,7 @@ const AboutSection = () => {
 						type: 'spring',
 					}}
 					viewport={{ margin: '-150px', once: true }}
-					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-white antialiased transition-colors duration-500 ease-in-out"
+					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-slate-300 antialiased transition-colors duration-500 ease-in-out"
 				>
 					<GraduationCap size={50} />
 
@@ -39,7 +40,7 @@ const AboutSection = () => {
 						delay: 0.3,
 					}}
 					viewport={{ margin: '-150px', once: true }}
-					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-white antialiased transition-colors duration-500 ease-in-out"
+					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-slate-300 antialiased transition-colors duration-500 ease-in-out"
 				>
 					<Clock size={45} />
 
@@ -54,7 +55,7 @@ const AboutSection = () => {
 						delay: 0.6,
 					}}
 					viewport={{ margin: '-150px', once: true }}
-					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-white antialiased transition-colors duration-500 ease-in-out"
+					className="flex w-full flex-col items-center justify-end rounded-xl py-10 text-slate-300 antialiased transition-colors duration-500 ease-in-out"
 				>
 					<CalendarCheck2 size={40} />
 

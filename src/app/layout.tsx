@@ -3,6 +3,7 @@ import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'react-hot-toast';
 import TanstackProvider from '@/lib/provider/tanstack-provider';
+import MiniSideCallout from '@/components/MiniSideCallout';
 
 export const metadata: Metadata = {
 	title: 'Dum Dum Krishna Kumar Hindu Academy Alumni Association',
@@ -25,7 +26,10 @@ export default function RootLayout({
 						},
 					}}
 				>
-					<TanstackProvider>{children}</TanstackProvider>
+					<TanstackProvider>
+						{children}
+						<MiniSideCallout />
+					</TanstackProvider>
 					<Toaster />
 				</ClerkProvider>
 			</body>

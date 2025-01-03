@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
 				protocol: 'https',
 				hostname: 'portal.ddkkha.com',
 			},
+			{
+				protocol: 'https',
+				hostname: 'cdn.sanity.io',
+				pathname: `/images/**`,
+			},
 		],
 	},
 };
