@@ -260,15 +260,7 @@ const Navbar = () => {
 								</NavigationMenuContent>
 							</NavigationMenuItem> */}
 							<NavigationMenuItem>
-								<NavigationMenuTrigger>
-									<Link href="/donation" legacyBehavior passHref>
-										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
-										>
-											Community
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuTrigger>
+								<NavigationMenuTrigger>Community</NavigationMenuTrigger>
 								<NavigationMenuContent>
 									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
 										{socialPlatform.map((platform) => (

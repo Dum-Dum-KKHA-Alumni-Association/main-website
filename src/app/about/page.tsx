@@ -14,7 +14,7 @@ const AboutPage = () => {
 				{/* aboutUs */}
 				<section className="flex w-full flex-col items-center gap-16">
 					<Image
-						src={'/ddkkha.jpg'}
+						src={'/assets/ddkkha.jpg'}
 						width={1000}
 						height={0}
 						className="mx-auto w-full max-w-6xl rounded-2xl"
