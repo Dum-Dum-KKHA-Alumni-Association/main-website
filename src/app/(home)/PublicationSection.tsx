@@ -56,8 +56,7 @@ const publications: Array<{
 		image:
 			'https://blogger.googleusercontent.com/img/a/AVvXsEgNuVuPF5zhZh9ZY51Uy1udwyD4eq8JMVPCc7xgMvzq8I8MpiDEejJB6ripSCdDfFjTr3iS73UAjo-DjiK3FaMGLHzkCt2fpJnbiPKNxsq5Z7Di4xUMGk56mY0Vqk-ZTdLqwdZR1X14mdV1C_sJB3mh5FF6xYfH3jCcm8-LIBxoWuZkMERPFRWq_lq5-g=w452-h640',
 		title: `স্কেচ`,
-		description:
-			'" মা " হলেন স্নেহ , ভালবাসা , মায়া-মমতার জীবন্ত বিগ্রহ । ত্যাগ , তিতিক্ষা , নিষ্ঠা --- সর্বোপরি স্বার্থহীন...',
+		description: '...',
 	},
 	{
 		link: 'https://ddkkhaaa.blogspot.com/2024/11/06Pujo2024.html',
@@ -102,10 +101,7 @@ const PublicationSection = () => {
 							</CardContent>
 
 							<CardFooter className="p-3">
-								<Link
-									href={'https://ddkkhaaa.blogspot.com/2024/11/08Pujo2024.html'}
-									target="_black"
-								>
+								<Link href={publication.link} target="_black">
 									<Button variant={'outline'}>Read More</Button>
 								</Link>
 							</CardFooter>

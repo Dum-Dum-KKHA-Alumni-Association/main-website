@@ -20,15 +20,15 @@ const HeroSection = () => {
 					}}
 					navigation={true}
 					modules={[Pagination, Navigation, EffectFade]}
-					className="aspect-[16/8] w-full rounded-xl"
+					className="aspect-[16/9] w-full rounded-xl"
 				>
 					<SwiperSlide>
 						<Image
 							width={1000}
 							height={0}
 							alt="image"
-							className="w-full"
-							src="/ddkkha.jpg"
+							className="w-full object-cover"
+							src="/hero/branding.jpg"
 						/>
 						{/*
 						
@@ -37,6 +37,24 @@ const HeroSection = () => {
 							<h1>Welcome Back Alumni</h1>
 						</section>
 							*/}
+					</SwiperSlide>
+					<SwiperSlide>
+						<Image
+							width={1000}
+							height={0}
+							alt="image"
+							className="w-full object-cover"
+							src="/hero/img-2.jpg"
+						/>
+					</SwiperSlide>
+					<SwiperSlide>
+						<Image
+							width={1000}
+							height={0}
+							alt="image"
+							className="w-full object-cover"
+							src="/hero/ddkkha.jpg"
+						/>
 					</SwiperSlide>
 				</Swiper>
 			</section>

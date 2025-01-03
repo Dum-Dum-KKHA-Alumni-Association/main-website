@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: 'https',
+				hostname: 'scontent.fccu2-*.fna.fbcdn.net',
+			},
+			{
+				protocol: 'https',
 				hostname: 'portal.ddkkha.com',
 			},
 		],

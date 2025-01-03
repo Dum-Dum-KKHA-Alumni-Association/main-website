@@ -1,22 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-
+import logo from '../../public/logo.png';
 const Footer = () => {
 	return (
 		<footer className="mt-32 border-t p-4 dark:bg-gray-800 sm:p-6">
 			<div className="mx-auto w-full max-w-7xl">
-				<div className="md:flex md:justify-between">
-					<div className="mb-6 md:mb-0">
+				<div className="flex flex-col gap-8 md:justify-between lg:flex-col">
+					<div className="mb-6 w-fit md:mb-0">
 						<Link href={'/'} className="flex items-center gap-3">
 							<Image
-								src={'/logo.png'}
+								src={logo}
 								height={0}
 								width={40}
 								alt="Logo"
 								className="w-auto"
 							/>
-							<div className="font-baloo-da-2 flex flex-col text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+							<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:gap-2 md:text-2xl xl:flex-row xl:text-2xl">
 								<span>Dum Dum K. K. Hindu Academy</span>
 								<span>Alumni Association</span>
 							</div>
@@ -47,6 +47,14 @@ const Footer = () => {
 								<li className="mb-4">
 									<Link href="/events" className="hover:underline">
 										Events
+									</Link>
+								</li>
+								<li className="mb-4">
+									<Link
+										href="https://ddkkhaaa.blogspot.com"
+										className="hover:underline"
+									>
+										Magazine
 									</Link>
 								</li>
 								<li className="mb-4">
@@ -97,15 +105,7 @@ const Footer = () => {
 										Twitter
 									</Link>
 								</li>
-								<li className="mb-4">
-									<Link
-										href="https://ddkkhaaa.blogspot.com"
-										target="_blank"
-										className="hover:underline"
-									>
-										Magazine
-									</Link>
-								</li>
+
 								<li className="mb-4">
 									<Link
 										href="https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E"

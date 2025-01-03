@@ -1,5 +1,5 @@
 'use client';
-import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
+// import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
 import React from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button';
 
 const Banner = () => {
 	return (
-		<section className="mx-auto my-20 flex w-full max-w-7xl flex-col gap-20 px-5">
-			<section className="mf:flex-row flex w-full flex-col gap-7">
+		<section className="mx-auto mt-20 flex w-full max-w-7xl flex-col gap-20 px-5">
+			<section className="flex w-full flex-col gap-7 md:flex-row">
 				<div className="w-full text-5xl font-bold md:w-1/2">
 					<motion.div
 						initial={{ opacity: 0, y: '30%' }}
@@ -49,13 +49,13 @@ const Banner = () => {
 						Share your journey and contribute to the legacy of our school.
 					</section>
 					<section className="mt-6 flex w-full gap-3 md:mt-0">
-						<Link href={'/members'} className="w-1/3">
-							<Button className="w-full p-6">Join</Button>
+						<Link href={'/members'} className="w-full md:w-1/3">
+							<Button className="w-full p-6 text-lg font-bold">Join</Button>
 						</Link>
 					</section>
 				</div>
 			</section>
-			<section className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{/* <section className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 				<motion.section
 					initial={{ opacity: 0, y: '30%' }}
 					whileInView={{ opacity: 1, y: '0' }}
@@ -103,7 +103,7 @@ const Banner = () => {
 					<span className="mt-2 text-5xl font-medium">5</span>
 					<span>Years of Legacy</span>
 				</motion.section>
-			</section>
+			</section> */}
 		</section>
 	);
 };
