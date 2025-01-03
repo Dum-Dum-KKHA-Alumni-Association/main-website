@@ -22,7 +22,11 @@ import {
 	navigationMenuTriggerStyle,
 } from './ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { FaSquareWhatsapp, FaSquareInstagram } from 'react-icons/fa6';
+import {
+	FaSquareWhatsapp,
+	FaSquareInstagram,
+	FaSquareXTwitter,
+} from 'react-icons/fa6';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoYoutube } from 'react-icons/io';
 import { Button } from './ui/button';
@@ -32,6 +36,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from './ui/accordion';
+import logo from '../../public/logo.png';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -43,28 +48,31 @@ const socialPlatform: {
 		icon: <FaSquareWhatsapp className="text-3xl text-green-400" />,
 		title: 'Whats App Community',
 		href: 'https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E',
-		description:
-			'A modal dialog that interrupts the user with important content and expects a response.',
+		description: 'Follow our Official Whatsapp Channel',
 	},
 	{
 		icon: <FaFacebookSquare className="text-3xl text-blue-600" />,
 		title: 'Facebook Community',
-		href: '/docs/primitives/hover-card',
-		description:
-			'For sighted users to preview content available behind a link.',
+		href: 'https://www.facebook.com/ddkkhaaaofficial',
+		description: 'Follow our Official Facebook Page',
 	},
 	{
 		icon: <IoLogoYoutube className="text-3xl text-red-600" />,
 		title: 'Youtube',
-		href: '/docs/primitives/progress',
-		description:
-			'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+		href: 'https://www.youtube.com/@ddkkhaaaofficial',
+		description: 'Subscribe our Official Youtube Channel;',
 	},
 	{
-		icon: <FaSquareInstagram className="text-3xl text-purple-600" />,
+		icon: <FaSquareInstagram className="text-3xl text-[#E1306C]" />,
 		title: 'Instagram',
-		href: '/docs/primitives/scroll-area',
-		description: 'Visually or semantically separates content.',
+		href: 'https://www.instagram.com/ddkkhaaaofficial',
+		description: 'Follow our Official Instagram Page',
+	},
+	{
+		icon: <FaSquareXTwitter className="text-3xl text-black" />,
+		title: 'X.com',
+		href: 'https://x.com/ddkkhaaa',
+		description: 'Follow our Official Twitter Page',
 	},
 ];
 const donations: { title: string; href: string; description?: string }[] = [
@@ -78,16 +86,16 @@ const donations: { title: string; href: string; description?: string }[] = [
 	},
 ];
 
-const events: { title: string; href: string; description?: string }[] = [
-	{
-		title: '🎉Upcoming Events',
-		href: '/events/upcoming',
-	},
-	{
-		title: 'Past Events',
-		href: '/docs/primitives/hover-card',
-	},
-];
+// const events: { title: string; href: string; description?: string }[] = [
+// 	{
+// 		title: '🎉Upcoming Events',
+// 		href: '/events/upcoming',
+// 	},
+// 	{
+// 		title: 'Past Events',
+// 		href: '/docs/primitives/hover-card',
+// 	},
+// ];
 
 const Navbar = () => {
 	return (
@@ -97,11 +105,12 @@ const Navbar = () => {
 					<section className="flex w-full justify-between gap-8 md:w-auto">
 						<Link href={'/'} className="flex items-center gap-3">
 							<Image
-								src={'/logo.png'}
+								src={logo}
 								height={0}
 								width={40}
 								alt="Logo"
 								className="w-auto"
+								priority={true}
 							/>
 							<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
 								<span>Dum Dum K. K. Hindu Academy</span>
@@ -172,13 +181,16 @@ const Navbar = () => {
 										</AccordionItem>
 									</Accordion>
 
+									<Link href={'/gallery'} className="w-full border-b py-2">
+										Gallery
+									</Link>
 									<Link
 										href={'https://ddkkhaaa.blogspot.com'}
 										className="w-full border-b py-2"
 									>
 										Magazine
 									</Link>
-									<Link href={'/contact-us'} className="w-full border-b py-2">
+									<Link href={'/contact'} className="w-full border-b py-2">
 										Contact
 									</Link>
 								</div>
@@ -265,7 +277,7 @@ const Navbar = () => {
 									</ul>
 								</NavigationMenuContent>
 							</NavigationMenuItem>
-							<NavigationMenuItem>
+							{/* <NavigationMenuItem>
 								<NavigationMenuTrigger>
 									<Link href="/events" legacyBehavior passHref>
 										<NavigationMenuLink
@@ -288,8 +300,15 @@ const Navbar = () => {
 										))}
 									</ul>
 								</NavigationMenuContent>
-							</NavigationMenuItem>
+							</NavigationMenuItem> */}
 
+							<NavigationMenuItem>
+								<Link href="/gallery" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Gallery
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
 							<NavigationMenuItem>
 								<Link
 									href="https://ddkkhaaa.blogspot.com"

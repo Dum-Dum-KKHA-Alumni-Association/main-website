@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'react-hot-toast';
+import TanstackProvider from '@/lib/provider/tanstack-provider';
 
 export const metadata: Metadata = {
 	title: 'Dum Dum Krishna Kumar Hindu Academy Alumni Association',
@@ -24,7 +25,7 @@ export default function RootLayout({
 						},
 					}}
 				>
-					{children}
+					<TanstackProvider>{children}</TanstackProvider>
 					<Toaster />
 				</ClerkProvider>
 			</body>
