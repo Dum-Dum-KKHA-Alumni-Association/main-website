@@ -26,7 +26,7 @@ const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 						clickable: true,
 					}}
 					autoplay={{
-						delay: 2500,
+						delay: 3000,
 						disableOnInteraction: false,
 					}}
 					modules={[Autoplay, Pagination, Navigation, EffectFade]}

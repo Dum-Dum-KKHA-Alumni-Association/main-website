@@ -167,7 +167,7 @@ export type Gallery = {
 	};
 	publishedAt?: string;
 	collections?: Array<{
-		title?: string;
+		alt?: string;
 		image?: {
 			asset?: {
 				_ref: string;
@@ -202,7 +202,23 @@ export type HomePage = {
 	hero?: Array<{
 		title?: string;
 		image?: string;
+		_type: 'image_collection';
+		_key: string;
 	}>;
+	gallery?: Array<string>;
+};
+
+export type SanityImage = {
+	asset?: {
+		_ref: string;
+		_type: 'reference';
+		_weak?: boolean;
+		[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+	};
+	hotspot?: SanityImageHotspot;
+	crop?: SanityImageCrop;
+	_type: 'image';
+	_key: string;
 };
 
 export type SanityImageCrop = {

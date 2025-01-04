@@ -20,7 +20,7 @@ export default async function Home() {
 			<AboutSection about={homePageData.about} />
 			<Banner />
 			<InitiativeSection />
-			<Gallery />
+			<Gallery gallery={homePageData.gallery} />
 			<PublicationSection />
 			{/* <Faq /> */}
 			<Footer />
