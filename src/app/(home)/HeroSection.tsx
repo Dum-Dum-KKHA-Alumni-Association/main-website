@@ -30,7 +30,7 @@ const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 						disableOnInteraction: false,
 					}}
 					modules={[Autoplay, Pagination, Navigation, EffectFade]}
-					className="aspect-[16/12] w-full border lg:aspect-[16/7] lg:rounded-xl"
+					className="aspect-auto w-full border lg:aspect-[16/7] lg:rounded-xl"
 				>
 					{hero?.map((hero) => (
 						<SwiperSlide key={hero.image}>
@@ -38,7 +38,7 @@ const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 								width={2000}
 								height={0}
 								alt="image"
-								className="h-full w-full object-cover lg:h-auto"
+								className="h-full w-full lg:h-auto lg:object-cover"
 								src={hero?.image || ''}
 							/>
 							{/*

@@ -10,7 +10,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { Menu } from 'lucide-react';
+import { ArrowUpRight, Menu } from 'lucide-react';
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -30,6 +30,12 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoYoutube } from 'react-icons/io';
 
 import logo from '../../public/logo.png';
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from './ui/accordion';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -45,7 +51,7 @@ const socialPlatform: {
 	},
 	{
 		icon: <FaFacebookSquare className="text-3xl text-blue-600" />,
-		title: 'Facebook Community',
+		title: 'Facebook ',
 		href: 'https://www.facebook.com/ddkkhaaaofficial',
 		description: 'Follow our Official Facebook Page',
 	},
@@ -63,7 +69,7 @@ const socialPlatform: {
 	},
 	{
 		icon: <FaSquareXTwitter className="text-3xl text-black" />,
-		title: 'X.com',
+		title: 'X.com (Twitter)',
 		href: 'https://x.com/ddkkhaaa',
 		description: 'Follow our Official Twitter Page',
 	},
@@ -126,10 +132,9 @@ const Navbar = () => {
 												alt="Logo"
 												className="w-auto"
 											/>
-											<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
-												<span>Dum Dum K. K. Hindu Academy</span>
-												<span>Alumni Association</span>
-											</div>
+											<p className="flex flex-col items-start font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+												Dum Dum K. K. Hindu Academy Alumni Association
+											</p>
 										</Link>
 									</SheetTitle>
 									<SheetDescription></SheetDescription>
@@ -146,42 +151,45 @@ const Navbar = () => {
 										Membership
 									</Link>
 
-									{/* <Accordion type="single" collapsible className="w-full">
+									<Accordion type="single" collapsible className="w-full">
 										<AccordionItem value="item-1">
 											<AccordionTrigger className="w-full py-2 text-base font-semibold">
-												Events
+												Community
 											</AccordionTrigger>
 											<AccordionContent className="flex flex-col tracking-wide text-blue-600">
-												<Link
-													href={'/events'}
-													className="flex w-full items-center gap-2 py-2 pl-3"
-												>
-													Current Events <ArrowUpRight size={20} />
-												</Link>
-												<Link
-													href={'/events'}
-													className="flex w-full items-center gap-2 py-2 pl-3"
-												>
-													Upcoming Events <ArrowUpRight size={20} />
-												</Link>
-												<Link
-													href={'/events'}
-													className="flex w-full items-center gap-2 py-2 pl-3"
-												>
-													Previous Events <ArrowUpRight size={20} />
-												</Link>
+												{socialPlatform.map((social) => (
+													<Link
+														key={social.title}
+														href={social.href}
+														target="_blank"
+														className="flex w-full items-center gap-2 py-2 pl-3"
+													>
+														{social.icon}
+														{social.title}
+														<ArrowUpRight size={20} />
+													</Link>
+												))}
 											</AccordionContent>
 										</AccordionItem>
-									</Accordion> */}
+									</Accordion>
 
 									<Link href={'/gallery'} className="w-full border-b py-2">
 										Gallery
+									</Link>
+									<Link href={'/videos'} className="w-full border-b py-2">
+										Video
 									</Link>
 									<Link
 										href={'https://ddkkhaaa.blogspot.com'}
 										className="w-full border-b py-2"
 									>
 										Magazine
+									</Link>
+									<Link
+										href={'/opportunities'}
+										className="w-full border-b py-2"
+									>
+										Opportunities
 									</Link>
 									<Link href={'/contact'} className="w-full border-b py-2">
 										Contact
@@ -213,7 +221,7 @@ const Navbar = () => {
 			<section className="w-full bg-secondary px-5 py-0.5">
 				<section className="m-auto flex h-auto w-full max-w-[90rem] items-center justify-start gap-3 pl-16">
 					<NavigationMenu className="hidden md:flex">
-						<NavigationMenuList>
+						<NavigationMenuList className="gap-2">
 							<NavigationMenuItem>
 								<Link href="/about" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -222,12 +230,13 @@ const Navbar = () => {
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link href="/donation" legacyBehavior passHref>
+								<Link href="/membership" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Membership
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
+
 							{/* <NavigationMenuItem>
 								<NavigationMenuTrigger>
 									<Link href="" legacyBehavior passHref>
@@ -293,11 +302,24 @@ const Navbar = () => {
 									</ul>
 								</NavigationMenuContent>
 							</NavigationMenuItem> */}
-
+							<NavigationMenuItem>
+								<Link href="/videos" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Videos
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
 							<NavigationMenuItem>
 								<Link href="/gallery" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Gallery
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<Link href="/opportunities" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Opportunities
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>

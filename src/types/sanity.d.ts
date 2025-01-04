@@ -146,6 +146,29 @@ export type Events = {
 	}>;
 };
 
+export type Videos = {
+	_id: string;
+	_type: 'videos';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	title?: string;
+	image?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+		};
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		alt: string;
+		_type: 'image';
+	};
+	link?: string;
+	publishedAt?: string;
+};
+
 export type Gallery = {
 	_id: string;
 	_type: 'gallery';
@@ -286,6 +309,7 @@ export type AllSanitySchemaTypes =
 	| Geopoint
 	| Post
 	| Events
+	| Videos
 	| Gallery
 	| Slug
 	| HomePage

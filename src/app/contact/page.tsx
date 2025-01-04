@@ -26,29 +26,48 @@ const ContactPage = () => {
 			<Heading name={'Contact Us'} />
 			<section className="mx-auto mt-10 w-full max-w-7xl gap-10 px-5">
 				<section className="flex w-full flex-col items-center justify-center">
-					<h3 className="text-2xl font-semibold">Contact Methods</h3>
-					<Link
-						className="mt-5 w-full max-w-[300px]"
-						target="_blank"
-						href={'mailto:ddkkhaaa@gmail.com'}
-					>
-						<Card className="w-full">
-							<CardHeader className="flex w-full items-center pb-2">
-								<CardTitle className="text-2xl">Email</CardTitle>
-							</CardHeader>
-							<CardContent className="flex w-full items-center justify-center pb-2">
-								<Image
-									src={'/gmail.png'}
-									width={70}
-									height={70}
-									alt={'gmail Logo'}
-								/>
-							</CardContent>
-							<CardFooter className="flex w-full items-center justify-center">
-								ddkkhaaa@gmail.com
-							</CardFooter>
-						</Card>
-					</Link>
+					<h3 className="text-2xl font-semibold">Contact Us</h3>
+					<section className="flex w-full flex-col items-center justify-center md:flex-row md:gap-4">
+						<Link
+							className="mt-5 w-full max-w-[300px]"
+							target="_blank"
+							href={'mailto:ddkkhaaa@gmail.com'}
+						>
+							<Card className="w-full">
+								<CardHeader className="flex w-full items-center pb-2">
+									<CardTitle className="text-2xl">Email</CardTitle>
+								</CardHeader>
+								<CardContent className="flex w-full items-center justify-center pb-2">
+									<Image
+										src={'/gmail.png'}
+										width={70}
+										height={70}
+										alt={'gmail Logo'}
+									/>
+								</CardContent>
+								<CardFooter className="flex w-full items-center justify-center">
+									ddkkhaaa@gmail.com
+								</CardFooter>
+							</Card>
+						</Link>
+						<Link
+							className="mt-5 w-full max-w-[300px]"
+							target="_blank"
+							href={'https://wa.me/919432428233'}
+						>
+							<Card className="w-full">
+								<CardHeader className="flex w-full items-center pb-2">
+									<CardTitle className="text-2xl">Whatsapp</CardTitle>
+								</CardHeader>
+								<CardContent className="flex w-full items-center justify-center pb-2">
+									<FaSquareWhatsapp className="text-[70px] text-green-400" />
+								</CardContent>
+								<CardFooter className="flex w-full items-center justify-center">
+									919432428233
+								</CardFooter>
+							</Card>
+						</Link>
+					</section>
 				</section>
 				<section className="mt-16 flex flex-col items-center">
 					<h3 className="text-2xl font-semibold">Follow Our Socials</h3>

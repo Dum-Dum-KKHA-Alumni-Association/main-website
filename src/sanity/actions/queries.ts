@@ -5,16 +5,11 @@ export const HOMEPAGE_QUERY = defineQuery(
 );
 
 export const GALLERY_QUERY = defineQuery(
-	`*[_type == "gallery"]{_createdAt,
-_id,
-_type,
-collections,
-publishedAt,
-slug,
-thumbnail,
-title,
-_updatedAt,
-}`
+	`*[_type == "gallery"]{_createdAt,_id,_type,collections,publishedAt,slug,thumbnail,title,_updatedAt,}`
+);
+
+export const VIDEOS_QUERY = defineQuery(
+	`*[_type == "videos"]{_id,_rev,_type,_updatedAt,link,title,image,publishedAt,_createdAt}`
 );
 
 export const PROJECT_QUERY = defineQuery(`*[_type=="project"]{

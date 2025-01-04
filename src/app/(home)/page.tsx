@@ -17,7 +17,7 @@ export default async function Home() {
 		<main>
 			<Navbar />
 			<HeroSection hero={homePageData.hero!} />
-			<AboutSection about={homePageData.about} />
+			<AboutSection />
 			<Banner />
 			<InitiativeSection />
 			<Gallery gallery={homePageData.gallery} />
