@@ -9,7 +9,7 @@ const DonationPage = () => {
 	return (
 		<main>
 			<Navbar />
-			<Heading name={'Donations'} />
+			<Heading name={'Membership'} />
 			<DonationPageSection />
 			<Footer />
 		</main>

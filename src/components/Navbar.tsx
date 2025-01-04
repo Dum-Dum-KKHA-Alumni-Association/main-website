@@ -6,12 +6,11 @@ import {
 	Sheet,
 	SheetContent,
 	SheetDescription,
-	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { ArrowUpRight, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -29,13 +28,7 @@ import {
 } from 'react-icons/fa6';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoYoutube } from 'react-icons/io';
-import { Button } from './ui/button';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from './ui/accordion';
+
 import logo from '../../public/logo.png';
 
 const socialPlatform: {
@@ -150,10 +143,10 @@ const Navbar = () => {
 										About Us
 									</Link>
 									<Link href={'/donation'} className="w-full border-b py-2">
-										Donation
+										Membership
 									</Link>
 
-									<Accordion type="single" collapsible className="w-full">
+									{/* <Accordion type="single" collapsible className="w-full">
 										<AccordionItem value="item-1">
 											<AccordionTrigger className="w-full py-2 text-base font-semibold">
 												Events
@@ -179,7 +172,7 @@ const Navbar = () => {
 												</Link>
 											</AccordionContent>
 										</AccordionItem>
-									</Accordion>
+									</Accordion> */}
 
 									<Link href={'/gallery'} className="w-full border-b py-2">
 										Gallery
@@ -195,11 +188,11 @@ const Navbar = () => {
 									</Link>
 								</div>
 
-								<SheetFooter className="mt-10">
+								{/* <SheetFooter className="mt-10">
 									<Button className="w-full bg-[#FFD700]" variant={'outline'}>
 										Join in
 									</Button>
-								</SheetFooter>
+								</SheetFooter> */}
 							</SheetContent>
 						</Sheet>
 					</section>
@@ -231,7 +224,7 @@ const Navbar = () => {
 							<NavigationMenuItem>
 								<Link href="/donation" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Donation
+										Membership
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>

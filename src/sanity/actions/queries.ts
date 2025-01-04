@@ -1,7 +1,7 @@
 import { defineQuery } from 'next-sanity';
 
 export const HOMEPAGE_QUERY = defineQuery(
-	`*[_type == "homePage"][0]{_createdAt, _type,_updatedAt,about,hero{"image":image.asset->url,title}[]}`
+	`*[_type == "homePage"][0]{_createdAt, _type,_updatedAt,about,hero{"image":image.asset->url,title}[],"gallery":gallery[].asset->url}`
 );
 
 export const GALLERY_QUERY = defineQuery(
