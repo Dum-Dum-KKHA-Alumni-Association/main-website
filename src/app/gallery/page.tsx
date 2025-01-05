@@ -23,7 +23,9 @@ const GalleryPage = async () => {
 							{gallery.collections?.map((image) => (
 								<Image
 									key={image._key}
-									src={imageUrlFor(image.image as SanityImageSource).url()}
+									src={imageUrlFor(image.image as SanityImageSource)
+										.quality(20)
+										.url()}
 									width={1000}
 									height={0}
 									alt={image.alt!}

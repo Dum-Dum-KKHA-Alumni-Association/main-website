@@ -9,7 +9,7 @@ export const GALLERY_QUERY = defineQuery(
 );
 
 export const VIDEOS_QUERY = defineQuery(
-	`*[_type == "videos"]{_id,_rev,_type,_updatedAt,link,title,image,publishedAt,_createdAt}`
+	`*[_type == "videos"]{_id,_rev,_type,_updatedAt,link,title,thumbnail,publishedAt,_createdAt}`
 );
 
 export const PROJECT_QUERY = defineQuery(`*[_type=="project"]{
