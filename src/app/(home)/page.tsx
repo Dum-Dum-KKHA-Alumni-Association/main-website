@@ -20,8 +20,8 @@ export default async function Home() {
 			<AboutSection />
 			<Banner />
 			<InitiativeSection />
-			<Gallery gallery={homePageData.gallery} />
 			<PublicationSection />
+			<Gallery gallery={homePageData.gallery} />
 			{/* <Faq /> */}
 			<Footer />
 		</main>

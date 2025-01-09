@@ -145,7 +145,7 @@ const Footer = () => {
 				<Separator className="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" />
 				<div className="sm:flex sm:items-center sm:justify-between">
 					<span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
-						© 2024{' '}
+						© 2025{' '}
 						<span className="hover:underline">
 							Dum Dum Krishna Kumar Hindu Academy Alumni Association
 						</span>

@@ -16,25 +16,31 @@ const GalleryPage = async () => {
 			<Navbar />
 			<Heading name={'Gallery'} />
 			<section className="mx-auto mt-10 flex w-full max-w-7xl flex-col gap-10 px-5">
-				{galleryData?.map((gallery) => (
-					<section key={gallery._id} className="flex flex-col gap-4">
-						<h4>{gallery.title}</h4>
-						<section className="mt-2 grid w-full grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-							{gallery.collections?.map((image) => (
-								<Image
-									key={image._key}
-									src={imageUrlFor(image.image as SanityImageSource)
-										.quality(20)
-										.url()}
-									width={1000}
-									height={0}
-									alt={image.alt!}
-									className="aspect-square rounded-md object-cover"
-								/>
-							))}
+				{galleryData
+					.sort(
+						(a, b) =>
+							new Date(b.publishedAt!).getTime() -
+							new Date(a.publishedAt!).getTime()
+					)
+					?.map((gallery) => (
+						<section key={gallery._id} className="flex flex-col gap-4">
+							<h4>{gallery.title}</h4>
+							<section className="mt-2 grid w-full grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+								{gallery.collections?.map((image) => (
+									<Image
+										key={image._key}
+										src={imageUrlFor(image.image as SanityImageSource)
+											.quality(20)
+											.url()}
+										width={1000}
+										height={0}
+										alt={image.alt!}
+										className="aspect-square rounded-md object-cover"
+									/>
+								))}
+							</section>
 						</section>
-					</section>
-				))}
+					))}
 			</section>
 			<Footer />
 		</section>

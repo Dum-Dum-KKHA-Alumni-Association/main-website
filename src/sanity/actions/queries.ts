@@ -12,6 +12,10 @@ export const VIDEOS_QUERY = defineQuery(
 	`*[_type == "videos"]{_id,_rev,_type,_updatedAt,link,title,thumbnail,publishedAt,_createdAt}`
 );
 
+export const INITIATIVE_QUERY = defineQuery(
+	`*[_type == "gallery"]{_createdAt,_id,_type,publishedAt,slug,thumbnail,title,_updatedAt}`
+);
+
 export const PROJECT_QUERY = defineQuery(`*[_type=="project"]{
       title,
       link,

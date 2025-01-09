@@ -36,7 +36,7 @@ const VideosPage = async () => {
 										alt={video.thumbnail.alt!}
 										className="rounded-lg"
 									/>
-									<span className="mt-4 font-medium">{video.title}</span>
+									{/* <span className="mt-4 font-medium">{video.title}</span> */}
 								</Link>
 							)
 					)}

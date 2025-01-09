@@ -7,8 +7,8 @@ const AboutSection = () => {
 	return (
 		<section className="mt-0 w-full bg-primary py-12 md:my-24">
 			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between px-5">
-				<h2 className="text-center text-4xl font-medium text-slate-300">
-					About Us
+				<h2 className="text-center text-xl font-medium text-slate-300 lg:text-4xl">
+					Dum Dum K. K. Hindu Academy Alumni Association
 				</h2>
 				<p className="mt-7 w-full max-w-7xl text-center font-mono text-lg leading-relaxed text-slate-400 md:text-2xl">
 					We, the alumni of Dum Dum Krishna Kumar Hindu Academy, proffer a
@@ -40,8 +40,8 @@ const AboutSection = () => {
 				>
 					<GraduationCap size={50} />
 
-					<span className="my-2 text-5xl font-medium">1000+</span>
-					<span className="text-lg">Total Registered Alumines</span>
+					<span className="my-2 text-5xl font-medium">10000+</span>
+					<span className="text-lg">Total Alumines</span>
 				</motion.section>
 				<motion.section
 					initial={{ opacity: 0, y: '30%' }}

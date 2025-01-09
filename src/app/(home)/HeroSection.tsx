@@ -29,6 +29,7 @@ const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 						delay: 3000,
 						disableOnInteraction: false,
 					}}
+					navigation={true}
 					modules={[Autoplay, Pagination, Navigation, EffectFade]}
 					className="aspect-auto w-full border lg:aspect-[16/7] lg:rounded-xl"
 				>
