@@ -17,24 +17,26 @@ const VideosPage = async () => {
 			<Navbar />
 			<Heading name={'Videos'} />
 			<section className="mx-auto mt-10 flex w-full max-w-7xl flex-col gap-10 px-5">
-				<section className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+				<section className="grid w-full grid-cols-1 gap-5 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
 					{videoData.map(
 						(video) =>
-							video.image && (
+							video.thumbnail && (
 								<Link
 									key={video.link}
 									target="_blank"
 									href={video.link!}
-									className="flex flex-col"
+									className="flex w-full flex-col"
 								>
 									<Image
-										src={imageUrlFor(video.image as SanityImageSource).url()}
+										src={imageUrlFor(
+											video.thumbnail as SanityImageSource
+										).url()}
 										width={1000}
 										height={0}
-										alt={video.image.alt}
+										alt={video.thumbnail.alt!}
 										className="rounded-lg"
 									/>
-									{/* <span className='font-medium mt-4'>{video.title}</span> */}
+									{/* <span className="mt-4 font-medium">{video.title}</span> */}
 								</Link>
 							)
 					)}

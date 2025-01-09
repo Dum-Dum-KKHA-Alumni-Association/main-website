@@ -89,7 +89,7 @@ select::-webkit-scrollbar {
 		@apply h-screen w-full bg-background font-sora text-secondary antialiased; 
 	}
   main{
-    @apply pt-[4rem]
+    @apply pt-[7rem]
   }
 	p {
 		@apply text-start font-sora text-base leading-[24px];

@@ -25,10 +25,13 @@ import {
 	FaSquareWhatsapp,
 	FaSquareInstagram,
 	FaSquareXTwitter,
+	FaWhatsapp,
+	FaYoutube,
+	FaFacebookF,
+	FaXTwitter,
 } from 'react-icons/fa6';
 import { FaFacebookSquare } from 'react-icons/fa';
-import { IoLogoYoutube } from 'react-icons/io';
-
+import { IoLogoInstagram, IoLogoYoutube } from 'react-icons/io';
 import logo from '../../public/logo.png';
 import {
 	Accordion,
@@ -36,6 +39,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from './ui/accordion';
+import { MdOutlineEmail } from 'react-icons/md';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -96,9 +100,108 @@ const socialPlatform: {
 // 	},
 // ];
 
+// const initiative: { title: string; href: string; description?: string }[] = [
+// 	{
+// 		title: 'Disaster Relief',
+// 		href: '/our-initiative/disaster-relief',
+// 	},
+// 	{
+// 		title: 'Teachers Day 2024',
+// 		href: '/our-initiative/teachers-day-2024',
+// 	},
+// 	{
+// 		title: 'Bijoyer Adda 2024',
+// 		href: '/our-initiative/bijoyer-adda-2024',
+// 	},
+// 	{
+// 		title: 'Children Day 2024',
+// 		href: '/our-initiative/children-day-2024',
+// 	},
+// 	{
+// 		title: 'Bondu Cholo Sports Meeting 2024',
+// 		href: '/our-initiative/bondu-cholo-sports-meeting-2024',
+// 	},
+// ];
+
 const Navbar = () => {
 	return (
 		<nav className="fixed top-0 z-50 w-full bg-background font-sora">
+			<section className="flex w-full items-center justify-center bg-primary px-5">
+				<section className="mx-auto flex w-full max-w-[90rem] justify-between py-2 text-background">
+					<section className="flex w-fit flex-row gap-4">
+						<Link
+							href={'https://wa.me/919432428233'}
+							className="flex w-fit items-center gap-1.5"
+						>
+							<FaWhatsapp className="flex h-5 w-5 items-center justify-center" />
+							<div className="space-y-0.5 text-sm">
+								<div>+91 94324 28233</div>
+							</div>
+						</Link>
+						<Link
+							target="_blank"
+							href={'mailto:ddkkhaaa@gmail.com'}
+							className="hidden w-fit items-center gap-1.5 lg:flex"
+						>
+							<MdOutlineEmail className="flex h-5 w-5 items-center justify-center" />
+							<div className="space-y-0.5 text-sm">
+								<div>ddkkhaaa@gmail.com</div>
+							</div>
+						</Link>
+						{/* <div className="flex items-center w-fit gap-2">
+							<FaWhatsapp className="flex h-10 w-10 items-center justify-center rounded-full   p-0.5" />
+							<div className="text-sm space-y-0.5">
+								<div>WhatsApp Number:</div>
+								<div>+91 94324 28233</div>
+							</div>
+						</div>
+						<div className="flex items-center w-fit gap-2">
+							<MdOutlineEmail className="flex h-10 w-10 items-center justify-center rounded-full   p-0.5" />
+							<div className="text-sm space-y-0.5">
+								<div>Email:</div>
+								<div>ddkkhaaa@gmail.com</div>
+							</div>
+						</div> */}
+					</section>
+					<section className="flex w-fit justify-center gap-2 text-background lg:gap-3">
+						<Link
+							href={'https://www.youtube.com/@ddkkhaaaofficial'}
+							target="_blank"
+							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-0.5 hover:bg-primary md:h-8 md:w-8"
+						>
+							<FaYoutube className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
+						</Link>
+						<Link
+							href={'https://www.facebook.com/ddkkhaaaofficial'}
+							target="_blank"
+							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-1 hover:bg-primary md:h-8 md:w-8"
+						>
+							<FaFacebookF className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
+						</Link>
+						<Link
+							href={'https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E'}
+							target="_blank"
+							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-0.5 hover:bg-primary md:h-8 md:w-8"
+						>
+							<FaWhatsapp className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
+						</Link>
+						<Link
+							href={'https://www.instagram.com/ddkkhaaaofficial'}
+							target="_blank"
+							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-0.5 hover:bg-primary md:h-8 md:w-8"
+						>
+							<IoLogoInstagram className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
+						</Link>
+						<Link
+							href={'https://x.com/ddkkhaaa'}
+							target="_blank"
+							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-1 hover:bg-primary md:h-8 md:w-8"
+						>
+							<FaXTwitter className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
+						</Link>
+					</section>
+				</section>
+			</section>
 			<section className="mx-auto flex h-[4rem] w-full max-w-[90rem] items-center justify-between gap-3 px-5">
 				<section className="m-auto flex h-[4rem] w-full items-center justify-between gap-3">
 					<section className="flex w-full justify-between gap-8 md:w-auto">
@@ -126,7 +229,7 @@ const Navbar = () => {
 									<SheetTitle>
 										<Link href={'/'} className="flex items-center gap-3">
 											<Image
-												src={'/logo.png'}
+												src={logo}
 												height={0}
 												width={40}
 												alt="Logo"
@@ -147,8 +250,20 @@ const Navbar = () => {
 									<Link href={'/about'} className="w-full border-b py-2">
 										About Us
 									</Link>
-									<Link href={'/donation'} className="w-full border-b py-2">
+									<Link
+										href={'/our-initiative'}
+										className="w-full border-b py-2"
+									>
+										Initiatives
+									</Link>
+									<Link href={'/membership'} className="w-full border-b py-2">
 										Membership
+									</Link>
+									<Link
+										href={'https://ddkkhaaa.blogspot.com'}
+										className="w-full border-b py-2"
+									>
+										Magazine
 									</Link>
 
 									<Accordion type="single" collapsible className="w-full">
@@ -178,12 +293,6 @@ const Navbar = () => {
 									</Link>
 									<Link href={'/videos'} className="w-full border-b py-2">
 										Video
-									</Link>
-									<Link
-										href={'https://ddkkhaaa.blogspot.com'}
-										className="w-full border-b py-2"
-									>
-										Magazine
 									</Link>
 									<Link
 										href={'/opportunities'}
@@ -230,9 +339,28 @@ const Navbar = () => {
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
+								<Link href="/our-initiative" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Initiatives
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+
+							<NavigationMenuItem>
 								<Link href="/membership" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Membership
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<Link
+									href="https://ddkkhaaa.blogspot.com"
+									legacyBehavior
+									passHref
+								>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Magazine
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
@@ -302,6 +430,7 @@ const Navbar = () => {
 									</ul>
 								</NavigationMenuContent>
 							</NavigationMenuItem> */}
+
 							<NavigationMenuItem>
 								<Link href="/videos" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -323,17 +452,7 @@ const Navbar = () => {
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<Link
-									href="https://ddkkhaaa.blogspot.com"
-									legacyBehavior
-									passHref
-								>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Magazine
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
+
 							<NavigationMenuItem>
 								<Link href="/contact" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>

@@ -6,7 +6,17 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog';
 import { Progress } from '@/components/ui/progress';
+import { Separator } from '@/components/ui/separator';
+import { Share2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
@@ -33,7 +43,7 @@ const DonationCard: FC<DonationCardProps> = ({
 	return (
 		<Card className="font-sora">
 			<CardHeader className="px-0 pt-0">
-				<Link href={`/donation/${donationPageId}`}>
+				<Link href={`/membership/${donationPageId}`}>
 					<Image
 						src={thumbnail ? thumbnail : '/ddkkha.jpg'}
 						width={1000}
@@ -44,9 +54,31 @@ const DonationCard: FC<DonationCardProps> = ({
 				</Link>
 			</CardHeader>
 			<CardContent className="space-y-3">
-				<Link href={`/donation/${donationPageId}`}>
-					<CardTitle> {title}</CardTitle>
-				</Link>
+				<CardTitle className="flex w-full justify-between">
+					<Link href={`/donation/${donationPageId}`}>{title}</Link>
+					<Dialog>
+						<DialogTrigger>
+							<Share2 size={20} />
+						</DialogTrigger>
+						<DialogContent>
+							<DialogHeader>
+								<DialogTitle>Share Donation</DialogTitle>
+								<DialogDescription>
+									This action cannot be undone. This will permanently delete
+									your account and remove your data from our servers.
+								</DialogDescription>
+								<Separator />
+							</DialogHeader>
+							<section>
+								<section>
+									<span>Share Link via </span>
+									<span></span>
+								</section>
+							</section>
+						</DialogContent>
+					</Dialog>
+				</CardTitle>
+
 				<CardDescription>{description}</CardDescription>
 			</CardContent>
 			<CardFooter className="flex flex-col gap-3">

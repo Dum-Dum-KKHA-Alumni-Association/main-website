@@ -31,6 +31,7 @@ export const donationFormSchema = z
 			.string()
 			.min(1)
 			.transform((data) => Number(data) || 0),
+		paymentMethod: z.string().min(2),
 	})
 	.refine(
 		(data) => {

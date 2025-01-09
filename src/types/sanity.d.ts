@@ -153,7 +153,7 @@ export type Videos = {
 	_updatedAt: string;
 	_rev: string;
 	title?: string;
-	image?: {
+	thumbnail?: {
 		asset?: {
 			_ref: string;
 			_type: 'reference';
@@ -162,7 +162,7 @@ export type Videos = {
 		};
 		hotspot?: SanityImageHotspot;
 		crop?: SanityImageCrop;
-		alt: string;
+		alt?: string;
 		_type: 'image';
 	};
 	link?: string;

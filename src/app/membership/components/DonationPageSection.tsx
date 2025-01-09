@@ -13,8 +13,6 @@ const DonationPageSection = () => {
 
 	return (
 		<section className="mx-auto grid w-full max-w-7xl px-5 py-16">
-			{/* <Sidebar /> */}
-			{/* <section className="col-start-2 col-end-5 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3"> */}
 			<section className="grid w-full gap-5 sm:grid-cols-2 md:grid-cols-3">
 				{isFetching ? (
 					<>
