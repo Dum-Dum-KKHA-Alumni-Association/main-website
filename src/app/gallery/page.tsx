@@ -6,7 +6,9 @@ import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 import { sanityFetch } from '@/sanity/lib/client';
 import { Gallery } from '@/types/sanity';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const GalleryPage = async () => {
@@ -24,7 +26,11 @@ const GalleryPage = async () => {
 					)
 					?.map((gallery) => (
 						<section key={gallery._id} className="flex flex-col gap-4">
-							<h4>{gallery.title}</h4>
+							<Link href={`/gallery/${gallery.slug?.current}`}>
+								<h4 className="flex items-center gap-3">
+									{gallery.title} <ArrowRight />
+								</h4>
+							</Link>
 							<section className="mt-2 grid w-full grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
 								{gallery.collections?.map((image) => (
 									<Image

@@ -5,8 +5,13 @@ export const HOMEPAGE_QUERY = defineQuery(
 );
 
 export const GALLERY_QUERY = defineQuery(
-	`*[_type == "gallery"]{_createdAt,_id,_type,collections,publishedAt,slug,thumbnail,title,_updatedAt,}`
+	`*[_type == "gallery"]{_createdAt,_id,_type,collections,publishedAt,slug,thumbnail,title,_updatedAt}`
 );
+
+export const Specific_Gallery_Series = (slug: string) =>
+	defineQuery(
+		`*[_type == 'gallery' && slug.current == "${slug}"][0]{_createdAt,_id,_type,collections,publishedAt,slug,title,_updatedAt}`
+	);
 
 export const VIDEOS_QUERY = defineQuery(
 	`*[_type == "videos"]{_id,_rev,_type,_updatedAt,link,title,thumbnail,publishedAt,_createdAt}`
