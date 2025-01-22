@@ -55,10 +55,9 @@ const OurInitiativePage = async () => {
 						>
 							{gallery.thumbnail && (
 								<Image
-									src={
-										imageUrlFor(gallery.thumbnail as SanityImageSource).url() ||
-										''
-									}
+									src={imageUrlFor(
+										gallery.thumbnail as SanityImageSource
+									).url()}
 									width={1000}
 									height={0}
 									alt={gallery.title!}
