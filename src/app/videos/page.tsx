@@ -12,13 +12,19 @@ import React from 'react';
 
 const VideosPage = async () => {
 	const videoData = await sanityFetch<Videos[]>({ query: VIDEOS_QUERY });
+	function sortByISOString(arr: Videos[]) {
+		return arr.sort(
+			(a, b) =>
+				new Date(a.publishedAt!).getTime() - new Date(b.publishedAt!).getTime()
+		);
+	}
 	return (
 		<section>
 			<Navbar />
 			<Heading name={'Videos'} />
 			<section className="mx-auto mt-10 flex w-full max-w-7xl flex-col gap-10 px-5">
 				<section className="grid w-full grid-cols-1 gap-5 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-					{videoData.map(
+					{sortByISOString(videoData)?.map(
 						(video) =>
 							video.thumbnail && (
 								<Link

@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer';
 import Heading from '@/components/Heading';
 import Navbar from '@/components/Navbar';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { GALLERY_QUERY } from '@/sanity/actions/queries';
 import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 import { sanityFetch } from '@/sanity/lib/client';
@@ -27,22 +28,36 @@ const GalleryPage = async () => {
 					?.map((gallery) => (
 						<section key={gallery._id} className="flex flex-col gap-4">
 							<Link href={`/gallery/${gallery.slug?.current}`}>
-								<h4 className="flex items-center gap-3">
+								<h4 className="flex items-center gap-3 text-xl">
 									{gallery.title} <ArrowRight />
 								</h4>
 							</Link>
 							<section className="mt-2 grid w-full grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-								{gallery.collections?.map((image) => (
-									<Image
-										key={image._key}
-										src={imageUrlFor(image.image as SanityImageSource)
-											.quality(20)
-											.url()}
-										width={1000}
-										height={0}
-										alt={image.alt!}
-										className="aspect-square rounded-md object-cover"
-									/>
+								{gallery.collections?.splice(0, 3).map((image) => (
+									<Dialog key={image._key}>
+										<DialogTrigger>
+											<Image
+												src={imageUrlFor(image.image as SanityImageSource)
+													.quality(20)
+													.url()}
+												width={1000}
+												height={0}
+												alt={image.alt!}
+												className="aspect-square rounded-md object-cover"
+											/>
+										</DialogTrigger>
+										<DialogContent className="w-full max-w-6xl">
+											<Image
+												src={imageUrlFor(
+													image.image as SanityImageSource
+												).url()}
+												width={1000}
+												height={0}
+												alt={image.alt!}
+												className="w-full rounded-md object-cover"
+											/>
+										</DialogContent>
+									</Dialog>
 								))}
 							</section>
 						</section>
