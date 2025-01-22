@@ -16,16 +16,22 @@ const OurInitiativePage = async () => {
 		query: INITIATIVE_QUERY,
 	});
 
-	function filterByISOString(arr: Gallery[], targetYear: number) {
-		return arr
-			.filter(
-				(item) => new Date(item.publishedAt!).getUTCFullYear() === targetYear
-			)
-			.sort(
-				(a, b) =>
-					new Date(a.publishedAt!).getTime() -
-					new Date(b.publishedAt!).getTime()
-			);
+	// function filterByISOString(arr: Gallery[], targetYear: number) {
+	// 	return arr
+	// 		.filter(
+	// 			(item) => new Date(item.publishedAt!).getUTCFullYear() === targetYear
+	// 		)
+	// 		.sort(
+	// 			(a, b) =>
+	// 				new Date(a.publishedAt!).getTime() -
+	// 				new Date(b.publishedAt!).getTime()
+	// 		);
+	// }
+	function sortByISOString(arr: Gallery[]) {
+		return arr.sort(
+			(a, b) =>
+				new Date(b.publishedAt!).getTime() - new Date(a.publishedAt!).getTime()
+		);
 	}
 	return (
 		<section>
@@ -37,11 +43,11 @@ const OurInitiativePage = async () => {
 					paragraph="Welcome to our alumni community! We are dedicated to fostering connections between past students and creating opportunities for networking and growth."
 				/>
 
-				<section className="w-full rounded-md border border-primary bg-primary px-5 py-1">
+				{/* <section className="w-full rounded-md border border-primary bg-primary px-5 py-1">
 					<h4 className="text-3xl text-background">2024</h4>
-				</section>
+				</section> */}
 				<section className="grid w-full grid-cols-1 gap-x-5 gap-y-7 text-xl font-bold text-white md:grid-cols-3">
-					{filterByISOString(initiativeData, 2024).map((gallery) => (
+					{sortByISOString(initiativeData).map((gallery) => (
 						<Link
 							key={gallery.slug?.current}
 							href={`/gallery/${gallery.slug?.current}`}
