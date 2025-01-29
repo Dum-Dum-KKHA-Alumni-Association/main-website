@@ -47,34 +47,37 @@ const OurInitiativePage = async () => {
 					<h4 className="text-3xl text-background">2024</h4>
 				</section> */}
 				<section className="grid w-full grid-cols-1 gap-x-5 gap-y-7 text-xl font-bold text-white md:grid-cols-3">
-					{sortByISOString(initiativeData).map((gallery) => (
-						<Link
-							key={gallery.slug?.current}
-							href={`/gallery/${gallery.slug?.current}`}
-							className="relative w-full rounded-lg border"
-						>
-							{gallery.thumbnail && (
-								<Image
-									src={imageUrlFor(
-										gallery.thumbnail as SanityImageSource
-									).url()}
-									width={1000}
-									height={0}
-									alt={gallery.title!}
-									className="aspect-[4/3] rounded-lg"
-								/>
-							)}
+					{sortByISOString(initiativeData).map(
+						(gallery) =>
+							gallery.thumbnail && (
+								<Link
+									key={gallery.slug?.current}
+									href={`/gallery/${gallery.slug?.current}`}
+									className="relative w-full rounded-lg border"
+								>
+									{gallery.thumbnail && (
+										<Image
+											src={imageUrlFor(
+												gallery.thumbnail as SanityImageSource
+											).url()}
+											width={1000}
+											height={0}
+											alt={gallery.title!}
+											className="aspect-[4/3] rounded-lg"
+										/>
+									)}
 
-							<section className="absolute bottom-0 w-full">
-								<section className="relative h-full w-full">
-									<div className="relative z-20 p-3 font-sora text-xl font-medium">
-										{gallery.title}
-									</div>
-									<div className="absolute top-0 z-0 h-full w-full rounded-b-lg bg-black opacity-80 blur-sm"></div>
-								</section>
-							</section>
-						</Link>
-					))}
+									<section className="absolute bottom-0 w-full">
+										<section className="relative h-full w-full">
+											<div className="relative z-20 p-3 font-sora text-xl font-medium">
+												{gallery.title}
+											</div>
+											<div className="absolute top-0 z-0 h-full w-full rounded-b-lg bg-black opacity-80 blur-sm"></div>
+										</section>
+									</section>
+								</Link>
+							)
+					)}
 				</section>
 			</section>
 			<Footer />
