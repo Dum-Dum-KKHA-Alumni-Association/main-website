@@ -2,13 +2,14 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/app/(home)/HeroSection';
 import Navbar from '@/components/Navbar';
 import Banner from './Banner';
-import Gallery from './Gallery';
+
 import InitiativeSection from './InitiativeSection';
 import PublicationSection from './PublicationSection';
 import AboutSection from './AboutSection';
 import { sanityFetch } from '@/sanity/lib/client';
 import { HOMEPAGE_QUERY } from '@/sanity/actions/queries';
 import { HomePage } from '@/types/sanity';
+import VideosSection from './Videos';
 
 export default async function Home() {
 	const homePageData = await sanityFetch<HomePage>({ query: HOMEPAGE_QUERY });
@@ -21,7 +22,8 @@ export default async function Home() {
 			<Banner />
 			<InitiativeSection />
 			<PublicationSection />
-			<Gallery gallery={homePageData.gallery} />
+			{/* <Gallery gallery={homePageData.gallery} /> */}
+			<VideosSection />
 			{/* <Faq /> */}
 			<Footer />
 		</main>

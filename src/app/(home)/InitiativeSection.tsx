@@ -1,9 +1,11 @@
 import Header from '@/components/Header';
+import { Button } from '@/components/ui/button';
 import { INITIATIVE_QUERY } from '@/sanity/actions/queries';
 import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 import { sanityFetch } from '@/sanity/lib/client';
 import { Gallery } from '@/types/sanity';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { MoveRight } from 'lucide-react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,8 +22,8 @@ const InitiativeSection = async () => {
 					name="Our Initiatives"
 					paragraph="Welcome to our alumni community! We are dedicated to fostering connections between past students and creating opportunities for networking and growth."
 				/>
-				<section className="grid w-full grid-cols-1 gap-8 text-xl font-bold text-white md:grid-cols-2">
-					{galleryData?.map((gallery) => (
+				<section className="grid w-full grid-cols-1 gap-x-4 gap-y-8 text-xl font-bold text-white md:grid-cols-2">
+					{galleryData.splice(0, 2)?.map((gallery) => (
 						<Link
 							key={gallery.slug?.current}
 							href={`/gallery/${gallery.slug?.current}`}
@@ -49,6 +51,13 @@ const InitiativeSection = async () => {
 							</section>
 						</Link>
 					))}
+				</section>
+				<section className="mt-10 flex w-full items-center justify-center">
+					<Link href={`/our-initiative`}>
+						<Button className="p-5">
+							See More <MoveRight />
+						</Button>
+					</Link>
 				</section>
 			</section>
 		</section>
