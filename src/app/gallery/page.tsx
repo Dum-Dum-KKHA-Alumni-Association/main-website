@@ -1,13 +1,14 @@
 import Footer from '@/components/Footer';
 import Heading from '@/components/Heading';
 import Navbar from '@/components/Navbar';
+import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { GALLERY_QUERY } from '@/sanity/actions/queries';
 import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 import { sanityFetch } from '@/sanity/lib/client';
 import { Gallery } from '@/types/sanity';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MoveRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -46,23 +47,32 @@ const GalleryPage = async () => {
 												className="aspect-square rounded-md object-cover"
 											/>
 										</DialogTrigger>
-										<DialogContent className="w-full max-w-6xl">
+
+										<DialogContent className="flex w-full max-w-6xl items-center justify-center p-2 sm:p-4">
 											<Image
 												src={imageUrlFor(
 													image.image as SanityImageSource
 												).url()}
 												width={1000}
-												height={0}
+												height={600}
 												alt={image.alt!}
-												className="w-full rounded-md object-cover"
+												className="h-auto max-h-[90vh] w-full rounded-md object-contain md:max-h-[80vh]"
 											/>
 										</DialogContent>
 									</Dialog>
 								))}
 							</section>
+							<section className="W-full flex items-center justify-center">
+								<Link href={`/gallery/${gallery.slug?.current}`}>
+									<Button className="p-5">
+										See More <MoveRight />
+									</Button>
+								</Link>
+							</section>
 						</section>
 					))}
 			</section>
+
 			<Footer />
 		</section>
 	);
