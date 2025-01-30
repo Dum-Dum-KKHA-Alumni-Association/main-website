@@ -1,4 +1,4 @@
-export default function OpportunitiesLayout({
+export default function MembershipLayout({
 	children, // will be a page or nested layout
 }: {
 	children: React.ReactNode;
