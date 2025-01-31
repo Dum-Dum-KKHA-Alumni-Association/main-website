@@ -49,6 +49,7 @@ import QRCode from 'react-qr-code';
 import { membershipFormSchema } from '@/schemas/EventBookingFormSchema';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
+import axios from 'axios';
 
 // import { DatePicker } from '@/components/ui/date-picker';
 
@@ -64,6 +65,7 @@ const EventBookingForm: FC<DonationFormProps> = ({
 	title,
 	description,
 	thumbnail,
+	eventId,
 }) => {
 	const [previousStep, setPreviousStep] = useState<number>(0);
 	const [currentStep, setCurrentStep] = useState<number>(0);
@@ -109,6 +111,9 @@ const EventBookingForm: FC<DonationFormProps> = ({
 	type DonationFormTypes = z.infer<typeof membershipFormSchema>;
 	const form = useForm<DonationFormTypes>({
 		resolver: zodResolver(membershipFormSchema),
+		defaultValues: {
+			amount: 0,
+		},
 	});
 	const {
 		formState: { isValid },
@@ -161,38 +166,50 @@ const EventBookingForm: FC<DonationFormProps> = ({
 		// ✅ This will be type-safe and validated.
 		console.log('FormValues----->', values);
 
-		// const donationValues = {
-		// 	eventId,
-		// 	fullName: values.fullName,
-		// 	email: values.email,
-		// 	primaryNumber: values.primaryNumber,
-		// 	whatsappNumber: values.whatsappNumber,
-		// 	madyamikYear: values.madyamikYear,
-		// 	higherSecondaryYear: values.higherSecondaryYear,
-		// 	dateOfBirth: values.dateOfBirth,
-		// 	occupation: values.occupation,
-		// 	presentAddress: values.permanentAddress,
-		// 	contactAddress: values.deliveryAddress,
-		// 	amount: values.amount,
-		// };
+		const eventValue = {
+			eventId,
+			fullName: values.fullName,
+			madyamikYear: values.madyamikYear,
+			higherSecondaryYear: values.higherSecondaryYear,
+			primaryNumber: values.primaryNumber,
+			whatsappNumber: values.whatsappNumber,
+			email: values.email,
+			permanentAddress: values.permanentAddress,
+			deliveryAddress: values.deliveryAddress,
+			merchandiseType: values.merchandise,
+			merchandiseSize: values.size,
+			merchandiseSleeves: values.sleeve,
+			foodPreference: values.foodPreference,
+			persons: values.attend === 'Only You' ? 1 : 1 + Number(values.noOfFamily),
+			dateOfBirth: values.dateOfBirth,
+			bloodGroup: values.bloodGroup,
+			occupation: values.occupation,
+			amount: values.amount,
+			paymentMethod: values.paymentMethod,
+			transactionProof: values.transactionProof,
+		};
 
-		console.log(values);
+		console.log(eventValue);
 
 		try {
-			// const { data } = await axios.post(
-			// 	`${process.env.NEXT_PUBLIC_API_URL}/donation`,
-			// 	donationValues,
-			// 	{
-			// 		headers: {
-			// 			'Content-Type': 'application/json',
-			// 		},
-			// 	}
-			// );
-			// console.log(data);
-			// if (data.data && data.data.paymentPageUrl) {
-			// 	router.push(data.data.paymentPageUrl);
-			// }
-			// reset();
+			const data = await toast.promise(
+				axios.post(
+					`${process.env.NEXT_PUBLIC_API_URL}/events/booking`,
+					eventValue,
+					{
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					}
+				),
+				{
+					loading: 'Loading',
+					success: 'Form Submitted Successfully',
+					error: 'Error while Submitting',
+				}
+			);
+
+			console.log(data);
 		} catch (error) {
 			console.log(error);
 			toast.error('Something error Happening');
@@ -888,7 +905,7 @@ const EventBookingForm: FC<DonationFormProps> = ({
 												</FormLabel>
 												<FormControl>
 													<Input
-														type="number"
+														type={'number'}
 														placeholder="Write your contribution Amount"
 														{...field}
 													/>
@@ -951,6 +968,25 @@ const EventBookingForm: FC<DonationFormProps> = ({
 											</div>
 										)}
 									</div>
+									<FormField
+										control={form.control}
+										name="transactionProof"
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>Transaction Proof (in jpg)</FormLabel>
+												<FormControl>
+													<Input
+														type={'file'}
+														id="transactionProof"
+														placeholder="Write your contribution Amount"
+														{...field}
+													/>
+												</FormControl>
+
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
 								</motion.div>
 							)}
 						</CardContent>

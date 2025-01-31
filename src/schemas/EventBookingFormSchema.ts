@@ -49,11 +49,16 @@ export const membershipFormSchema = z
 			required_error: 'A date of birth is required.',
 		}),
 		occupation: z.string().min(2).max(50),
+		// amount: z
+		// 	.string()
+		// 	.min(1)
+		// 	.transform((data) => Number(data) || 0),
 		amount: z
-			.string()
+			.number()
 			.min(1)
 			.transform((data) => Number(data) || 0),
 		paymentMethod: z.string().min(2),
+		transactionProof: z.string().min(2),
 	})
 	.refine(
 		(data) => {

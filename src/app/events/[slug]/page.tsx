@@ -10,10 +10,10 @@ const EventBookingPage = async ({
 }) => {
 	const slug = (await params).slug;
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/donation/page/${slug}`
+		`${process.env.NEXT_PUBLIC_API_URL}/events/${slug}`
 	);
-	const { data: donationPage } = await response.json();
-	console.log(donationPage);
+	const { data: eventDetails } = await response.json();
+	console.log('Event Details', eventDetails);
 
 	return (
 		<main>
@@ -22,10 +22,10 @@ const EventBookingPage = async ({
 			<section className="mt-[5rem] flex w-full">
 				<section className="mx-auto flex w-full max-w-[90rem] items-center justify-center gap-7 px-5 py-20">
 					<EventBookingForm
-						title={donationPage.title}
-						thumbnail={donationPage.thumbnail}
-						description={donationPage.description}
-						eventId={donationPage.id}
+						title={eventDetails.title}
+						thumbnail={eventDetails.thumbnail}
+						description={eventDetails.description}
+						eventId={eventDetails.id}
 					/>
 				</section>
 			</section>
