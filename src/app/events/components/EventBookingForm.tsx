@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,8 +32,7 @@ import {
 import { generateYearArray } from '@/lib/generateYearArray';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import {
 	Card,
@@ -45,59 +44,65 @@ import {
 } from '@/components/ui/card';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { motion } from 'motion/react';
 import QRCode from 'react-qr-code';
-import { membershipFormSchema } from '@/schemas/MembershipFromSchema copy';
+import { membershipFormSchema } from '@/schemas/EventBookingFormSchema';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Badge } from '@/components/ui/badge';
 
 // import { DatePicker } from '@/components/ui/date-picker';
 
 interface DonationFormProps {
-	donationPageId: string;
+	eventId: string;
 	title: string;
 	description: string;
 	thumbnail: string;
 }
 
-const DonationForm: FC<DonationFormProps> = ({
-	donationPageId,
+const EventBookingForm: FC<DonationFormProps> = ({
+	// eventId,
 	title,
 	description,
 	thumbnail,
 }) => {
 	const [previousStep, setPreviousStep] = useState<number>(0);
-	const [currentStep, setCurrentStep] = useState<number>(2);
-	const router = useRouter();
+	const [currentStep, setCurrentStep] = useState<number>(0);
+
 	const delta = currentStep - previousStep;
 
 	const steps = [
 		{
 			id: 'Step 1',
-			name: 'Amount & Personal Info',
+			name: 'Personal Info',
 			fields: [
-				'amount',
-				'firstName',
-				'lastName',
-				'email',
-				'dateOfBirth',
+				'madyamikYear',
+				'higherSecondaryYear',
+				'fullName',
 				'primaryNumber',
 				'whatsappNumber',
+				'email',
+				'deliveryAddress',
+				'permanentAddress',
+				'dateOfBirth',
 			],
 		},
 		{
 			id: 'Step 2',
-			name: 'School Details',
-			fields: ['madyamikYear', 'higherSecondaryYear'],
+			name: 'Your Preference',
+			fields: [
+				'merchandise',
+				'size',
+				'sleeve',
+				'attend',
+				'noOfFamily',
+				'foodPreference',
+			],
 		},
+
 		{
 			id: 'Step 3',
-			name: 'Address',
-			fields: ['occupation', 'presentAddress', 'contactAddress'],
-		},
-		{
-			id: 'Step 4',
 			name: 'Payment Method',
-			fields: ['PhonePe', 'UPI'],
+			fields: ['amount', 'paymentMethod'],
 		},
 	];
 
@@ -107,10 +112,48 @@ const DonationForm: FC<DonationFormProps> = ({
 	});
 	const {
 		formState: { isValid },
-		reset,
+		// reset,
 		getValues,
+		setValue,
 		trigger,
+		watch,
 	} = form;
+
+	const madyamikYear = watch('madyamikYear');
+
+	const attend = watch('attend');
+	const paymentMethod = watch('paymentMethod');
+
+	const sameNumber = watch('sameNumber');
+	const sameAddress = watch('sameAddress');
+
+	//////////////////////////////////////////
+	// Same Phone Number Logic
+	const sameNumberLogic = useCallback(() => {
+		const primaryNumber = watch('primaryNumber');
+		if (sameNumber) {
+			setValue('whatsappNumber', primaryNumber);
+		} else {
+			setValue('whatsappNumber', '');
+		}
+	}, [setValue, watch, sameNumber]);
+
+	const sameAddressLogic = useCallback(() => {
+		const deliveryAddress = watch('deliveryAddress');
+
+		if (sameAddress) {
+			setValue('permanentAddress', deliveryAddress);
+		} else {
+			setValue('permanentAddress', '');
+		}
+	}, [setValue, watch, sameAddress]);
+
+	useEffect(() => {
+		sameNumberLogic();
+		sameAddressLogic();
+	}, [sameAddressLogic, sameNumberLogic]);
+
+	//////////////////////////////////////////////////
 
 	// 2. Define a submit handler.
 	async function onSubmit(values: DonationFormTypes) {
@@ -118,39 +161,38 @@ const DonationForm: FC<DonationFormProps> = ({
 		// ✅ This will be type-safe and validated.
 		console.log('FormValues----->', values);
 
-		const donationValues = {
-			donationPageId,
-			fullName: values.fullName,
+		// const donationValues = {
+		// 	eventId,
+		// 	fullName: values.fullName,
+		// 	email: values.email,
+		// 	primaryNumber: values.primaryNumber,
+		// 	whatsappNumber: values.whatsappNumber,
+		// 	madyamikYear: values.madyamikYear,
+		// 	higherSecondaryYear: values.higherSecondaryYear,
+		// 	dateOfBirth: values.dateOfBirth,
+		// 	occupation: values.occupation,
+		// 	presentAddress: values.permanentAddress,
+		// 	contactAddress: values.deliveryAddress,
+		// 	amount: values.amount,
+		// };
 
-			email: values.email,
-			primaryNumber: values.primaryNumber,
-			whatsappNumber: values.whatsappNumber,
-			madyamikYear: values.madyamikYear,
-			higherSecondaryYear: values.higherSecondaryYear,
-			dateOfBirth: values.dateOfBirth,
-			occupation: values.occupation,
-			presentAddress: values.permanentAddress,
-			contactAddress: values.deliveryAddress,
-			amount: values.amount,
-		};
+		console.log(values);
 
 		try {
-			const { data } = await axios.post(
-				`${process.env.NEXT_PUBLIC_API_URL}/donation`,
-				donationValues,
-				{
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			);
-
-			console.log(data);
-
-			if (data.data && data.data.paymentPageUrl) {
-				router.push(data.data.paymentPageUrl);
-			}
-			reset();
+			// const { data } = await axios.post(
+			// 	`${process.env.NEXT_PUBLIC_API_URL}/donation`,
+			// 	donationValues,
+			// 	{
+			// 		headers: {
+			// 			'Content-Type': 'application/json',
+			// 		},
+			// 	}
+			// );
+			// console.log(data);
+			// if (data.data && data.data.paymentPageUrl) {
+			// 	router.push(data.data.paymentPageUrl);
+			// }
+			// reset();
 		} catch (error) {
 			console.log(error);
 			toast.error('Something error Happening');
@@ -256,7 +298,7 @@ const DonationForm: FC<DonationFormProps> = ({
 												<FormItem>
 													<FormLabel>
 														<span className="text-red-600">*</span>{' '}
-														HS/Matriculation Year
+														H.S/Matriculation Year
 													</FormLabel>
 													<Select
 														onValueChange={field.onChange}
@@ -269,7 +311,11 @@ const DonationForm: FC<DonationFormProps> = ({
 														</FormControl>
 														<SelectContent>
 															<SelectItem value={'NA'}>NA</SelectItem>
-															{generateYearArray(1950).map((year) => (
+															{generateYearArray(
+																madyamikYear !== 'NA'
+																	? parseInt(madyamikYear) + 2
+																	: 1950
+															).map((year) => (
 																<SelectItem key={year} value={year.toString()}>
 																	{year}
 																</SelectItem>
@@ -297,6 +343,9 @@ const DonationForm: FC<DonationFormProps> = ({
 											</FormItem>
 										)}
 									/>
+
+									<Separator />
+
 									<FormField
 										control={form.control}
 										name="primaryNumber"
@@ -319,7 +368,25 @@ const DonationForm: FC<DonationFormProps> = ({
 											</FormItem>
 										)}
 									/>
-									{/* <Checkbox /> */}
+									<FormField
+										control={form.control}
+										name="sameNumber"
+										render={({ field }) => (
+											<FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+												<FormControl>
+													<Checkbox
+														checked={field.value}
+														onCheckedChange={field.onChange}
+													/>
+												</FormControl>
+												<div className="space-y-1 leading-none">
+													<FormLabel>
+														Primary Number and Whatsapp Number are same
+													</FormLabel>
+												</div>
+											</FormItem>
+										)}
+									/>
 									<FormField
 										control={form.control}
 										name="whatsappNumber"
@@ -342,6 +409,9 @@ const DonationForm: FC<DonationFormProps> = ({
 											</FormItem>
 										)}
 									/>
+
+									<Separator />
+
 									<FormField
 										control={form.control}
 										name="email"
@@ -362,6 +432,7 @@ const DonationForm: FC<DonationFormProps> = ({
 											</FormItem>
 										)}
 									/>
+									<Separator />
 									<FormField
 										control={form.control}
 										name="deliveryAddress"
@@ -382,7 +453,28 @@ const DonationForm: FC<DonationFormProps> = ({
 											</FormItem>
 										)}
 									/>
-									{/* <Checkbox /> */}
+
+									<FormField
+										control={form.control}
+										name="sameAddress"
+										render={({ field }) => (
+											<FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+												<FormControl>
+													<Checkbox
+														checked={field.value}
+														onCheckedChange={field.onChange}
+													/>
+												</FormControl>
+												<div className="space-y-1 leading-none">
+													<FormLabel>
+														Postal / Delivery Address and Permanent Address Both
+														are Same
+													</FormLabel>
+												</div>
+											</FormItem>
+										)}
+									/>
+
 									<FormField
 										control={form.control}
 										name="permanentAddress"
@@ -403,7 +495,32 @@ const DonationForm: FC<DonationFormProps> = ({
 											</FormItem>
 										)}
 									/>
+									{/* {sameAddress ? (
+									) : (
+										<FormField
+											control={form.control}
+											name="permanentAddress"
+											render={({ field }) => (
+												<FormItem>
+													<FormLabel>
+														<span className="text-red-600">*</span> Permanent
+														Address
+													</FormLabel>
+													<FormControl>
+														<Input
+															placeholder="000,ABC Road ,state,Pincode"
+															{...field}
+															value={''}
+														/>
+													</FormControl>
 
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+									)} */}
+
+									<Separator />
 									<div className={'grid grid-cols-2 gap-2'}>
 										<FormField
 											control={form.control}
@@ -643,34 +760,36 @@ const DonationForm: FC<DonationFormProps> = ({
 												</FormItem>
 											)}
 										/>
-										<FormField
-											control={form.control}
-											name="noOfFamily"
-											render={({ field }) => (
-												<FormItem>
-													<FormLabel>
-														<span className="text-red-600">*</span> No of Family
-														Members
-													</FormLabel>
-													<Select
-														onValueChange={field.onChange}
-														defaultValue={field.value}
-													>
-														<FormControl>
-															<SelectTrigger>
-																<SelectValue placeholder="Select members" />
-															</SelectTrigger>
-														</FormControl>
-														<SelectContent>
-															<SelectItem value={'1'}>1</SelectItem>
-															<SelectItem value={'2'}>2</SelectItem>
-															<SelectItem value={'3'}>3</SelectItem>
-														</SelectContent>
-													</Select>
-													<FormMessage />
-												</FormItem>
-											)}
-										/>
+										{attend === 'With Family' && (
+											<FormField
+												control={form.control}
+												name="noOfFamily"
+												render={({ field }) => (
+													<FormItem>
+														<FormLabel>
+															<span className="text-red-600">*</span> No of
+															Family Members
+														</FormLabel>
+														<Select
+															onValueChange={field.onChange}
+															defaultValue={field.value}
+														>
+															<FormControl>
+																<SelectTrigger>
+																	<SelectValue placeholder="Select members" />
+																</SelectTrigger>
+															</FormControl>
+															<SelectContent>
+																<SelectItem value={'1'}>1</SelectItem>
+																<SelectItem value={'2'}>2</SelectItem>
+																<SelectItem value={'3'}>3</SelectItem>
+															</SelectContent>
+														</Select>
+														<FormMessage />
+													</FormItem>
+												)}
+											/>
+										)}
 									</div>
 									<FormField
 										control={form.control}
@@ -720,7 +839,7 @@ const DonationForm: FC<DonationFormProps> = ({
 									className="space-y-4"
 								>
 									<div className="text-base">
-										<strong>Step 1</strong>: Fill the amount you wish to donate
+										<strong>Step 3</strong>: your Contributon
 									</div>
 									<FormField
 										control={form.control}
@@ -728,13 +847,49 @@ const DonationForm: FC<DonationFormProps> = ({
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>
-													<span className="text-red-600">*</span> Donation
-													Amount (INR)
+													<div className="flex flex-col gap-3">
+														<div>
+															<span className="text-red-600">*</span>{' '}
+															Contribution Amount (INR)
+														</div>
+														<div className="w-full space-x-3 text-base">
+															<Badge
+																variant="outline"
+																onClick={() => setValue('amount', 500)}
+															>
+																₹500
+															</Badge>
+															<Badge
+																variant="outline"
+																onClick={() => setValue('amount', 1000)}
+															>
+																₹1000
+															</Badge>
+															<Badge
+																variant="outline"
+																onClick={() => setValue('amount', 2000)}
+															>
+																₹2000
+															</Badge>
+															<Badge
+																variant="outline"
+																onClick={() => setValue('amount', 5000)}
+															>
+																₹5000
+															</Badge>
+															<Badge
+																variant="outline"
+																onClick={() => setValue('amount', 10000)}
+															>
+																₹10000
+															</Badge>
+														</div>
+													</div>
 												</FormLabel>
 												<FormControl>
 													<Input
 														type="number"
-														placeholder="₹ in Rupees"
+														placeholder="Write your contribution Amount"
 														{...field}
 													/>
 												</FormControl>
@@ -744,60 +899,57 @@ const DonationForm: FC<DonationFormProps> = ({
 										)}
 									/>
 									<div className="text-base">
-										<strong>Step 5</strong>: Payments Method
+										<strong>Step 4</strong>: Payment Methods
 									</div>
-									<div className="w-full">
-										<FormField
-											control={form.control}
-											name="paymentMethod"
-											render={({ field }) => (
-												<FormItem className="space-y-3">
-													<FormLabel>Select Payment Method</FormLabel>
+
+									<FormField
+										control={form.control}
+										name="paymentMethod"
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>
+													<span className="text-red-600">*</span> Payment Method
+												</FormLabel>
+
+												<Select
+													onValueChange={field.onChange}
+													defaultValue={field.value}
+												>
 													<FormControl>
-														<RadioGroup
-															onValueChange={field.onChange}
-															defaultValue={field.value}
-															className="flex flex-col space-y-1"
-														>
-															<FormItem className="flex flex-col justify-start space-x-3 space-y-0">
-																<div className="flex space-x-3">
-																	<FormControl>
-																		<RadioGroupItem value="upi" />
-																	</FormControl>
-																	<FormLabel className="flex flex-col font-normal">
-																		UPI QR Code
-																	</FormLabel>
-																</div>
-																<section>
-																	{' '}
-																	<QRCode
-																		value={`upi://pay?pa=${process.env.NEXT_PUBLIC_UPI_ID}&pn=${process.env.NEXT_PUBLIC_PAYEE_NAME}&am=${getValues('amount')}&tn=Demo%20Transaction`}
-																	/>
-																</section>
-																<section>UPI ID:9432428233m@pnb</section>
-															</FormItem>
-															{/* <FormItem className="flex items-center space-x-3 space-y-0">
-																<FormControl>
-																	<RadioGroupItem value="payment-gateway" />
-																</FormControl>
-																<FormLabel className="font-normal">
-																	Phone Pe Payment Gateway
-																</FormLabel>
-															</FormItem> */}
-															<FormItem className="flex items-center space-x-3 space-y-0">
-																<FormControl>
-																	<RadioGroupItem value="payment-gateway" />
-																</FormControl>
-																<FormLabel className="font-normal">
-																	Bank Details
-																</FormLabel>
-															</FormItem>
-														</RadioGroup>
+														<SelectTrigger>
+															<SelectValue placeholder="Select a Payment Method" />
+														</SelectTrigger>
 													</FormControl>
-													<FormMessage />
-												</FormItem>
-											)}
-										/>
+													<SelectContent>
+														<SelectItem value={'upi'}>UPI/QR Code</SelectItem>
+														<SelectItem value={'bankTransfer'}>
+															Bank Transfer
+														</SelectItem>
+													</SelectContent>
+												</Select>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<div className={'w-full'}>
+										{paymentMethod === 'upi' && (
+											<div>
+												<section>
+													{' '}
+													<QRCode
+														value={`upi://pay?pa=${process.env.NEXT_PUBLIC_UPI_ID}&pn=${process.env.NEXT_PUBLIC_PAYEE_NAME}&am=${getValues('amount')}&tn=Demo%20Transaction`}
+													/>
+												</section>
+												<section>UPI ID:9432428233m@pnb</section>
+											</div>
+										)}
+										{paymentMethod === 'bankTransfer' && (
+											<div>
+												Bank: Punjab National Bank IFSC: PUNB0011720 A/C Name:
+												Dum Dum Krishna Kumar Hindu Academy Alumni Association
+												A/C No: 0117200100014148
+											</div>
+										)}
 									</div>
 								</motion.div>
 							)}
@@ -809,14 +961,14 @@ const DonationForm: FC<DonationFormProps> = ({
 									Previous
 								</Button>
 							)}
-							{currentStep !== 3 ? (
+							{currentStep !== steps.length - 1 ? (
 								<Button onClick={() => nextStep()}>
 									Next
 									<ArrowRight />
 								</Button>
 							) : (
 								<Button disabled={!isValid} type="submit">
-									Donate
+									Submit
 								</Button>
 							)}
 						</CardFooter>
@@ -827,4 +979,4 @@ const DonationForm: FC<DonationFormProps> = ({
 	);
 };
 
-export default DonationForm;
+export default EventBookingForm;

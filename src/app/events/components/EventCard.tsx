@@ -2,6 +2,7 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
@@ -14,33 +15,33 @@ import {
 	DialogTrigger,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
-import { Share2 } from 'lucide-react';
+import { CalendarDays, MapPin, Share2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
 
 interface DonationCardProps {
-	donationPageId: string;
+	eventId: string;
 	title: string;
 	description: string;
 	thumbnail: string;
-	targetAmount: number;
-	collectedAmount: number;
+	eventMode: string;
+	location: string;
 }
 
 const EventCard: FC<DonationCardProps> = ({
-	donationPageId,
+	eventId,
 	title,
 	description,
 	thumbnail,
-	targetAmount,
+	eventMode,
+	location,
 }) => {
-	const value = Math.floor((24 / targetAmount) * 100);
-	console.log('value', value);
+	console.log('Event MOde', location);
 	return (
 		<Card className="font-sora">
 			<CardHeader className="px-0 pt-0">
-				<Link href={`/events/${donationPageId}`}>
+				<Link href={`/events/${eventId}`}>
 					<Image
 						src={thumbnail ? thumbnail : '/ddkkha.jpg'}
 						width={1000}
@@ -52,7 +53,7 @@ const EventCard: FC<DonationCardProps> = ({
 			</CardHeader>
 			<CardContent className="space-y-3">
 				<CardTitle className="flex w-full justify-between">
-					<Link className="text-3xl" href={`/events/${donationPageId}`}>
+					<Link className="text-3xl" href={`/events/${eventId}`}>
 						{title}
 					</Link>
 					<Dialog>
@@ -80,13 +81,21 @@ const EventCard: FC<DonationCardProps> = ({
 
 				<CardDescription className="text-base">{description}</CardDescription>
 			</CardContent>
-			{/* <CardFooter className="flex flex-col gap-3">
-				<Progress value={Math.floor((collectedAmount / targetAmount) * 100)} />
-				<section className="flex w-full items-center justify-between">
-					<span>₹{collectedAmount}</span>
-					<span>₹{targetAmount}</span>
+			<CardFooter className="flex flex-col gap-3">
+				<Separator />
+				<section className="justify-be grid w-full grid-cols-3 items-start text-black">
+					<span className="flex gap-2">
+						<CalendarDays /> 2 Feb
+					</span>
 				</section>
-			</CardFooter> */}
+
+				<Separator />
+				<section className="flex w-full flex-col items-start justify-start">
+					<span className="flex items-start gap-2">
+						<MapPin /> {eventMode === 'Offline' ? location : eventMode}
+					</span>
+				</section>
+			</CardFooter>
 		</Card>
 	);
 };

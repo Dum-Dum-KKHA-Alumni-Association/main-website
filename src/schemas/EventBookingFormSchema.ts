@@ -2,8 +2,9 @@ import { z } from 'zod';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 export const membershipFormSchema = z
 	.object({
+		madyamikYear: z.string().max(4),
+		higherSecondaryYear: z.string().max(4),
 		fullName: z.string().min(2).max(50),
-		email: z.coerce.string().email().min(5),
 		primaryNumber: z
 			.string({
 				required_error: 'Phone number is required',
@@ -11,6 +12,7 @@ export const membershipFormSchema = z
 			.refine((value) => isValidPhoneNumber(value), {
 				message: 'Invalid phone number',
 			}),
+		sameNumber: z.boolean().default(false).optional(),
 		whatsappNumber: z
 			.string({
 				required_error: 'Phone number is required',
@@ -18,6 +20,10 @@ export const membershipFormSchema = z
 			.refine((value) => isValidPhoneNumber(value), {
 				message: 'Invalid phone number',
 			}),
+		email: z.coerce.string().email().min(5),
+		permanentAddress: z.string().min(2).max(50),
+		sameAddress: z.boolean().default(false).optional(),
+		deliveryAddress: z.string().min(2).max(50),
 		merchandise: z.string({
 			required_error: 'Merchandise field is required',
 		}),
@@ -36,8 +42,6 @@ export const membershipFormSchema = z
 		noOfFamily: z.string({
 			required_error: 'Program Attend field is required',
 		}),
-		madyamikYear: z.string().max(4),
-		higherSecondaryYear: z.string().max(4),
 		dateOfBirth: z.date({
 			required_error: 'A date of birth is required.',
 		}),
@@ -45,8 +49,6 @@ export const membershipFormSchema = z
 			required_error: 'A date of birth is required.',
 		}),
 		occupation: z.string().min(2).max(50),
-		permanentAddress: z.string().min(2).max(50),
-		deliveryAddress: z.string().min(2).max(50),
 		amount: z
 			.string()
 			.min(1)
