@@ -37,7 +37,6 @@ import toast from 'react-hot-toast';
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -50,21 +49,16 @@ import { membershipFormSchema } from '@/schemas/EventBookingFormSchema';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import axios from 'axios';
+import Link from 'next/link';
 
 // import { DatePicker } from '@/components/ui/date-picker';
 
 interface DonationFormProps {
 	eventId: string;
-	title: string;
-	description: string;
-	thumbnail: string;
 }
 
 const EventBookingForm: FC<DonationFormProps> = ({
 	// eventId,
-	title,
-	description,
-	thumbnail,
 	eventId,
 }) => {
 	const [previousStep, setPreviousStep] = useState<number>(0);
@@ -237,9 +231,9 @@ const EventBookingForm: FC<DonationFormProps> = ({
 	};
 	return (
 		<>
-			<Card className="mx-auto w-full max-w-xl font-sora shadow-lg">
+			<Card className="mx-auto w-full max-w-xl pb-10 font-sora shadow-lg">
 				<CardHeader className="px-0 pt-0">
-					{thumbnail && (
+					{/* {thumbnail && (
 						<Image
 							src={thumbnail}
 							width={1000}
@@ -247,14 +241,14 @@ const EventBookingForm: FC<DonationFormProps> = ({
 							className="aspect-[16/7] w-full rounded-t-xl object-fill"
 							alt={'Donation'}
 						/>
-					)}
-					<section className="space-y-5 p-6 pb-0">
-						<CardTitle>
-							<h4>{title}</h4>
-						</CardTitle>
-						<CardDescription>{description}</CardDescription>
-						<section className="flex w-full justify-end">
-							{' '}
+					)} */}
+					<section className="p-6">
+						{/*<CardDescription>{description}</CardDescription> */}
+						<section className="flex w-full items-center justify-between">
+							<CardTitle>
+								{/* <h4>{title}</h4> */}
+								<h4>Registration</h4>
+							</CardTitle>{' '}
 							<span>
 								{' '}
 								Step {currentStep + 1} / {steps.length}
@@ -950,22 +944,73 @@ const EventBookingForm: FC<DonationFormProps> = ({
 									/>
 									<div className={'w-full'}>
 										{paymentMethod === 'upi' && (
-											<div>
-												<section>
+											<div className="flex w-full flex-col items-center justify-center gap-4">
+												<section className="hidden md:flex">
 													{' '}
 													<QRCode
 														value={`upi://pay?pa=${process.env.NEXT_PUBLIC_UPI_ID}&pn=${process.env.NEXT_PUBLIC_PAYEE_NAME}&am=${getValues('amount')}&tn=Demo%20Transaction`}
 													/>
 												</section>
+												<section className="md:hidden">
+													<Link
+														href={`upi://pay?pa=${process.env.NEXT_PUBLIC_UPI_ID}&pn=${process.env.NEXT_PUBLIC_PAYEE_NAME}&am=${getValues('amount')}&tn=Demo%20Transaction`}
+													>
+														<Button className="p-4 text-2xl">
+															Pay With UPI
+														</Button>
+													</Link>
+												</section>
+
 												<section>UPI ID:9432428233m@pnb</section>
+												<section className="flex w-full items-center justify-center gap-2">
+													<Image
+														src={'/icons/bhim.png'}
+														width={50}
+														height={0}
+														alt={'Bhim Upi Logo'}
+													></Image>
+													<Image
+														src={'/icons/google-pay.png'}
+														width={50}
+														height={0}
+														alt={'Bhim Upi Logo'}
+													></Image>
+													<Image
+														src={'/icons/phone-pe.png'}
+														width={50}
+														height={0}
+														alt={'Bhim Upi Logo'}
+													></Image>
+													<Image
+														src={'/icons/amazon-pay.png'}
+														width={150}
+														height={0}
+														alt={'Bhim Upi Logo'}
+													></Image>
+													<Image
+														src={'/icons/mobikwik.png'}
+														width={100}
+														height={0}
+														alt={'Bhim Upi Logo'}
+													></Image>
+												</section>
 											</div>
 										)}
 										{paymentMethod === 'bankTransfer' && (
-											<div>
-												Bank: Punjab National Bank IFSC: PUNB0011720 A/C Name:
-												Dum Dum Krishna Kumar Hindu Academy Alumni Association
-												A/C No: 0117200100014148
-											</div>
+											<section className="w-full gap-1 p-4">
+												<div className="text-xl font-bold">
+													Bank Information
+												</div>
+
+												<div>Bank: Punjab National Bank</div>
+												<div>IFSC: PUNB0011720</div>
+												<div>
+													{' '}
+													A/C Name: Dum Dum Krishna Kumar Hindu Academy Alumni
+													Association
+												</div>
+												<div>A/C No: 0117200100014148</div>
+											</section>
 										)}
 									</div>
 									<FormField
@@ -973,7 +1018,7 @@ const EventBookingForm: FC<DonationFormProps> = ({
 										name="transactionProof"
 										render={({ field }) => (
 											<FormItem>
-												<FormLabel>Transaction Proof (in jpg)</FormLabel>
+												<FormLabel>Upload Transaction Proof (in jpg)</FormLabel>
 												<FormControl>
 													<Input
 														type={'file'}

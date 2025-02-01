@@ -39,9 +39,11 @@ export const membershipFormSchema = z
 		attend: z.string({
 			required_error: 'Program Attend field is required',
 		}),
-		noOfFamily: z.string({
-			required_error: 'Program Attend field is required',
-		}),
+		noOfFamily: z
+			.string({
+				required_error: 'Program Attend field is required',
+			})
+			.optional(),
 		dateOfBirth: z.date({
 			required_error: 'A date of birth is required.',
 		}),
