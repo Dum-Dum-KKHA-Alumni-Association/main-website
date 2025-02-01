@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import HeroSection from '@/app/(home)/HeroSection';
+import HeroSection from '@/app/(website)/(home)/HeroSection';
 import Navbar from '@/components/Navbar';
 import Banner from './Banner';
 

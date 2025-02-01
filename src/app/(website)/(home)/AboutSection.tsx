@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import { motion } from 'motion/react';
-import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
+// import { motion } from 'motion/react';
+// import { CalendarCheck2, Clock, GraduationCap } from 'lucide-react';
 
 const AboutSection = () => {
 	return (
 		<section className="mt-0 w-full bg-primary py-12 md:my-24">
-			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between px-5">
+			<section className="m-auto flex w-full max-w-7xl flex-col items-center justify-between px-5 py-10">
 				<h2 className="text-center text-xl font-medium text-slate-300 lg:text-4xl">
 					Dum Dum K. K. Hindu Academy Alumni Association
 				</h2>
@@ -28,7 +28,7 @@ const AboutSection = () => {
 					ascent and unified endeavor.
 				</p>
 			</section>
-			<section className="mx-auto mt-7 grid w-full max-w-7xl grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+			{/* <section className="mx-auto mt-7 grid w-full max-w-7xl grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
 				<motion.section
 					initial={{ opacity: 0, y: '30%' }}
 					whileInView={{ opacity: 1, y: '0' }}
@@ -73,7 +73,7 @@ const AboutSection = () => {
 					<span className="my-2 text-5xl font-medium">5</span>
 					<span className="text-lg">Active Communities</span>
 				</motion.section>
-			</section>
+			</section> */}
 		</section>
 	);
 };
