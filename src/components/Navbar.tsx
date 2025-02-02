@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import {
 	Sheet,
 	SheetContent,
@@ -40,6 +40,8 @@ import {
 	AccordionTrigger,
 } from './ui/accordion';
 import { MdOutlineEmail } from 'react-icons/md';
+import { motion } from 'motion/react';
+import { useAnimation } from 'motion/react';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -124,8 +126,32 @@ const socialPlatform: {
 // ];
 
 const Navbar = () => {
+	const [lastScrollY, setLastScrollY] = useState(0);
+	const [scrollingUp, setScrollingUp] = useState(true);
+	const controls = useAnimation();
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			setScrollingUp(currentScrollY < lastScrollY);
+			setLastScrollY(currentScrollY);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, [lastScrollY]);
+
+	useEffect(() => {
+		controls.start({ y: scrollingUp ? 0 : '-35%' });
+	}, [scrollingUp, controls]);
+
 	return (
-		<nav className="fixed top-0 z-50 w-full bg-background font-sora">
+		<motion.nav
+			initial={{ y: 0 }}
+			animate={controls}
+			transition={{ duration: 0.3 }}
+			className="fixed top-0 z-50 w-full bg-background font-sora"
+		>
 			<section className="flex w-full items-center justify-center bg-primary px-5">
 				<section className="mx-auto flex w-full max-w-[90rem] justify-between py-2 text-background">
 					<section className="flex w-fit flex-row gap-4">
@@ -148,20 +174,6 @@ const Navbar = () => {
 								<div>ddkkhaaa@gmail.com</div>
 							</div>
 						</Link>
-						{/* <div className="flex items-center w-fit gap-2">
-							<FaWhatsapp className="flex h-10 w-10 items-center justify-center rounded-full   p-0.5" />
-							<div className="text-sm space-y-0.5">
-								<div>WhatsApp Number:</div>
-								<div>+91 94324 28233</div>
-							</div>
-						</div>
-						<div className="flex items-center w-fit gap-2">
-							<MdOutlineEmail className="flex h-10 w-10 items-center justify-center rounded-full   p-0.5" />
-							<div className="text-sm space-y-0.5">
-								<div>Email:</div>
-								<div>ddkkhaaa@gmail.com</div>
-							</div>
-						</div> */}
 					</section>
 					<section className="flex w-fit justify-center gap-2 text-background lg:gap-3">
 						<Link
@@ -244,6 +256,12 @@ const Navbar = () => {
 								</SheetHeader>
 
 								<div className="mt-3 flex w-full flex-1 flex-col items-start font-semibold">
+									<Link
+										href={'/remergencia-2025'}
+										className="mb-5 flex h-[3rem] w-full items-center justify-center rounded-lg bg-green-500"
+									>
+										ReMergencia 2025 🎉🎉
+									</Link>
 									<Link href={'/'} className="w-full border-b py-2">
 										Home
 									</Link>
@@ -256,8 +274,11 @@ const Navbar = () => {
 									>
 										Initiatives
 									</Link>
-									<Link href={'/membership'} className="w-full border-b py-2">
-										Membership
+									<Link
+										href={'/remergencia-2025'}
+										className="w-full border-b py-2"
+									>
+										ReMergencia 2025
 									</Link>
 									<Link
 										href={'https://ddkkhaaa.blogspot.com'}
@@ -313,18 +334,21 @@ const Navbar = () => {
 							</SheetContent>
 						</Sheet>
 					</section>
-					{/*
-					<section className="hidden gap-3 md:flex">
+
+					{/* <section className="hidden gap-3 md:flex">
+						<Link href={"/sign-in"}>
 						<Button className="border-[#FFD700]" variant={'outline'}>
 							{' '}
-							Join in
+							Sign Up for Membership
 						</Button>
+						</Link>
+						<Link href={"/sign-in"}>
 						<Button className="bg-[#FFD700] font-semibold text-secondary">
 							{' '}
 							Log in
 						</Button>
-					</section>
-							*/}
+						</Link>
+					</section> */}
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
@@ -346,10 +370,22 @@ const Navbar = () => {
 								</Link>
 							</NavigationMenuItem>
 
-							<NavigationMenuItem>
-								<Link href="/membership" legacyBehavior passHref>
+							{/* <NavigationMenuItem>
+								<Link href="/events" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Membership
+										Events
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem> */}
+							<NavigationMenuItem>
+								<Link href="/remergencia-2025" legacyBehavior passHref>
+									<NavigationMenuLink
+										className={
+											navigationMenuTriggerStyle() +
+											'bg-red-500 hover:bg-red-500'
+										}
+									>
+										<span>ReMergencia 2025</span>
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
@@ -464,7 +500,7 @@ const Navbar = () => {
 					</NavigationMenu>
 				</section>
 			</section>
-		</nav>
+		</motion.nav>
 	);
 };
 
