@@ -71,14 +71,14 @@ const AboutPage = () => {
 						<section className="flex flex-col justify-center gap-8 pt-10 sm:px-10 lg:w-[50%]">
 							<section className="w-full lg:max-w-xl">
 								<p className="text-center text-lg lg:text-left">
-									Observances such as Teacher&apos;s Day, Bijayar Adda,
-									Children&apos;s Day, and the Bandhu Chal Sports Festival serve
-									as sanctuaries for this confluence of unity and duty. Through
-									the zealous participation and steadfast cooperation of its
-									alumni, the endeavors of the Dum Dum Krishna Kumar Hindu
-									Academy Alumni Association shall indubitably ascend to loftier
-									pinnacles, advancing with irrepressible vigor into the annals
-									of posterity.
+									Observances such as Disaster Relief, Teacher&apos;s Day,
+									Bijayar Adda, Children&apos;s Day, and the Bandhu Chol Sports
+									Festival serve as sanctuaries for this confluence of unity and
+									duty. Through the zealous participation and steadfast
+									cooperation of its alumni, the endeavors of the Dum Dum
+									Krishna Kumar Hindu Academy Alumni Association shall
+									indubitably ascend to loftier pinnacles, advancing with
+									irrepressible vigor into the annals of posterity.
 								</p>
 							</section>
 						</section>

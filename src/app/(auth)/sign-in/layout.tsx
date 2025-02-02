@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 
-export default function SignUpLayout({
+export default function SignInLayout({
 	children, // will be a page or nested layout
 }: {
 	children: React.ReactNode;
