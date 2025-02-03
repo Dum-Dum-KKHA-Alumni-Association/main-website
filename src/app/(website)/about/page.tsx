@@ -7,14 +7,14 @@ import React from 'react';
 
 const AboutPage = () => {
 	return (
-		<main className="pt-10 md:pt-[4rem]">
+		<main className="pt-10 lg:pt-[4rem]">
 			<Navbar />
 			{/* <Heading name={'About'} /> */}
 			<section className="mx-auto flex w-full max-w-7xl flex-col px-5 lg:my-16">
 				{/* aboutUs */}
 				<section className="flex w-full flex-col items-center gap-16">
 					<Image
-						src={'/assets/ddkkha.jpg'}
+						src={'/assets/cover.png'}
 						width={1000}
 						height={0}
 						className="mx-auto w-full max-w-6xl rounded-2xl"
@@ -38,7 +38,7 @@ const AboutPage = () => {
 				</section>
 
 				{/* Teacher Sppeches */}
-				<section className="mx-auto mt-20 flex w-full max-w-6xl flex-col gap-10 lg:pb-20">
+				<section className="mx-auto mt-8 flex w-full max-w-6xl flex-col gap-10 md:mt-20 lg:pb-20">
 					<section className="mt-10 flex w-full flex-col justify-between lg:flex-row">
 						<section className="flex w-full justify-start lg:w-[50%]">
 							<Image
@@ -84,7 +84,18 @@ const AboutPage = () => {
 						</section>
 						<section className="flex justify-end lg:w-[50%]">
 							<Image
-								src={'/assets/about-3.jpg'}
+								src={'/assets/about-5.png'}
+								className="aspect-square w-full max-w-md rounded-lg"
+								width={1000}
+								height={0}
+								alt={''}
+							/>
+						</section>
+					</section>
+					<section className="mt-10 flex w-full flex-col justify-between lg:flex-row">
+						<section className="flex w-full justify-start lg:w-[50%]">
+							<Image
+								src={'/assets/about-4.png'}
 								className="aspect-square w-full max-w-md rounded-lg"
 								width={1000}
 								height={0}
