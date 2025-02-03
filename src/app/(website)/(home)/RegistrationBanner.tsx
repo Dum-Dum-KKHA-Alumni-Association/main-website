@@ -8,13 +8,13 @@ import { ArrowUpRight } from 'lucide-react';
 
 interface RegistrationBanner {
 	heading: string;
-	description: string;
+
 	url: string;
 }
 
 const RegistrationBanner: FC<RegistrationBanner> = ({
 	heading,
-	description,
+
 	url,
 }) => {
 	return (
@@ -34,7 +34,9 @@ const RegistrationBanner: FC<RegistrationBanner> = ({
 				</div>
 				<div className="flex w-full flex-col justify-between gap-10 md:w-1/2">
 					<section className="w-full text-center text-lg font-medium md:text-left">
-						{description}
+						We&apos;re unveiling the ultimate curtain of our{' '}
+						<b>Grand Reunion Festival—ReMergencia 2025!</b> It’s gonna be lit,
+						and we want YOU there to celebrate with us!`
 					</section>
 					<section className="flex w-full gap-3 md:mt-0">
 						<Link href={url} className="w-full md:w-1/3">
