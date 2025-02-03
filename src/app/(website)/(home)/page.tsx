@@ -18,10 +18,7 @@ export default async function Home() {
 			<Navbar />
 			<HeroSection hero={homePageData.hero!} />
 			<RegistrationBanner
-				heading={'Remergencia 2025'}
-				description={
-					'We are excited to announce ReMergencia 2025 and welcome your presence and any contribution of your choice for this grand special reunion celebration.'
-				}
+				heading={'ReMergencia 2025'}
 				url={'/remergencia-2025'}
 			/>
 			<AboutSection />

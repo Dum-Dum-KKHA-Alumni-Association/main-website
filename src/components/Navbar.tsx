@@ -272,7 +272,7 @@ const Navbar = () => {
 										href={'/remergencia-2025'}
 										className="mb-5 flex h-[3rem] w-full items-center justify-center rounded-md bg-blue-950 text-white"
 									>
-										ReMergencia 2025 🎉🎉
+										🎉 Reunion 2025 🎉
 									</Link>
 									<Link href={'/'} className="w-full border-b py-2">
 										Home

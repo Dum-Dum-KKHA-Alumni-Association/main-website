@@ -225,6 +225,7 @@ export type HomePage = {
 	hero?: Array<{
 		title?: string;
 		image?: string;
+		url?: string;
 		_type: 'image_collection';
 		_key: string;
 	}>;
