@@ -182,12 +182,16 @@ const RegistrationForm: FC<DonationFormProps> = ({
 			transactionProof: values.transactionProof,
 		};
 
+		// const formData = new URLSearchParams();
+		// formData.append('entry.123456789', data.name);
+		// formData.append('entry.987654321', data.email);
+
 		console.log(eventValue);
 
 		try {
 			const data = await toast.promise(
 				axios.post(
-					`${process.env.NEXT_PUBLIC_API_URL}/events/booking`,
+					`https://script.google.com/macros/s/AKfycbzGGjXzqJqzslNqPsX6nj0hhtzIOib-YD_0KeAVNzD0fhnUmEo90FDPYeCqShfnf6aB/exec`,
 					eventValue,
 					{
 						headers: {
@@ -281,6 +285,7 @@ const RegistrationForm: FC<DonationFormProps> = ({
 													<Select
 														onValueChange={field.onChange}
 														defaultValue={field.value}
+														name=""
 													>
 														<FormControl>
 															<SelectTrigger>

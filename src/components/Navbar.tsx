@@ -29,6 +29,8 @@ import {
 	FaYoutube,
 	FaFacebookF,
 	FaXTwitter,
+	FaVideo,
+	FaImages,
 } from 'react-icons/fa6';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoInstagram, IoLogoYoutube } from 'react-icons/io';
@@ -80,16 +82,26 @@ const socialPlatform: {
 		description: 'Follow our Official Twitter Page',
 	},
 ];
-// const donations: { title: string; href: string; description?: string }[] = [
-// 	{
-// 		title: 'Active Donation',
-// 		href: '/donation/active',
-// 	},
-// 	{
-// 		title: 'Expired Donations',
-// 		href: '/donation/expired',
-// 	},
-// ];
+
+const gallery: {
+	title: string;
+	href: string;
+	icon?: ReactNode;
+	description: string;
+}[] = [
+	{
+		title: 'Photos',
+		href: '/gallery',
+		icon: <FaImages className="text-3xl text-green-400" />,
+		description: '',
+	},
+	{
+		title: 'Videos',
+		href: '/videos',
+		icon: <FaVideo className="text-3xl text-[#E1306C]" />,
+		description: '',
+	},
+];
 
 // const events: { title: string; href: string; description?: string }[] = [
 // 	{
@@ -167,7 +179,7 @@ const Navbar = () => {
 						<Link
 							target="_blank"
 							href={'mailto:ddkkhaaa@gmail.com'}
-							className="hidden w-fit items-center gap-1.5 lg:flex"
+							className="hidden w-fit items-center gap-1.5 md:flex"
 						>
 							<MdOutlineEmail className="flex h-5 w-5 items-center justify-center" />
 							<div className="space-y-0.5 text-sm">
@@ -216,7 +228,7 @@ const Navbar = () => {
 			</section>
 			<section className="mx-auto flex h-[4rem] w-full max-w-[90rem] items-center justify-between gap-3 px-5">
 				<section className="m-auto flex h-[4rem] w-full items-center justify-between gap-3">
-					<section className="flex w-full justify-between gap-8 md:w-auto">
+					<section className="flex w-full justify-between gap-8 lg:w-auto">
 						<Link href={'/'} className="flex items-center gap-3">
 							<Image
 								src={logo}
@@ -226,14 +238,14 @@ const Navbar = () => {
 								className="w-auto"
 								priority={true}
 							/>
-							<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+							<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-lg lg:text-2xl">
 								<span>Dum Dum K. K. Hindu Academy</span>
 								<span>Alumni Association</span>
 							</div>
 						</Link>
 
 						<Sheet>
-							<SheetTrigger className={'md:hidden'}>
+							<SheetTrigger className={'lg:hidden'}>
 								<Menu />
 							</SheetTrigger>
 							<SheetContent>
@@ -258,7 +270,7 @@ const Navbar = () => {
 								<div className="mt-3 flex w-full flex-1 flex-col items-start font-semibold">
 									<Link
 										href={'/remergencia-2025'}
-										className="mb-5 flex h-[3rem] w-full items-center justify-center rounded-lg bg-green-500"
+										className="mb-5 flex h-[3rem] w-full items-center justify-center rounded-md bg-blue-950 text-white"
 									>
 										ReMergencia 2025 🎉🎉
 									</Link>
@@ -282,6 +294,7 @@ const Navbar = () => {
 									</Link>
 									<Link
 										href={'https://ddkkhaaa.blogspot.com'}
+										target={'_blank'}
 										className="w-full border-b py-2"
 									>
 										Magazine
@@ -352,8 +365,8 @@ const Navbar = () => {
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
-				<section className="m-auto flex h-auto w-full max-w-[90rem] items-center justify-start gap-3 pl-16">
-					<NavigationMenu className="hidden md:flex">
+				<section className="m-auto flex h-auto w-full max-w-[90rem] items-center justify-start gap-3 xl:pl-16">
+					<NavigationMenu className="hidden lg:flex">
 						<NavigationMenuList className="gap-2">
 							<NavigationMenuItem>
 								<Link href="/about" legacyBehavior passHref>
@@ -389,17 +402,6 @@ const Navbar = () => {
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<Link
-									href="https://ddkkhaaa.blogspot.com"
-									legacyBehavior
-									passHref
-								>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Magazine
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
 
 							{/* <NavigationMenuItem>
 								<NavigationMenuTrigger>
@@ -425,6 +427,39 @@ const Navbar = () => {
 									</ul>
 								</NavigationMenuContent>
 							</NavigationMenuItem> */}
+							{/* <NavigationMenuItem>
+								<Link href="/videos" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Videos
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem> */}
+							{/* <NavigationMenuItem>
+								<Link href="/gallery" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Gallery
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem> */}
+							<NavigationMenuItem>
+								<NavigationMenuTrigger className="mx-3">
+									Gallery
+								</NavigationMenuTrigger>
+								<NavigationMenuContent>
+									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+										{gallery.map((platform) => (
+											<ListItem
+												key={platform.title}
+												title={platform.title}
+												href={platform.href}
+												icon={platform.icon}
+											>
+												{platform.description}
+											</ListItem>
+										))}
+									</ul>
+								</NavigationMenuContent>
+							</NavigationMenuItem>
 							<NavigationMenuItem>
 								<NavigationMenuTrigger>Community</NavigationMenuTrigger>
 								<NavigationMenuContent>
@@ -441,6 +476,18 @@ const Navbar = () => {
 										))}
 									</ul>
 								</NavigationMenuContent>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<Link
+									href="https://ddkkhaaa.blogspot.com"
+									target={'_blank'}
+									legacyBehavior
+									passHref
+								>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Magazine
+									</NavigationMenuLink>
+								</Link>
 							</NavigationMenuItem>
 							{/* <NavigationMenuItem>
 								<NavigationMenuTrigger>
@@ -467,20 +514,6 @@ const Navbar = () => {
 								</NavigationMenuContent>
 							</NavigationMenuItem> */}
 
-							<NavigationMenuItem>
-								<Link href="/videos" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Videos
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
-							<NavigationMenuItem>
-								<Link href="/gallery" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Gallery
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
 							<NavigationMenuItem>
 								<Link href="/opportunities" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>

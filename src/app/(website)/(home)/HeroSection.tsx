@@ -16,8 +16,8 @@ interface HeroSectionProps {
 
 const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 	return (
-		<section className="relative flex w-full flex-1 md:pt-14">
-			<section className="mx-auto w-full max-w-[90rem] rounded-xl">
+		<section className="relative flex w-full flex-1 lg:pt-14">
+			<section className="mx:px-5 mx-auto w-full max-w-[90rem] rounded-xl">
 				<Swiper
 					slidesPerView={1}
 					spaceBetween={30}
