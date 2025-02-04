@@ -17,7 +17,7 @@ const AboutPage = () => {
 			<section className="mx-auto flex w-full max-w-[90rem] flex-col px-5 lg:mt-16">
 				<Image
 					src={'/banners/remergencia-2025-website-banner.jpg'}
-					width={1000}
+					width={2500}
 					height={0}
 					className="mx-auto w-full rounded-2xl"
 					alt={'ReMergencia-2025'}
