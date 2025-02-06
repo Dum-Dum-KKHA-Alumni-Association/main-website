@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'react-hot-toast';
 import TanstackProvider from '@/lib/provider/tanstack-provider';
 import MiniSideCallout from '@/components/MiniSideCallout';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
 	title: 'Dum Dum Krishna Kumar Hindu Academy Alumni Association',
@@ -17,6 +18,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<GoogleTagManager
+				gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
+			/>
 			<body>
 				<ClerkProvider
 					appearance={{
