@@ -7,15 +7,34 @@ import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 import { sanityFetch } from '@/sanity/lib/client';
 import { Gallery } from '@/types/sanity';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-
+import { Metadata } from 'next';
 import Image from 'next/image';
+import React, { cache } from 'react';
 
-import React from 'react';
+const getGalleryData = cache((slug: string) =>
+	sanityFetch<Gallery>({
+		query: Specific_Gallery_Series(slug),
+	})
+);
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+	const { slug } = await params;
+
+	const collectionData = await getGalleryData(slug);
+	return {
+		title: `Best Moments of ${collectionData.title}`,
+		description: `The best moments of Alumni`,
+	};
+}
 
 const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
-	const collectionData = await sanityFetch<Gallery>({
-		query: Specific_Gallery_Series((await params).slug),
-	});
+	const { slug } = await params;
+
+	const collectionData = await getGalleryData(slug);
 
 	console.log(collectionData);
 	return (
