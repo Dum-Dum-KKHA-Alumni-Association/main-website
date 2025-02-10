@@ -48,6 +48,17 @@ const AboutPage = () => {
 							</div>
 						</section>
 					</section>
+					<section className="mt-8 w-full">
+						<Link
+							// href={'/remergencia-2025/register-online'}
+							href={process.env.NEXT_PUBLIC_GOOGLE_FORM_URL!}
+							target="_blank"
+							className="flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-500 p-2 text-xl font-bold md:p-5"
+						>
+							Register Now
+							<ArrowUpRight size={32} />
+						</Link>
+					</section>
 					<section className="mt-8">
 						<p className="font-bold italic">
 							Registration is mandatory for every reunion participant.
@@ -94,17 +105,7 @@ const AboutPage = () => {
 						<BankDetailsCard />
 						<UpiDetailsCard />
 					</section>
-					<section className="mt-8 w-full">
-						<Link
-							// href={'/remergencia-2025/register-online'}
-							href={process.env.NEXT_PUBLIC_GOOGLE_FORM_URL!}
-							target="_blank"
-							className="flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-500 p-2 text-xl font-bold md:p-5"
-						>
-							Register Now
-							<ArrowUpRight size={32} />
-						</Link>
-					</section>
+
 					<section className="mt-8 w-full">
 						<p className="text-center text-xl font-semibold md:text-left">
 							Let’s make this reunion one for the books! See you there!
