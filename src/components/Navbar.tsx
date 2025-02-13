@@ -6,11 +6,12 @@ import {
 	Sheet,
 	SheetContent,
 	SheetDescription,
+	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { ArrowUpRight, Menu } from 'lucide-react';
+import { ArrowUpRight, LogOut, Menu } from 'lucide-react';
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -44,6 +45,17 @@ import {
 import { MdOutlineEmail } from 'react-icons/md';
 import { motion } from 'motion/react';
 import { useAnimation } from 'motion/react';
+import { Button } from './ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from './ui/dropdown-menu';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -339,29 +351,106 @@ const Navbar = () => {
 									</Link>
 								</div>
 
-								{/* <SheetFooter className="mt-10">
+								<SheetFooter className="mt-10">
 									<Button className="w-full bg-[#FFD700]" variant={'outline'}>
 										Join in
 									</Button>
-								</SheetFooter> */}
+								</SheetFooter>
 							</SheetContent>
 						</Sheet>
 					</section>
 
-					{/* <section className="hidden gap-3 md:flex">
-						<Link href={"/sign-in"}>
-						<Button className="border-[#FFD700]" variant={'outline'}>
-							{' '}
-							Sign Up for Membership
-						</Button>
+					<section className="hidden gap-3 md:flex">
+						<Link href={'/sign-in'}>
+							<Button className="border-[#FFD700]" variant={'outline'}>
+								{' '}
+								Sign Up for Membership
+							</Button>
 						</Link>
-						<Link href={"/sign-in"}>
-						<Button className="bg-[#FFD700] font-semibold text-secondary">
-							{' '}
-							Log in
-						</Button>
+						<Link href={'/sign-in'}>
+							<Button className="bg-[#FFD700] font-semibold text-secondary">
+								{' '}
+								Log in
+							</Button>
 						</Link>
-					</section> */}
+
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<Avatar>
+									<AvatarImage src="https://github.com/shadcn.png" />
+									<AvatarFallback>CN</AvatarFallback>
+								</Avatar>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent align={'end'} className="w-72">
+								<DropdownMenuLabel className="flex w-full gap-2">
+									<Avatar className="h-12 w-12">
+										<AvatarImage src="https://github.com/shadcn.png" />
+										<AvatarFallback>CN</AvatarFallback>
+									</Avatar>
+									<div className="flex flex-col">
+										<span className="font-sora text-base font-medium">
+											TEJODEEP MITRA ROY
+										</span>
+										<span className="font-sora text-sm font-light">
+											mId:3389209090232
+										</span>
+									</div>
+								</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+								<DropdownMenuGroup>
+									<Link href={'/dashboard'}>
+										<DropdownMenuItem>
+											Dashboard
+											{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
+										</DropdownMenuItem>
+									</Link>
+									{/* <DropdownMenuItem>
+										Billing
+										<DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+									</DropdownMenuItem> */}
+									<DropdownMenuItem>
+										Settings
+										{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
+									</DropdownMenuItem>
+									{/* <DropdownMenuItem>
+										Keyboard shortcuts
+										<DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+									</DropdownMenuItem> */}
+								</DropdownMenuGroup>
+								{/* <DropdownMenuSeparator />
+								<DropdownMenuGroup className='space-y-2'>
+									<DropdownMenuItem>Team</DropdownMenuItem>
+									<DropdownMenuSub>
+										<DropdownMenuSubTrigger>
+											Invite users
+										</DropdownMenuSubTrigger>
+										<DropdownMenuPortal>
+											<DropdownMenuSubContent>
+												<DropdownMenuItem>Email</DropdownMenuItem>
+												<DropdownMenuItem>Message</DropdownMenuItem>
+												<DropdownMenuSeparator />
+												<DropdownMenuItem>More...</DropdownMenuItem>
+											</DropdownMenuSubContent>
+										</DropdownMenuPortal>
+									</DropdownMenuSub>
+									<DropdownMenuItem>
+										New Team
+										<DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+									</DropdownMenuItem>
+								</DropdownMenuGroup> */}
+								<DropdownMenuSeparator />
+								<DropdownMenuItem>GitHub</DropdownMenuItem>
+								<DropdownMenuItem>Support</DropdownMenuItem>
+								<DropdownMenuItem disabled>API</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem className="text-destructive hover:text-destructive">
+									<LogOut />
+									Log out
+									{/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					</section>
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
