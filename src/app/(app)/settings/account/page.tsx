@@ -32,6 +32,8 @@ import { Separator } from '@/components/ui/separator';
 
 import { accountSchema } from '@/schemas/SettingsSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { getCookie } from 'cookies-next/client';
+import { useEffect } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -51,6 +53,12 @@ export default function SettingsAccountPage() {
 		// ✅ This will be type-safe and validated.
 		console.log(values);
 	}
+
+	const token = getCookie('access_token', { httpOnly: false });
+	console.log('Account Token', token);
+
+	useEffect(() => {}, []);
+
 	return (
 		<div className="relative space-y-6 border-red-500 bg-white p-10 pb-16 font-baloo-da-2 md:block">
 			{/* <div className="mx-auto flex w-full max-w-3xl flex-col space-y-8 border lg:flex-row lg:space-x-12 lg:space-y-0"></div> */}

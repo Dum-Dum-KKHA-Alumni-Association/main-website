@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
 import {
 	Sheet,
 	SheetContent,
@@ -26,15 +26,11 @@ import {
 	FaSquareWhatsapp,
 	FaSquareInstagram,
 	FaSquareXTwitter,
-	FaWhatsapp,
-	FaYoutube,
-	FaFacebookF,
-	FaXTwitter,
 	FaVideo,
 	FaImages,
 } from 'react-icons/fa6';
 import { FaFacebookSquare } from 'react-icons/fa';
-import { IoLogoInstagram, IoLogoYoutube } from 'react-icons/io';
+import { IoLogoYoutube } from 'react-icons/io';
 import logo from '../../public/logo.png';
 import {
 	Accordion,
@@ -42,11 +38,8 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from './ui/accordion';
-import { MdOutlineEmail } from 'react-icons/md';
-import { motion } from 'motion/react';
-import { useAnimation } from 'motion/react';
+
 import { Button } from './ui/button';
-import UserProfileAvatar from './UserProfileAvatar';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -106,129 +99,9 @@ const gallery: {
 	},
 ];
 
-// const events: { title: string; href: string; description?: string }[] = [
-// 	{
-// 		title: '🎉Upcoming Events',
-// 		href: '/events/upcoming',
-// 	},
-// 	{
-// 		title: 'Past Events',
-// 		href: '/docs/primitives/hover-card',
-// 	},
-// ];
-
-// const initiative: { title: string; href: string; description?: string }[] = [
-// 	{
-// 		title: 'Disaster Relief',
-// 		href: '/our-initiative/disaster-relief',
-// 	},
-// 	{
-// 		title: 'Teachers Day 2024',
-// 		href: '/our-initiative/teachers-day-2024',
-// 	},
-// 	{
-// 		title: 'Bijoyer Adda 2024',
-// 		href: '/our-initiative/bijoyer-adda-2024',
-// 	},
-// 	{
-// 		title: 'Children Day 2024',
-// 		href: '/our-initiative/children-day-2024',
-// 	},
-// 	{
-// 		title: 'Bondu Cholo Sports Meeting 2024',
-// 		href: '/our-initiative/bondu-cholo-sports-meeting-2024',
-// 	},
-// ];
-
-const Navbar = () => {
-	const [lastScrollY, setLastScrollY] = useState(0);
-	const [scrollingUp, setScrollingUp] = useState(true);
-	const controls = useAnimation();
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollY = window.scrollY;
-			setScrollingUp(currentScrollY < lastScrollY);
-			setLastScrollY(currentScrollY);
-		};
-
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, [lastScrollY]);
-
-	useEffect(() => {
-		controls.start({ y: scrollingUp ? 0 : '-35%' });
-	}, [scrollingUp, controls]);
-
+const AuthNavbar = () => {
 	return (
-		<motion.nav
-			initial={{ y: 0 }}
-			animate={controls}
-			transition={{ duration: 0.3 }}
-			className="fixed top-0 z-50 w-full bg-background font-sora"
-		>
-			<section className="flex w-full items-center justify-center bg-primary px-5">
-				<section className="mx-auto flex w-full max-w-[90rem] justify-between py-2 text-background">
-					<section className="flex w-fit flex-row gap-4">
-						<Link
-							href={'https://wa.me/919432428233'}
-							className="flex w-fit items-center gap-1.5"
-						>
-							<FaWhatsapp className="flex h-5 w-5 items-center justify-center" />
-							<div className="space-y-0.5 text-sm">
-								<div>+91 94324 28233</div>
-							</div>
-						</Link>
-						<Link
-							target="_blank"
-							href={'mailto:ddkkhaaa@gmail.com'}
-							className="hidden w-fit items-center gap-1.5 md:flex"
-						>
-							<MdOutlineEmail className="flex h-5 w-5 items-center justify-center" />
-							<div className="space-y-0.5 text-sm">
-								<div>ddkkhaaa@gmail.com</div>
-							</div>
-						</Link>
-					</section>
-					<section className="flex w-fit justify-center gap-2 text-background lg:gap-3">
-						<Link
-							href={'https://www.youtube.com/@ddkkhaaaofficial'}
-							target="_blank"
-							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-0.5 hover:bg-primary md:h-8 md:w-8"
-						>
-							<FaYoutube className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
-						</Link>
-						<Link
-							href={'https://www.facebook.com/ddkkhaaaofficial'}
-							target="_blank"
-							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-1 hover:bg-primary md:h-8 md:w-8"
-						>
-							<FaFacebookF className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
-						</Link>
-						<Link
-							href={'https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E'}
-							target="_blank"
-							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-0.5 hover:bg-primary md:h-8 md:w-8"
-						>
-							<FaWhatsapp className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
-						</Link>
-						<Link
-							href={'https://www.instagram.com/ddkkhaaaofficial'}
-							target="_blank"
-							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-0.5 hover:bg-primary md:h-8 md:w-8"
-						>
-							<IoLogoInstagram className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
-						</Link>
-						<Link
-							href={'https://x.com/ddkkhaaa'}
-							target="_blank"
-							className="group flex h-6 w-6 items-center justify-center rounded-full border-2 bg-background p-1 hover:bg-primary md:h-8 md:w-8"
-						>
-							<FaXTwitter className="fill-primary text-base group-hover:bg-primary group-hover:fill-background md:text-xl" />
-						</Link>
-					</section>
-				</section>
-			</section>
+		<nav className="fixed top-0 z-50 w-full bg-background font-sora">
 			<section className="mx-auto flex h-[4rem] w-full max-w-[90rem] items-center justify-between gap-3 px-5">
 				<section className="m-auto flex h-[4rem] w-full items-center justify-between gap-3">
 					<section className="flex w-full justify-between gap-8 lg:w-auto">
@@ -350,8 +223,6 @@ const Navbar = () => {
 							</SheetContent>
 						</Sheet>
 					</section>
-
-					<UserProfileAvatar />
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
@@ -373,13 +244,6 @@ const Navbar = () => {
 								</Link>
 							</NavigationMenuItem>
 
-							{/* <NavigationMenuItem>
-								<Link href="/events" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Events
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem> */}
 							<NavigationMenuItem>
 								<Link href="/remergencia-2025" legacyBehavior passHref>
 									<NavigationMenuLink
@@ -392,45 +256,6 @@ const Navbar = () => {
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
-
-							{/* <NavigationMenuItem>
-								<NavigationMenuTrigger>
-									<Link href="" legacyBehavior passHref>
-										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
-										>
-											Donation
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuTrigger>
-								<NavigationMenuContent>
-									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-										{donations.map((donation) => (
-											<ListItem
-												key={donation.title}
-												title={donation.title}
-												href={donation.href}
-											>
-												{donation.description}
-											</ListItem>
-										))}
-									</ul>
-								</NavigationMenuContent>
-							</NavigationMenuItem> */}
-							{/* <NavigationMenuItem>
-								<Link href="/videos" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Videos
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem> */}
-							{/* <NavigationMenuItem>
-								<Link href="/gallery" legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										Gallery
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem> */}
 							<NavigationMenuItem>
 								<NavigationMenuTrigger className="mx-3">
 									Gallery
@@ -479,30 +304,6 @@ const Navbar = () => {
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
-							{/* <NavigationMenuItem>
-								<NavigationMenuTrigger>
-									<Link href="/events" legacyBehavior passHref>
-										<NavigationMenuLink
-											className={navigationMenuTriggerStyle()}
-										>
-											Events
-										</NavigationMenuLink>
-									</Link>
-								</NavigationMenuTrigger>
-								<NavigationMenuContent>
-									<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-										{events.map((event) => (
-											<ListItem
-												key={event.title}
-												title={event.title}
-												href={event.href}
-											>
-												{event.description}
-											</ListItem>
-										))}
-									</ul>
-								</NavigationMenuContent>
-							</NavigationMenuItem> */}
 
 							<NavigationMenuItem>
 								<Link href="/opportunities" legacyBehavior passHref>
@@ -523,11 +324,11 @@ const Navbar = () => {
 					</NavigationMenu>
 				</section>
 			</section>
-		</motion.nav>
+		</nav>
 	);
 };
 
-export default Navbar;
+export default AuthNavbar;
 
 const ListItem = React.forwardRef<
 	React.ElementRef<'a'>,

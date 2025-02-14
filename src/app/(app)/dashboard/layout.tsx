@@ -1,4 +1,3 @@
-import Sidebar from '@/components/Sidebar';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,5 +10,5 @@ interface SettingsLayoutProps {
 }
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
-	return <Sidebar>{children}</Sidebar>;
+	return <div>{children}</div>;
 }
