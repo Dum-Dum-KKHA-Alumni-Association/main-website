@@ -1,6 +1,6 @@
 import AuthNavbar from '@/components/AuthNavbar';
 
-export default function SignInLayout({
+export default function ForgetPasswordLayout({
 	children, // will be a page or nested layout
 }: {
 	children: React.ReactNode;

@@ -10,4 +10,14 @@ export const signupSchema = z.object({
 	higherSecondaryYear: z.string().max(4),
 	email: z.coerce.string().email().min(5),
 	password: z.string().min(8),
+	confirmPassword: z.string().min(8),
+});
+
+export const forgetPasswordSchema = z.object({
+	email: z.coerce.string().email().min(5),
+});
+
+export const resetPasswordSchema = z.object({
+	password: z.string().min(8),
+	confirmPassword: z.string().min(8),
 });

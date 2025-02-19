@@ -47,8 +47,8 @@ export const profileFormSchema = z.object({
 });
 
 export const accountSchema = z.object({
-	userName: z.string().min(2).max(50),
-	email: z.string().email(),
-	password: z.string().min(6),
-	memberID: z.string(),
+	fullName: z.string().min(2).max(50),
+	memberId: z.string().max(4),
+	email: z.coerce.string().email().min(5),
+	password: z.string().min(8),
 });

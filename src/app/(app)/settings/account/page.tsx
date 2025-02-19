@@ -29,23 +29,37 @@ import {
 import { Input } from '@/components/ui/input';
 
 import { Separator } from '@/components/ui/separator';
-
+import { getToken } from '@/lib/getAccessToken';
 import { accountSchema } from '@/schemas/SettingsSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { getCookie } from 'cookies-next/client';
-import { useEffect } from 'react';
+import axios from 'axios';
 
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 export default function SettingsAccountPage() {
+	const fetchUserData = async () => {
+		const token = await getToken();
+		const response = await axios(
+			`${process.env.NEXT_PUBLIC_API_URL}/user/profile`,
+			{
+				headers: {
+					Authorization: ` Bearer ${token}`,
+				},
+			}
+		);
+		const data = response.data;
+
+		return data.data.user;
+	};
+
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof accountSchema>>({
 		resolver: zodResolver(accountSchema),
-		defaultValues: {
-			// username: '',
-		},
+		defaultValues: fetchUserData,
 	});
+
+	// const { setValue  } =form
 
 	// 2. Define a submit handler.
 	function onSubmit(values: z.infer<typeof accountSchema>) {
@@ -53,11 +67,6 @@ export default function SettingsAccountPage() {
 		// ✅ This will be type-safe and validated.
 		console.log(values);
 	}
-
-	const token = getCookie('access_token', { httpOnly: false });
-	console.log('Account Token', token);
-
-	useEffect(() => {}, []);
 
 	return (
 		<div className="relative space-y-6 border-red-500 bg-white p-10 pb-16 font-baloo-da-2 md:block">
@@ -79,7 +88,7 @@ export default function SettingsAccountPage() {
 							>
 								<FormField
 									control={form.control}
-									name="userName"
+									name="fullName"
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Full Name</FormLabel>
@@ -95,7 +104,7 @@ export default function SettingsAccountPage() {
 								/>
 								<FormField
 									control={form.control}
-									name="memberID"
+									name="memberId"
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Member Id</FormLabel>

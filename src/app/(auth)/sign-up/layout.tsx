@@ -6,7 +6,7 @@ export default function SignUpLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<main>
+		<main className="md:pt-0">
 			{/* Include shared UI here e.g. a header or sidebar */}
 			<AuthNavbar />
 			{children}

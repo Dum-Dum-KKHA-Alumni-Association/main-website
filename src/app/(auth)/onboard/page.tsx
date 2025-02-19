@@ -19,6 +19,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
+import logo from '../../../../public/logo.png';
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -59,6 +60,61 @@ export default function LoginPage() {
 				<div className={'flex w-full flex-col gap-6'}>
 					<Card className="overflow-hidden">
 						<CardContent className="grid w-full p-0 md:grid-cols-2">
+							<div className="flex w-full flex-col gap-6 space-y-8 p-6 md:p-8">
+								<section className="flex w-full items-center justify-center text-center">
+									{/* <h1 className="text-2xl font-bold">Welcome back</h1> */}
+									<Image
+										src={logo}
+										height={0}
+										width={40}
+										alt="Logo"
+										className="w-auto"
+										priority={true}
+									/>
+									<div className="hidden flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex md:flex-row md:gap-2 md:text-lg lg:text-2xl">
+										<span>DDKKHAAA</span>
+									</div>
+								</section>
+								<section className="flex flex-col gap-6">
+									<section>
+										<p className="text-balance text-muted-foreground">
+											Login to your DDKKHAAA account
+										</p>
+									</section>
+									<section className="grid grid-cols-1 gap-4">
+										<Link
+											href={`${process.env.NEXT_PUBLIC_API_URL}/auth/google`}
+										>
+											<Button
+												variant="outline"
+												className="h-12 w-full rounded-full bg-primary text-white hover:bg-primary/85 hover:text-white"
+											>
+												<Image
+													src={'/icons/google.png'}
+													width={20}
+													height={20}
+													alt="google"
+												/>
+												<span>Login with Google</span>
+											</Button>
+										</Link>
+									</section>
+									<div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+										<span className="relative z-10 bg-background px-2 text-muted-foreground">
+											Or
+										</span>
+									</div>
+								</section>
+
+								<section className="flex flex-col gap-2 text-center text-sm">
+									<p>
+										By logging in or signing up using the options above, you
+										agree to ddkkhaaa&apos;s Terms & Conditions and Privacy
+										Policy
+									</p>
+								</section>
+							</div>
+
 							<Form {...form}>
 								<form
 									onSubmit={form.handleSubmit(onSubmit)}

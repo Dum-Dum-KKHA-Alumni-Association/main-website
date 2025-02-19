@@ -25,16 +25,18 @@ import {
 } from '@/components/ui/select';
 import { generateYearArray } from '@/lib/generateYearArray';
 
-import { signupSchema } from '@/schemas/AuthenticationFormSchema';
+import { signupSchema } from '@/schemas/AuthenticationSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 const SignUpPage = () => {
+	const router = useRouter();
 	const form = useForm<z.infer<typeof signupSchema>>({
 		resolver: zodResolver(signupSchema),
 		defaultValues: {},
@@ -50,7 +52,7 @@ const SignUpPage = () => {
 
 		try {
 			const response = await axios.post(
-				`${process.env.NEXT_PUBLIC_API_URL}/user/login`,
+				`${process.env.NEXT_PUBLIC_API_URL}/user/register`,
 				values,
 				{
 					withCredentials: true,
@@ -60,15 +62,21 @@ const SignUpPage = () => {
 				}
 			);
 			const data = response.data;
+
+			if (data.statusCode === 409) {
+				return toast.error(data.message);
+			}
+
 			console.log(data);
-			toast.success('Register Successful');
+			toast.success(data.message);
+			router.push('/sign-in');
 		} catch (error) {
 			console.log(error);
 			toast.error('Error Happens, please try later!');
 		}
 	}
 	return (
-		<div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+		<div className="flex min-h-screen w-full items-center justify-center p-6 md:p-10">
 			<div className="w-full max-w-xl">
 				<div className={'flex flex-col gap-6'}>
 					<Card>
@@ -209,15 +217,15 @@ const SignUpPage = () => {
 											)}
 										/>
 
-										<Button type="submit" className="w-full">
-											Login
+										<Button type="submit" size={'lg'} className="w-full">
+											Sign In
 										</Button>
 										{/* <Button variant="outline" className="w-full">
 											Login with Google
 										</Button> */}
 									</div>
 									<div className="mt-4 text-center text-sm">
-										have an account?{' '}
+										Already have an account?{' '}
 										<Link
 											href="/sign-in"
 											className="underline underline-offset-4"

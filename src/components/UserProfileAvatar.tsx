@@ -125,14 +125,14 @@ const UserProfileAvatar = () => {
 				</DropdownMenu>
 			) : (
 				<>
-					<Link href={'/sign-in'}>
+					{/* <Link href={'/sign-in'}>
 						<Button className="border-[#FFD700]" variant={'outline'}>
 							{' '}
 							Sign Up for Membership
 						</Button>
-					</Link>
+					</Link> */}
 					<Link href={'/sign-in'}>
-						<Button className="bg-[#FFD700] font-semibold text-secondary">
+						<Button className="bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700]">
 							{' '}
 							Log in
 						</Button>

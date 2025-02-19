@@ -1,3 +1,4 @@
+import AppNavbar from '@/components/AppNavbar';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,5 +11,10 @@ interface SettingsLayoutProps {
 }
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
-	return <div>{children}</div>;
+	return (
+		<main className="pt-0">
+			<AppNavbar />
+			{children}
+		</main>
+	);
 }

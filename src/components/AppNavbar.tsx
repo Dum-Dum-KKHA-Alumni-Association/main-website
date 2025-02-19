@@ -10,7 +10,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { ArrowUpRight, LogOut, Menu } from 'lucide-react';
+import { ArrowUpRight, Menu } from 'lucide-react';
 import {
 	FaSquareWhatsapp,
 	FaSquareInstagram,
@@ -26,16 +26,9 @@ import {
 	AccordionTrigger,
 } from './ui/accordion';
 import { Separator } from './ui/separator';
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+
+import UserProfileAvatar from './UserProfileAvatar';
+import { Button } from './ui/button';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -171,7 +164,7 @@ const AppNavbar = () => {
 						</SheetContent>
 					</Sheet>
 					<section className="flex gap-3">
-						<Link href={'/'} className="flex items-center gap-3">
+						<Link href={'/dashboard'} className="flex items-center gap-3">
 							<Image
 								src={logo}
 								height={0}
@@ -184,87 +177,22 @@ const AppNavbar = () => {
 								<span>DDKKHAAA</span>
 							</div>
 						</Link>
+						<Separator orientation={'vertical'} className="py-2" />
+						<nav className="flex h-full items-center gap-2">
+							<Link href={'/dashboard'}>
+								<Button variant={'ghost'}>Home</Button>
+							</Link>
+							<Link href={'/dashboard/events'}>
+								<Button variant={'ghost'}>Events</Button>
+							</Link>
+							<Link href={'/dashboard/community'}>
+								<Button variant={'ghost'}>Community</Button>
+							</Link>
+						</nav>
 					</section>
 				</section>
 
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Avatar>
-							<AvatarImage src="https://github.com/shadcn.png" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-					</DropdownMenuTrigger>
-					<DropdownMenuContent align={'end'} className="w-72">
-						<DropdownMenuLabel className="flex w-full items-center gap-2">
-							<Avatar className="h-12 w-12">
-								<AvatarImage src="https://github.com/shadcn.png" />
-								<AvatarFallback>CN</AvatarFallback>
-							</Avatar>
-							<div className="flex flex-col">
-								<span className="font-sora text-base font-medium">
-									TEJODEEP MITRA ROY
-								</span>
-								<span className="font-sora text-sm font-light">
-									mId:3389209090232
-								</span>
-							</div>
-						</DropdownMenuLabel>
-						<DropdownMenuSeparator />
-						<DropdownMenuGroup>
-							<Link href={'/dashboard'}>
-								<DropdownMenuItem>
-									Dashboard
-									{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
-								</DropdownMenuItem>
-							</Link>
-							{/* <DropdownMenuItem>
-										Billing
-										<DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-									</DropdownMenuItem> */}
-							<Link href={'/settings'}>
-								<DropdownMenuItem>
-									Settings
-									{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
-								</DropdownMenuItem>
-							</Link>
-							{/* <DropdownMenuItem>
-										Keyboard shortcuts
-										<DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-									</DropdownMenuItem> */}
-						</DropdownMenuGroup>
-						{/* <DropdownMenuSeparator />
-								<DropdownMenuGroup className='space-y-2'>
-									<DropdownMenuItem>Team</DropdownMenuItem>
-									<DropdownMenuSub>
-										<DropdownMenuSubTrigger>
-											Invite users
-										</DropdownMenuSubTrigger>
-										<DropdownMenuPortal>
-											<DropdownMenuSubContent>
-												<DropdownMenuItem>Email</DropdownMenuItem>
-												<DropdownMenuItem>Message</DropdownMenuItem>
-												<DropdownMenuSeparator />
-												<DropdownMenuItem>More...</DropdownMenuItem>
-											</DropdownMenuSubContent>
-										</DropdownMenuPortal>
-									</DropdownMenuSub>
-									<DropdownMenuItem>
-										New Team
-										<DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-									</DropdownMenuItem>
-								</DropdownMenuGroup> */}
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>GitHub</DropdownMenuItem>
-						<DropdownMenuItem>Support</DropdownMenuItem>
-						<DropdownMenuItem disabled>API</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem className="text-destructive hover:text-destructive">
-							<LogOut />
-							Log out
-							{/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
+				<UserProfileAvatar />
 			</section>
 			<Separator />
 		</header>

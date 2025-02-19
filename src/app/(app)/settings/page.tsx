@@ -26,20 +26,35 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { generateYearArray } from '@/lib/generateYearArray';
+import { getToken } from '@/lib/getAccessToken';
 import { profileFormSchema } from '@/schemas/SettingsSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 
 import { useForm } from 'react-hook-form';
 
 import { z } from 'zod';
 
 export default function SettingsProfilePage() {
+	const fetchUserData = async () => {
+		const token = await getToken();
+		const response = await axios(
+			`${process.env.NEXT_PUBLIC_API_URL}/user/profile`,
+			{
+				headers: {
+					Authorization: ` Bearer ${token}`,
+				},
+			}
+		);
+		const data = response.data;
+
+		return data.data.user;
+	};
+
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof profileFormSchema>>({
 		resolver: zodResolver(profileFormSchema),
-		defaultValues: {
-			// username: '',
-		},
+		defaultValues: fetchUserData,
 	});
 
 	const { watch } = form;
