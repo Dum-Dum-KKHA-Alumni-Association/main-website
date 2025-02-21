@@ -141,7 +141,7 @@ export default function LoginPage() {
 											</Button>
 
 											<div className="flex flex-col gap-2 text-center text-sm">
-												{/* <div>
+												<div>
 													Don&apos;t have an account?{' '}
 													<Link
 														href="/sign-up"
@@ -149,8 +149,8 @@ export default function LoginPage() {
 													>
 														Sign up
 													</Link>
-												</div> */}
-												{/* <div className="flex flex-wrap items-start justify-center gap-1">
+												</div>
+												<div className="flex flex-wrap items-start justify-center gap-1">
 													<span>you forget your passsword? </span>
 													<Link
 														href="/forget-password"
@@ -158,7 +158,7 @@ export default function LoginPage() {
 													>
 														forget password
 													</Link>
-												</div> */}
+												</div>
 											</div>
 										</div>
 									</div>

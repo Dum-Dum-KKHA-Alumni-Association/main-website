@@ -70,7 +70,7 @@ const socialPlatform: {
 
 const AppNavbar = () => {
 	return (
-		<header className="w-full bg-white font-sora">
+		<header className="sticky top-0 w-full bg-white font-sora">
 			<section className="mx-auto flex h-[4rem] w-full items-center justify-between gap-3 px-5">
 				<section className="flex w-full justify-start gap-2 lg:w-auto">
 					<Sheet>
@@ -180,14 +180,18 @@ const AppNavbar = () => {
 						<Separator orientation={'vertical'} className="py-2" />
 						<nav className="flex h-full items-center gap-2">
 							<Link href={'/dashboard'}>
-								<Button variant={'ghost'}>Home</Button>
+								<Button variant={'ghost'} className="text-primary">
+									Home
+								</Button>
 							</Link>
 							<Link href={'/dashboard/events'}>
-								<Button variant={'ghost'}>Events</Button>
+								<Button variant={'ghost'} className="text-foreground/85">
+									Events
+								</Button>
 							</Link>
-							<Link href={'/dashboard/community'}>
+							{/* <Link href={'/dashboard/community'}>
 								<Button variant={'ghost'}>Community</Button>
-							</Link>
+							</Link> */}
 						</nav>
 					</section>
 				</section>

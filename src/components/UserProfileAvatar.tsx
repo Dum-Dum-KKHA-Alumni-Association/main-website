@@ -78,6 +78,12 @@ const UserProfileAvatar = () => {
 									</DropdownMenuItem> */}
 							<Link href={'/settings'}>
 								<DropdownMenuItem>
+									Edit Profile
+									{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
+								</DropdownMenuItem>
+							</Link>
+							<Link href={'/settings/account'}>
+								<DropdownMenuItem>
 									Settings
 									{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
 								</DropdownMenuItem>

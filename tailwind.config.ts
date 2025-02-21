@@ -69,6 +69,7 @@ export default {
 			fontFamily: {
 				sora: 'Sora, sans-serif',
 				'baloo-da-2': 'Baloo Da 2, serif',
+				inter: 'Inter, serif',
 			},
 			keyframes: {
 				'accordion-down': {

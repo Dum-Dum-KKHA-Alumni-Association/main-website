@@ -57,7 +57,8 @@ export default function SettingsProfilePage() {
 		defaultValues: fetchUserData,
 	});
 
-	const { watch } = form;
+	const { watch, getValues } = form;
+	console.log(getValues());
 
 	const madyamikYear = watch('madyamikYear');
 

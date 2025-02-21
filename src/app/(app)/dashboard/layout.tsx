@@ -1,3 +1,4 @@
+import AppFooter from '@/components/AppFooter';
 import AppNavbar from '@/components/AppNavbar';
 import { Metadata } from 'next';
 
@@ -12,9 +13,10 @@ interface SettingsLayoutProps {
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
 	return (
-		<main className="pt-0">
+		<main className="pt-0 font-inter">
 			<AppNavbar />
 			{children}
+			<AppFooter />
 		</main>
 	);
 }
