@@ -41,16 +41,21 @@ export default function SettingsAccountPage() {
 	const fetchUserData = async () => {
 		const token = await getToken();
 		const response = await axios(
-			`${process.env.NEXT_PUBLIC_API_URL}/user/profile`,
+			`${process.env.NEXT_PUBLIC_API_URL}/user/account`,
 			{
 				headers: {
 					Authorization: ` Bearer ${token}`,
 				},
 			}
 		);
-		const data = response.data;
+		const user = response.data.data;
+		console.log(response.data);
 
-		return data.data.user;
+		return {
+			membershipId: user.membershipId === null ? '' : user.membershipId,
+			email: user.email === null ? '' : user.email,
+			password: user.password === null ? '' : user.password,
+		};
 	};
 
 	// 1. Define your form.
@@ -88,28 +93,17 @@ export default function SettingsAccountPage() {
 							>
 								<FormField
 									control={form.control}
-									name="fullName"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Full Name</FormLabel>
-											<FormControl>
-												<Input placeholder="shadcn" {...field} />
-											</FormControl>
-											<FormDescription>
-												This is your public display name.
-											</FormDescription>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={form.control}
-									name="memberId"
+									name="membershipId"
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>Member Id</FormLabel>
 											<FormControl>
-												<Input placeholder="shadcn" {...field} />
+												<Input
+													type="text"
+													disabled
+													placeholder="shadcn"
+													{...field}
+												/>
 											</FormControl>
 											<FormDescription>
 												This is your public display name.
@@ -156,7 +150,7 @@ export default function SettingsAccountPage() {
 													<FormLabel>Password</FormLabel>
 													<FormControl>
 														<Input
-															type="email"
+															type="password"
 															placeholder="shadcn"
 															{...field}
 														/>
@@ -169,9 +163,9 @@ export default function SettingsAccountPage() {
 									</section>
 								</div>
 
-								{/* <Button type="submit" className="rounded-full p-5 text-base">
+								<Button type="submit" className="rounded-full p-5 text-base">
 									Submit
-								</Button> */}
+								</Button>
 							</form>
 						</Form>
 					</section>

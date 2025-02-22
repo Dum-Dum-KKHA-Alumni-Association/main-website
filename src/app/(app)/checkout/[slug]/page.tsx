@@ -10,11 +10,19 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useCheckoutStore } from '@/store/checkoutStore';
 
 import React from 'react';
 
 const BuyTicketPage = () => {
+	const ticket = useCheckoutStore((state) => state.ticket);
+	const items = useCheckoutStore((state) => state.items);
+	const subtotal = useCheckoutStore((state) => state.subtotal);
+	const payableAmount = useCheckoutStore((state) => state.payableAmount);
+
+	console.log(ticket);
+
+	// const addTicket = useCheckoutStore(state=>state.addTicket)
 	// const router = useRouter();
 	// // const slug = (await params).slug;
 	// const form = useForm<z.infer<typeof signupSchema>>({
@@ -67,7 +75,7 @@ const BuyTicketPage = () => {
 				<Separator className="my-6" />
 			</section>
 			<section className="mx-auto flex h-auto w-full max-w-6xl gap-6 px-5">
-				<Card className="w-full">
+				{/* <Card className="w-full">
 					<CardHeader className="rounded-t-md bg-primary text-white">
 						<CardTitle>Select Preferences</CardTitle>
 						<CardDescription className="text-white">
@@ -90,37 +98,53 @@ const BuyTicketPage = () => {
 							</TabsContent>
 						</Tabs>
 					</CardContent>
-				</Card>
-				<div className="flex h-fit w-[500px] flex-col gap-7">
+				</Card> */}
+				{/* <div className="flex h-fit w-[500px] flex-col gap-7"> */}
+				<div className="mx-auto flex h-fit w-[500px] flex-col gap-7">
 					<Card>
 						<CardHeader>
 							<CardTitle className="text-lg">Order Summary</CardTitle>
 							<CardDescription>Ticket Info</CardDescription>
 
+							<div className="w-full">
+								<div>
+									<h5>{ticket.eventName}</h5>
+								</div>
+							</div>
+
 							<Separator />
 						</CardHeader>
 						<CardContent className="space-y-2 text-sm">
 							<div className="flex w-full justify-between">
-								<span>Total Tickets</span>
-								<span>2</span>
+								<span>Total Tickets({ticket.quantity})</span>
+								<span>{ticket.quantity * ticket.price}</span>
 							</div>
-							<div className="flex w-full justify-between">
-								<span>Total Price</span>
-								<span>2</span>
+							<div className="flex w-full flex-col gap-2">
+								{items.map((item) => (
+									<div
+										key={item.itemName}
+										className="flex w-full justify-between"
+									>
+										<span>
+											{item.itemName}({item.quantity})
+										</span>
+										<span>{item.quantity * item.price}</span>
+									</div>
+								))}
 							</div>
 							<Separator />
 							<div className="flex w-full justify-between">
 								<span>Subtotal</span>
-								<span>2</span>
+								<span>{subtotal}</span>
 							</div>
 						</CardContent>
 						<CardFooter className="justify-between rounded-b-sm bg-yellow-200 p-6">
 							<span>Amount Payable</span>
-							<span className="text-bold">Rs.876</span>
+							<span className="text-bold">Rs.{payableAmount}</span>
 						</CardFooter>
 					</Card>
 					<Button size={'lg'} className="w-full justify-between">
-						<span>TOTAL: Rs.876</span>
+						<span>TOTAL: Rs.{payableAmount}</span>
 						<span>PROCEED</span>
 					</Button>
 				</div>

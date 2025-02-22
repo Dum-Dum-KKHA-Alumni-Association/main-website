@@ -1,45 +1,101 @@
 'use client';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from '@/components/ui/form';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from '@/components/ui/select';
 
 import { Separator } from '@/components/ui/separator';
+import { bookingPreferenceSchema } from '@/schemas/TicketSchema';
+import { useCheckoutStore } from '@/store/checkoutStore';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { z } from 'zod';
 
 const BuyTicketPage = () => {
 	// const slug = (await params).slug;
-	// const form = useForm<z.infer<typeof signupSchema>>({
-	// 	resolver: zodResolver(signupSchema),
-	// 	defaultValues: {},
-	// });
+	const addTicket = useCheckoutStore((state) => state.addTicket);
+	const addItem = useCheckoutStore((state) => state.addItem);
+	const router = useRouter();
 
-	// async function onSubmit(values: z.infer<typeof signupSchema>) {
-	// 	// Do something with the form values.
-	// 	// ✅ This will be type-safe and validated.
-	// 	console.log(values);
+	const form = useForm<z.infer<typeof bookingPreferenceSchema>>({
+		resolver: zodResolver(bookingPreferenceSchema),
+		defaultValues: {},
+	});
 
-	// 	try {
-	// 		// const response = await axios.post(
-	// 		// 	`${process.env.NEXT_PUBLIC_API_URL}/event/booking`,
-	// 		// 	values,
-	// 		// 	{
-	// 		// 		withCredentials: true,
-	// 		// 		headers: {
-	// 		// 			'Content-Type': 'application/json',
-	// 		// 		},
-	// 		// 	}
-	// 		// );
-	// 		// const data = response.data;
-	// 		// if (data.statusCode === 409) {
-	// 		// 	return toast.error(data.message);
-	// 		// }
-	// 		// console.log(data);
-	// 		// toast.success(data.message);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		toast.error('Error Happens, please try later!');
-	// 	}
-	// }
+	async function onSubmit(values: z.infer<typeof bookingPreferenceSchema>) {
+		// Do something with the form values.
+		// ✅ This will be type-safe and validated.
+		console.log(values);
+
+		try {
+			addTicket({
+				eventName: 'Remergencia',
+				quantity: values.ticketQuantity,
+				price: 323,
+			});
+			if (values.foodPreference === 'VEG') {
+				addItem({
+					itemName: 'VEG FOOD',
+					quantity: values.ticketQuantity,
+					price: 200,
+				});
+			} else {
+				addItem({
+					itemName: 'NONVEG FOOD',
+					quantity: values.ticketQuantity,
+					price: 200,
+				});
+			}
+			if (values.merchandise) {
+				addItem({
+					itemName: `T-shirt ${values.merchandise}`,
+					quantity: values.ticketQuantity,
+					price: 200,
+				});
+			}
+
+			router.push('/checkout/Remergencia');
+
+			// const response = await axios.post(
+			// 	`${process.env.NEXT_PUBLIC_API_URL}/event/booking`,
+			// 	values,
+			// 	{
+			// 		withCredentials: true,
+			// 		headers: {
+			// 			'Content-Type': 'application/json',
+			// 		},
+			// 	}
+			// );
+			// const data = response.data;
+			// if (data.statusCode === 409) {
+			// 	return toast.error(data.message);
+			// }
+			// console.log(data);
+			// toast.success(data.message);
+		} catch (error) {
+			console.log(error);
+			toast.error('Error Happens, please try later!');
+		}
+	}
 	return (
 		<section className="w-full">
 			<section className="w-full bg-white">
@@ -63,12 +119,12 @@ const BuyTicketPage = () => {
 						<CardTitle>Select Preferences</CardTitle>
 					</CardHeader>
 					<CardContent>
-						{/* <Form {...form}>
+						<Form {...form}>
 							<form onSubmit={form.handleSubmit(onSubmit)}>
 								<div className="flex flex-col gap-6">
 									<FormField
 										control={form.control}
-										name="size"
+										name="merchandise"
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>
@@ -128,7 +184,7 @@ const BuyTicketPage = () => {
 									/>
 									<FormField
 										control={form.control}
-										name="person"
+										name="ticketQuantity"
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>
@@ -137,7 +193,7 @@ const BuyTicketPage = () => {
 												</FormLabel>
 												<Select
 													onValueChange={field.onChange}
-													defaultValue={field.value}
+													defaultValue={String(field.value)}
 												>
 													<FormControl>
 														<SelectTrigger>
@@ -167,7 +223,7 @@ const BuyTicketPage = () => {
 									</Button>
 								</div>
 							</form>
-						</Form> */}
+						</Form>
 					</CardContent>
 				</Card>
 			</section>

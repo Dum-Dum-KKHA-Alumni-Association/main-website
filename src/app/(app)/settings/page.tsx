@@ -1,5 +1,7 @@
 'use client';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
 	Card,
 	CardContent,
@@ -18,6 +20,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/popover';
+import {
 	Select,
 	SelectContent,
 	SelectItem,
@@ -27,11 +34,16 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { generateYearArray } from '@/lib/generateYearArray';
 import { getToken } from '@/lib/getAccessToken';
+import { cn } from '@/lib/utils';
 import { profileFormSchema } from '@/schemas/SettingsSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
+
 import axios from 'axios';
+import { format } from 'date-fns';
+import { CalendarIcon, Image } from 'lucide-react';
 
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 
 import { z } from 'zod';
 
@@ -46,9 +58,30 @@ export default function SettingsProfilePage() {
 				},
 			}
 		);
-		const data = response.data;
+		const user = response.data.data;
 
-		return data.data.user;
+		return {
+			id: user.id,
+			fullName: user.fullName === null ? '' : user.fullName,
+			avatar: user.avatar,
+			madyamikYear: user.madyamikYear === null ? '' : user.madyamikYear,
+			higherSecondaryYear:
+				user.higherSecondaryYear === null ? '' : user.higherSecondaryYear,
+			primaryNumber: user.primaryNumber === null ? '' : user.primaryNumber,
+			whatsappNumber: user.whatsappNumber === null ? '' : user.whatsappNumber,
+			permanentAddress:
+				user.permanentAddress === null ? '' : user.permanentAddress,
+			deliveryAddress:
+				user.deliveryAddress === null ? '' : user.deliveryAddress,
+			dateOfBirth:
+				user.dateOfBirth === null ? new Date() : new Date(user.dateOfBirth),
+			bloodGroup: user.bloodGroup === null ? '' : user.bloodGroup,
+			occupation: user.occupation === null ? '' : user.occupation,
+			linkedin: user.linkedin === null ? '' : user.linkedin,
+			instagram: user.instagram === null ? '' : user.instagram,
+			twitter: user.twitter === null ? '' : user.twitter,
+			facebook: user.facebook === null ? '' : user.facebook,
+		};
 	};
 
 	// 1. Define your form.
@@ -57,16 +90,42 @@ export default function SettingsProfilePage() {
 		defaultValues: fetchUserData,
 	});
 
-	const { watch, getValues } = form;
-	console.log(getValues());
+	const {
+		watch,
+		// getValues,
+		formState: { isDirty },
+	} = form;
+	// console.log("Get values--->",getValues());
 
 	const madyamikYear = watch('madyamikYear');
 
+	// console.log('isDirty', isDirty);
 	// 2. Define a submit handler.
-	function onSubmit(values: z.infer<typeof profileFormSchema>) {
+	async function onSubmit(values: z.infer<typeof profileFormSchema>) {
+		const token = await getToken();
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+
+		console.log('API values', values);
+		try {
+			const response = await axios.put(
+				`${process.env.NEXT_PUBLIC_API_URL}/user/profile`,
+				values,
+				{
+					headers: {
+						Authorization: ` Bearer ${token}`,
+					},
+				}
+			);
+
+			const data = response.data;
+
+			console.log('API Updated Data===>', data);
+			toast.success('User Updated');
+		} catch (error) {
+			console.log(error);
+			toast.error('Error Happens!!!');
+		}
 	}
 	return (
 		<div className="relative space-y-6 border-red-500 bg-white p-10 pb-16 font-baloo-da-2 md:block">
@@ -85,7 +144,21 @@ export default function SettingsProfilePage() {
 								className="space-y-8"
 							>
 								<Card>
-									<CardHeader></CardHeader>
+									<CardHeader className="flex-row gap-7">
+										<Avatar className="h-20 w-20">
+											<AvatarImage src="https://github.com/shadcn.png" />
+											<AvatarFallback>CN</AvatarFallback>
+										</Avatar>
+										<section className="flex flex-col gap-3">
+											<div>
+												<Button className="p-3">
+													<Image />
+													Change Image
+												</Button>
+											</div>
+											<span className="text-sm">PNG, JPEG: 500 x 500 px</span>
+										</section>
+									</CardHeader>
 								</Card>
 								<FormField
 									control={form.control}
@@ -114,7 +187,7 @@ export default function SettingsProfilePage() {
 											</FormLabel>
 											<Select
 												onValueChange={field.onChange}
-												defaultValue={field.value}
+												value={field.value}
 											>
 												<FormControl>
 													<SelectTrigger>
@@ -145,7 +218,7 @@ export default function SettingsProfilePage() {
 											</FormLabel>
 											<Select
 												onValueChange={field.onChange}
-												defaultValue={field.value}
+												value={field.value}
 											>
 												<FormControl>
 													<SelectTrigger>
@@ -234,6 +307,104 @@ export default function SettingsProfilePage() {
 										</FormItem>
 									)}
 								/>
+								<FormField
+									control={form.control}
+									name="occupation"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>
+												<span className="text-red-600">*</span> Occupation
+											</FormLabel>
+											<FormControl>
+												<Input
+													placeholder="ex: Goverment Employee"
+													{...field}
+												/>
+											</FormControl>
+
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="dateOfBirth"
+									render={({ field }) => (
+										<FormItem className="mt-1 flex flex-col gap-1">
+											<FormLabel>
+												<span className="text-red-600">*</span> Date of birth
+											</FormLabel>
+											<Popover>
+												<PopoverTrigger asChild>
+													<FormControl>
+														<Button
+															variant={'outline'}
+															className={cn(
+																'w-full pl-3 text-left font-normal',
+																!field.value && 'text-muted-foreground'
+															)}
+														>
+															{field.value ? (
+																format(field.value, 'PPP')
+															) : (
+																<span>Pick a date</span>
+															)}
+															<CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+														</Button>
+													</FormControl>
+												</PopoverTrigger>
+												<PopoverContent className="w-auto p-0" align="start">
+													<Calendar
+														mode="single"
+														selected={field.value}
+														onSelect={field.onChange}
+														disabled={(date) =>
+															date > new Date() || date < new Date('1900-01-01')
+														}
+														initialFocus
+													/>
+												</PopoverContent>
+											</Popover>
+											{/* <DatePicker selected={field.value} onSelect={field.onChange} /> */}
+
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="bloodGroup"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>
+												<span className="text-red-600">*</span> Blood Group
+											</FormLabel>
+											<Select
+												onValueChange={field.onChange}
+												value={field.value}
+											>
+												<FormControl>
+													<SelectTrigger>
+														<SelectValue placeholder="Select your Blood group" />
+													</SelectTrigger>
+												</FormControl>
+												<SelectContent>
+													<SelectItem value={'A+'}>A+</SelectItem>
+													<SelectItem value={'A-'}>A-</SelectItem>
+													<SelectItem value={'B+'}>B+</SelectItem>
+													<SelectItem value={'B-'}>B-</SelectItem>
+													<SelectItem value={'AB+'}>AB+</SelectItem>
+													<SelectItem value={'AB-'}>AB-</SelectItem>
+													<SelectItem value={'O+'}>O+</SelectItem>
+													<SelectItem value={'O-'}>O+</SelectItem>
+													<SelectItem value={'NA'}>NA</SelectItem>
+												</SelectContent>
+											</Select>
+
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
 								<div>
 									<section className="flex flex-col space-y-2 py-6">
 										<div className="text-3xl font-semibold leading-none tracking-tight">
@@ -248,7 +419,7 @@ export default function SettingsProfilePage() {
 									<section className="space-y-6 py-6">
 										<FormField
 											control={form.control}
-											name="twitterUrl"
+											name="twitter"
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel>X/Twitter</FormLabel>
@@ -265,7 +436,7 @@ export default function SettingsProfilePage() {
 										/>
 										<FormField
 											control={form.control}
-											name="linkedinUrl"
+											name="linkedin"
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel>LinkedIn</FormLabel>
@@ -282,7 +453,7 @@ export default function SettingsProfilePage() {
 										/>
 										<FormField
 											control={form.control}
-											name="instagramUrl"
+											name="instagram"
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel>Instagram</FormLabel>
@@ -299,7 +470,7 @@ export default function SettingsProfilePage() {
 										/>
 										<FormField
 											control={form.control}
-											name="facebookUrl"
+											name="facebook"
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel>Facebook</FormLabel>
@@ -316,7 +487,15 @@ export default function SettingsProfilePage() {
 										/>
 									</section>
 								</div>
-								<Button type="submit">Submit</Button>
+								{isDirty && (
+									<div className="fixed bottom-8 flex w-[400px] items-center justify-between rounded-full border border-primary bg-background bg-white p-3">
+										<span>Save Changes</span>
+										<div className={'flex gap-3'}>
+											<Button type="submit">Save</Button>
+											<Button variant={'destructive'}>Discard</Button>
+										</div>
+									</div>
+								)}
 							</form>
 						</Form>
 					</section>

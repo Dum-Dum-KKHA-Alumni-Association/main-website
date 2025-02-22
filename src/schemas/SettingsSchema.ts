@@ -28,27 +28,42 @@ export const profileFormSchema = z.object({
 		required_error: 'A date of birth is required.',
 	}),
 	occupation: z.string().min(2).max(50),
-	linkedinUrl: z
+	linkedin: z
 		.string()
-		.url({ message: 'Please enter a valid URL.' })
-		.optional(),
-	instagramUrl: z
+		.url()
+		.refine((url) => url.startsWith('https://www.linkedin.com/'), {
+			message: 'Please enter a LinkedIn Profile valid URL.',
+		})
+		.optional()
+		.or(z.literal('')),
+	instagram: z
 		.string()
-		.url({ message: 'Please enter a valid URL.' })
-		.optional(),
-	twitterUrl: z
+		.url()
+		.refine((url) => url.startsWith('https://www.instagram.com/'), {
+			message: 'Please enter a Instagram Profile valid URL.',
+		})
+		.optional()
+		.or(z.literal('')),
+	twitter: z
 		.string()
-		.url({ message: 'Please enter a valid URL.' })
-		.optional(),
-	facebookUrl: z
+		.url()
+		.refine((url) => url.startsWith('https://x.com/'), {
+			message: 'Please enter a Twitter Profile valid URL.',
+		})
+		.optional()
+		.or(z.literal('')),
+	facebook: z
 		.string()
-		.url({ message: 'Please enter a valid URL.' })
-		.optional(),
+		.url()
+		.refine((url) => url.startsWith('https://www.facebook.com/profile.php'), {
+			message: 'Please enter a Facebook Profile valid URL.',
+		})
+		.optional()
+		.or(z.literal('')),
 });
 
 export const accountSchema = z.object({
-	fullName: z.string().min(2).max(50),
-	memberId: z.string().max(4),
+	membershipId: z.string().max(4),
 	email: z.coerce.string().email().min(5),
 	password: z.string().min(8),
 });
