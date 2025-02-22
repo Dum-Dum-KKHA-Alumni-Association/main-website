@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import {
 	Sheet,
 	SheetContent,
@@ -10,68 +10,18 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { ArrowUpRight, Menu } from 'lucide-react';
-import {
-	FaSquareWhatsapp,
-	FaSquareInstagram,
-	FaSquareXTwitter,
-} from 'react-icons/fa6';
-import { FaFacebookSquare } from 'react-icons/fa';
-import { IoLogoYoutube } from 'react-icons/io';
+import { Menu } from 'lucide-react';
 import logo from '../../public/logo.png';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from './ui/accordion';
+
 import { Separator } from './ui/separator';
 
 import UserProfileAvatar from './UserProfileAvatar';
 import { Button } from './ui/button';
 
-const socialPlatform: {
-	icon?: ReactNode;
-	title: string;
-	href: string;
-	description: string;
-}[] = [
-	{
-		icon: <FaSquareWhatsapp className="text-3xl text-green-400" />,
-		title: 'Whats App Community',
-		href: 'https://whatsapp.com/channel/0029VakxlQLIN9ikzx4JJo3E',
-		description: 'Follow our Official Whatsapp Channel',
-	},
-	{
-		icon: <FaFacebookSquare className="text-3xl text-blue-600" />,
-		title: 'Facebook ',
-		href: 'https://www.facebook.com/ddkkhaaaofficial',
-		description: 'Follow our Official Facebook Page',
-	},
-	{
-		icon: <IoLogoYoutube className="text-3xl text-red-600" />,
-		title: 'Youtube',
-		href: 'https://www.youtube.com/@ddkkhaaaofficial',
-		description: 'Subscribe our Official Youtube Channel;',
-	},
-	{
-		icon: <FaSquareInstagram className="text-3xl text-[#E1306C]" />,
-		title: 'Instagram',
-		href: 'https://www.instagram.com/ddkkhaaaofficial',
-		description: 'Follow our Official Instagram Page',
-	},
-	{
-		icon: <FaSquareXTwitter className="text-3xl text-black" />,
-		title: 'X.com (Twitter)',
-		href: 'https://x.com/ddkkhaaa',
-		description: 'Follow our Official Twitter Page',
-	},
-];
-
 const AppNavbar = () => {
 	return (
-		<header className="sticky top-0 w-full bg-white font-sora">
-			<section className="mx-auto flex h-[4rem] w-full items-center justify-between gap-3 px-5">
+		<header className="sticky top-0 z-50 w-full bg-white font-sora">
+			<section className="mx-auto flex h-[4rem] w-full items-center justify-between gap-3 border px-5">
 				<section className="flex w-full justify-start gap-2 lg:w-auto">
 					<Sheet>
 						<SheetTrigger className={'lg:hidden'}>
@@ -88,8 +38,8 @@ const AppNavbar = () => {
 											alt="Logo"
 											className="w-auto"
 										/>
-										<p className="flex flex-col items-start font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
-											Dum Dum K. K. Hindu Academy Alumni Association
+										<p className="flex flex-col items-start font-baloo-da-2 text-lg font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-2xl">
+											DDKKHAAA
 										</p>
 									</Link>
 								</SheetTitle>
@@ -97,36 +47,29 @@ const AppNavbar = () => {
 							</SheetHeader>
 
 							<div className="mt-3 flex w-full flex-1 flex-col items-start font-semibold">
-								<Link
+								{/* <Link
 									href={'/remergencia-2025'}
 									className="mb-5 flex h-[3rem] w-full items-center justify-center rounded-md bg-blue-950 text-white"
 								>
 									🎉 Reunion 2025 🎉
-								</Link>
-								<Link href={'/'} className="w-full border-b py-2">
+								</Link> */}
+								<Link href={'/dashboard'} className="w-full border-b py-2">
 									Home
 								</Link>
-								<Link href={'/about'} className="w-full border-b py-2">
-									About Us
-								</Link>
-								<Link href={'/our-initiative'} className="w-full border-b py-2">
-									Initiatives
-								</Link>
 								<Link
-									href={'/remergencia-2025'}
+									href={'/dashboard/events'}
 									className="w-full border-b py-2"
 								>
-									ReMergencia 2025
+									Events
 								</Link>
 								<Link
-									href={'https://ddkkhaaa.blogspot.com'}
-									target={'_blank'}
+									href={'/dashboard/communities'}
 									className="w-full border-b py-2"
 								>
-									Magazine
+									Communities
 								</Link>
 
-								<Accordion type="single" collapsible className="w-full">
+								{/* <Accordion type="single" collapsible className="w-full">
 									<AccordionItem value="item-1">
 										<AccordionTrigger className="w-full py-2 text-base font-semibold">
 											Community
@@ -146,9 +89,9 @@ const AppNavbar = () => {
 											))}
 										</AccordionContent>
 									</AccordionItem>
-								</Accordion>
+								</Accordion> */}
 
-								<Link href={'/gallery'} className="w-full border-b py-2">
+								{/* <Link href={'/gallery'} className="w-full border-b py-2">
 									Gallery
 								</Link>
 								<Link href={'/videos'} className="w-full border-b py-2">
@@ -159,7 +102,7 @@ const AppNavbar = () => {
 								</Link>
 								<Link href={'/contact'} className="w-full border-b py-2">
 									Contact
-								</Link>
+								</Link> */}
 							</div>
 						</SheetContent>
 					</Sheet>
@@ -178,7 +121,7 @@ const AppNavbar = () => {
 							</div>
 						</Link>
 						<Separator orientation={'vertical'} className="py-2" />
-						<nav className="flex h-full items-center gap-2">
+						<nav className="hidden h-full items-center gap-2 md:flex">
 							<Link href={'/dashboard'}>
 								<Button variant={'ghost'} className="text-primary">
 									Home
@@ -195,7 +138,6 @@ const AppNavbar = () => {
 						</nav>
 					</section>
 				</section>
-
 				<UserProfileAvatar />
 			</section>
 			<Separator />

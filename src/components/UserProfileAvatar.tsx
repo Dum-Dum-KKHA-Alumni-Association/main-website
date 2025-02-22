@@ -17,6 +17,16 @@ import { LogOut } from 'lucide-react';
 // For client-side usage
 import { getCookie } from 'cookies-next/client';
 import axios from 'axios';
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from './ui/drawer';
 const UserProfileAvatar = () => {
 	const token = getCookie('access_token', { httpOnly: false });
 	console.log('Account Token', token);
@@ -40,95 +50,119 @@ const UserProfileAvatar = () => {
 	};
 
 	return (
-		<section className="hidden gap-3 md:flex">
+		<section className="gap-3 md:flex">
 			{token ? (
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Avatar>
-							<AvatarImage src="https://github.com/shadcn.png" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-					</DropdownMenuTrigger>
-					<DropdownMenuContent align={'end'} className="w-72">
-						<DropdownMenuLabel className="flex w-full items-center gap-2">
-							<Avatar className="h-12 w-12">
+				<>
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild className={'hidden md:flex'}>
+							<Avatar>
 								<AvatarImage src="https://github.com/shadcn.png" />
 								<AvatarFallback>CN</AvatarFallback>
 							</Avatar>
-							<div className="flex flex-col">
-								<span className="font-sora text-base font-medium">
-									TEJODEEP MITRA ROY
-								</span>
-								<span className="font-sora text-sm font-light">
-									mId:3389209090232
-								</span>
-							</div>
-						</DropdownMenuLabel>
-						<DropdownMenuSeparator />
-						<DropdownMenuGroup>
-							<Link href={'/dashboard'}>
-								<DropdownMenuItem>
-									Dashboard
-									{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
-								</DropdownMenuItem>
-							</Link>
-							{/* <DropdownMenuItem>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align={'end'} className="w-72">
+							<DropdownMenuLabel className="flex w-full items-center gap-2">
+								<Avatar className="h-12 w-12">
+									<AvatarImage src="https://github.com/shadcn.png" />
+									<AvatarFallback>CN</AvatarFallback>
+								</Avatar>
+								<div className="flex flex-col">
+									<span className="font-sora text-base font-medium">
+										TEJODEEP MITRA ROY
+									</span>
+									<span className="font-sora text-sm font-light">
+										mId:3389209090232
+									</span>
+								</div>
+							</DropdownMenuLabel>
+							<DropdownMenuSeparator />
+							<DropdownMenuGroup>
+								<Link href={'/dashboard'}>
+									<DropdownMenuItem>
+										Dashboard
+										{/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
+									</DropdownMenuItem>
+								</Link>
+								{/* <DropdownMenuItem>
 										Billing
 										<DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
 									</DropdownMenuItem> */}
-							<Link href={'/settings'}>
-								<DropdownMenuItem>
-									Edit Profile
-									{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
-								</DropdownMenuItem>
-							</Link>
-							<Link href={'/settings/account'}>
-								<DropdownMenuItem>
-									Settings
-									{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
-								</DropdownMenuItem>
-							</Link>
-							{/* <DropdownMenuItem>
+								<Link href={'/settings'}>
+									<DropdownMenuItem>
+										Edit Profile
+										{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
+									</DropdownMenuItem>
+								</Link>
+								<Link href={'/settings/account'}>
+									<DropdownMenuItem>
+										Settings
+										{/* <DropdownMenuShortcut>⌘S</DropdownMenuShortcut> */}
+									</DropdownMenuItem>
+								</Link>
+								{/* <DropdownMenuItem>
 										Keyboard shortcuts
 										<DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-									</DropdownMenuItem> */}
-						</DropdownMenuGroup>
-						{/* <DropdownMenuSeparator />
+										</DropdownMenuItem> */}
+							</DropdownMenuGroup>
+							{/* <DropdownMenuSeparator />
 								<DropdownMenuGroup className='space-y-2'>
-									<DropdownMenuItem>Team</DropdownMenuItem>
-									<DropdownMenuSub>
-										<DropdownMenuSubTrigger>
-											Invite users
-										</DropdownMenuSubTrigger>
-										<DropdownMenuPortal>
-											<DropdownMenuSubContent>
-												<DropdownMenuItem>Email</DropdownMenuItem>
-												<DropdownMenuItem>Message</DropdownMenuItem>
-												<DropdownMenuSeparator />
-												<DropdownMenuItem>More...</DropdownMenuItem>
-											</DropdownMenuSubContent>
-										</DropdownMenuPortal>
+								<DropdownMenuItem>Team</DropdownMenuItem>
+								<DropdownMenuSub>
+								<DropdownMenuSubTrigger>
+								Invite users
+								</DropdownMenuSubTrigger>
+								<DropdownMenuPortal>
+								<DropdownMenuSubContent>
+								<DropdownMenuItem>Email</DropdownMenuItem>
+								<DropdownMenuItem>Message</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem>More...</DropdownMenuItem>
+								</DropdownMenuSubContent>
+								</DropdownMenuPortal>
 									</DropdownMenuSub>
 									<DropdownMenuItem>
 										New Team
 										<DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-									</DropdownMenuItem>
-								</DropdownMenuGroup> */}
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>GitHub</DropdownMenuItem>
-						<DropdownMenuItem>Support</DropdownMenuItem>
-						<DropdownMenuItem disabled>API</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem
-							onClick={() => logOutHandle()}
-							className="text-destructive hover:text-destructive"
-						>
-							<LogOut />
-							Log out
-							{/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
+										</DropdownMenuItem>
+										</DropdownMenuGroup> */}
+							<DropdownMenuSeparator />
+							<DropdownMenuItem>GitHub</DropdownMenuItem>
+							<DropdownMenuItem>Support</DropdownMenuItem>
+							<DropdownMenuItem disabled>API</DropdownMenuItem>
+							<DropdownMenuSeparator />
+							<DropdownMenuItem
+								onClick={() => logOutHandle()}
+								className="text-destructive hover:text-destructive"
+							>
+								<LogOut />
+								Log out
+								{/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+					<Drawer>
+						<DrawerTrigger asChild className={'flex md:hidden'}>
+							<Avatar>
+								<AvatarImage src="https://github.com/shadcn.png" />
+								<AvatarFallback>CN</AvatarFallback>
+							</Avatar>
+						</DrawerTrigger>
+						<DrawerContent>
+							<DrawerHeader>
+								<DrawerTitle>Are you absolutely sure?</DrawerTitle>
+								<DrawerDescription>
+									This action cannot be undone.
+								</DrawerDescription>
+							</DrawerHeader>
+							<DrawerFooter>
+								<Button>Submit</Button>
+								<DrawerClose>
+									<Button variant="outline">Cancel</Button>
+								</DrawerClose>
+							</DrawerFooter>
+						</DrawerContent>
+					</Drawer>
+				</>
 			) : (
 				<>
 					{/* <Link href={'/sign-in'}>
