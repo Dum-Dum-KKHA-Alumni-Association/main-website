@@ -46,7 +46,6 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { motion } from 'motion/react';
 import { useAnimation } from 'motion/react';
 import { Button } from './ui/button';
-import UserProfileAvatar from './UserProfileAvatar';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -271,12 +270,12 @@ const Navbar = () => {
 								</SheetHeader>
 
 								<div className="mt-3 flex w-full flex-1 flex-col items-start font-semibold">
-									<Link
+									{/* <Link
 										href={'/remergencia-2025'}
 										className="mb-5 flex h-[3rem] w-full items-center justify-center rounded-md bg-blue-950 text-white"
 									>
 										🎉 Reunion 2025 🎉
-									</Link>
+									</Link> */}
 									<Link href={'/'} className="w-full border-b py-2">
 										Home
 									</Link>
@@ -289,12 +288,12 @@ const Navbar = () => {
 									>
 										Initiatives
 									</Link>
-									<Link
+									{/* <Link
 										href={'/remergencia-2025'}
 										className="w-full border-b py-2"
 									>
 										ReMergencia 2025
-									</Link>
+									</Link> */}
 									<Link
 										href={'https://ddkkhaaa.blogspot.com'}
 										target={'_blank'}
@@ -351,7 +350,13 @@ const Navbar = () => {
 						</Sheet>
 					</section>
 
-					<UserProfileAvatar />
+					{/* <UserProfileAvatar /> */}
+					<Link href={'/sign-in'}>
+						<Button className="bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700]">
+							{' '}
+							Log in
+						</Button>
+					</Link>
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
@@ -380,7 +385,7 @@ const Navbar = () => {
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem> */}
-							<NavigationMenuItem>
+							{/* <NavigationMenuItem>
 								<Link href="/remergencia-2025" legacyBehavior passHref>
 									<NavigationMenuLink
 										className={
@@ -391,7 +396,7 @@ const Navbar = () => {
 										<span>ReMergencia 2025</span>
 									</NavigationMenuLink>
 								</Link>
-							</NavigationMenuItem>
+							</NavigationMenuItem> */}
 
 							{/* <NavigationMenuItem>
 								<NavigationMenuTrigger>

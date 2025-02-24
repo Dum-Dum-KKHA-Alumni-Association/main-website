@@ -8,7 +8,7 @@ import { sanityFetch } from '@/sanity/lib/client';
 import { HOMEPAGE_QUERY } from '@/sanity/actions/queries';
 import { HomePage } from '@/types/sanity';
 import VideosSection from './Videos';
-import RegistrationBanner from './RegistrationBanner';
+// import RegistrationBanner from './RegistrationBanner';
 
 export default async function Home() {
 	const homePageData = await sanityFetch<HomePage>({ query: HOMEPAGE_QUERY });
@@ -17,10 +17,10 @@ export default async function Home() {
 		<main>
 			<Navbar />
 			<HeroSection hero={homePageData.hero!} />
-			<RegistrationBanner
+			{/* <RegistrationBanner
 				heading={'ReMergencia 2025'}
 				url={'/remergencia-2025'}
-			/>
+			/> */}
 			<AboutSection />
 			{/* <Banner /> */}
 			<InitiativeSection />

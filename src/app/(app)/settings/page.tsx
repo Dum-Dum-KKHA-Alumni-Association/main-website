@@ -33,55 +33,63 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { generateYearArray } from '@/lib/generateYearArray';
-import { getToken } from '@/lib/getAccessToken';
 import { cn } from '@/lib/utils';
 import { profileFormSchema } from '@/schemas/SettingsSchema';
+import { getUser, updateUserDetails } from '@/utils/apis/user-apis';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import axios from 'axios';
 import { format } from 'date-fns';
 import { CalendarIcon, Image } from 'lucide-react';
-
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-
 import { z } from 'zod';
 
 export default function SettingsProfilePage() {
 	const fetchUserData = async () => {
-		const token = await getToken();
-		const response = await axios(
-			`${process.env.NEXT_PUBLIC_API_URL}/user/profile`,
-			{
-				headers: {
-					Authorization: ` Bearer ${token}`,
-				},
-			}
-		);
-		const user = response.data.data;
+		const user = await getUser();
+		console.log(user);
 
-		return {
-			id: user.id,
-			fullName: user.fullName === null ? '' : user.fullName,
-			avatar: user.avatar,
-			madyamikYear: user.madyamikYear === null ? '' : user.madyamikYear,
-			higherSecondaryYear:
-				user.higherSecondaryYear === null ? '' : user.higherSecondaryYear,
-			primaryNumber: user.primaryNumber === null ? '' : user.primaryNumber,
-			whatsappNumber: user.whatsappNumber === null ? '' : user.whatsappNumber,
-			permanentAddress:
-				user.permanentAddress === null ? '' : user.permanentAddress,
-			deliveryAddress:
-				user.deliveryAddress === null ? '' : user.deliveryAddress,
-			dateOfBirth:
-				user.dateOfBirth === null ? new Date() : new Date(user.dateOfBirth),
-			bloodGroup: user.bloodGroup === null ? '' : user.bloodGroup,
-			occupation: user.occupation === null ? '' : user.occupation,
-			linkedin: user.linkedin === null ? '' : user.linkedin,
-			instagram: user.instagram === null ? '' : user.instagram,
-			twitter: user.twitter === null ? '' : user.twitter,
-			facebook: user.facebook === null ? '' : user.facebook,
-		};
+		if (user) {
+			return {
+				id: user.id,
+				fullName: user.fullName === null ? '' : user.fullName,
+				avatar: user.avatar,
+				madyamikYear: user.madyamikYear === null ? '' : user.madyamikYear,
+				higherSecondaryYear:
+					user.higherSecondaryYear === null ? '' : user.higherSecondaryYear,
+				primaryNumber: user.primaryNumber === null ? '' : user.primaryNumber,
+				whatsappNumber: user.whatsappNumber === null ? '' : user.whatsappNumber,
+				permanentAddress:
+					user.permanentAddress === null ? '' : user.permanentAddress,
+				deliveryAddress:
+					user.deliveryAddress === null ? '' : user.deliveryAddress,
+				dateOfBirth:
+					user.dateOfBirth === null ? new Date() : new Date(user.dateOfBirth),
+				bloodGroup: user.bloodGroup === null ? '' : user.bloodGroup,
+				occupation: user.occupation === null ? '' : user.occupation,
+				linkedin: user.linkedin === null ? '' : user.linkedin,
+				instagram: user.instagram === null ? '' : user.instagram,
+				twitter: user.twitter === null ? '' : user.twitter,
+				facebook: user.facebook === null ? '' : user.facebook,
+			};
+		} else {
+			return {
+				id: '',
+				fullName: '',
+				avatar: '',
+				madyamikYear: '',
+				higherSecondaryYear: '',
+				primaryNumber: '',
+				whatsappNumber: '',
+				permanentAddress: '',
+				deliveryAddress: '',
+				dateOfBirth: new Date(),
+				bloodGroup: '',
+				occupation: '',
+				linkedin: '',
+				instagram: '',
+				twitter: '',
+				facebook: '',
+			};
+		}
 	};
 
 	// 1. Define your form.
@@ -102,30 +110,7 @@ export default function SettingsProfilePage() {
 	// console.log('isDirty', isDirty);
 	// 2. Define a submit handler.
 	async function onSubmit(values: z.infer<typeof profileFormSchema>) {
-		const token = await getToken();
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
-
-		console.log('API values', values);
-		try {
-			const response = await axios.put(
-				`${process.env.NEXT_PUBLIC_API_URL}/user/profile`,
-				values,
-				{
-					headers: {
-						Authorization: ` Bearer ${token}`,
-					},
-				}
-			);
-
-			const data = response.data;
-
-			console.log('API Updated Data===>', data);
-			toast.success('User Updated');
-		} catch (error) {
-			console.log(error);
-			toast.error('Error Happens!!!');
-		}
+		await updateUserDetails(values);
 	}
 	return (
 		<div className="relative space-y-6 border-red-500 bg-white p-10 pb-16 font-baloo-da-2 md:block">

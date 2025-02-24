@@ -11,7 +11,7 @@ interface SettingsLayoutProps {
 	children: React.ReactNode;
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default function DashboardLayout({ children }: SettingsLayoutProps) {
 	return (
 		<main className="pt-0 font-inter">
 			<AppNavbar />

@@ -29,33 +29,32 @@ import {
 import { Input } from '@/components/ui/input';
 
 import { Separator } from '@/components/ui/separator';
-import { getToken } from '@/lib/getAccessToken';
+
 import { accountSchema } from '@/schemas/SettingsSchema';
+import { getUserAccount } from '@/utils/apis/user-apis';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
 
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 export default function SettingsAccountPage() {
 	const fetchUserData = async () => {
-		const token = await getToken();
-		const response = await axios(
-			`${process.env.NEXT_PUBLIC_API_URL}/user/account`,
-			{
-				headers: {
-					Authorization: ` Bearer ${token}`,
-				},
-			}
-		);
-		const user = response.data.data;
-		console.log(response.data);
+		const user = await getUserAccount();
+		console.log(user);
 
-		return {
-			membershipId: user.membershipId === null ? '' : user.membershipId,
-			email: user.email === null ? '' : user.email,
-			password: user.password === null ? '' : user.password,
-		};
+		if (user) {
+			return {
+				membershipId: user.membershipId === null ? '' : user.membershipId,
+				email: user.email === null ? '' : user.email,
+				password: user.password === null ? '' : user.password,
+			};
+		} else {
+			return {
+				membershipId: '',
+				email: '',
+				password: '',
+			};
+		}
 	};
 
 	// 1. Define your form.

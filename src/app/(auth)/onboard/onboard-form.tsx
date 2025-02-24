@@ -44,27 +44,16 @@ import { cn } from '@/lib/utils';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { onboardSchema } from '@/schemas/AuthenticationSchema';
-import { getToken } from '@/lib/getAccessToken';
+
 import { useRouter } from 'next/navigation';
+import { getToken } from '@/utils/auth';
+import { onboardUser } from '@/utils/apis/user-apis';
 
 const OnboardProcessForm = () => {
 	const [previousStep, setPreviousStep] = useState<number>(0);
 	const [currentStep, setCurrentStep] = useState<number>(0);
 	const router = useRouter();
 	const delta = currentStep - previousStep;
-
-	const isOnboarded = useCallback(async () => {
-		const token = await getToken();
-		await axios(`${process.env.NEXT_PUBLIC_API_URL}/user/isOnboarded`, {
-			headers: {
-				Authorization: ` Bearer ${token}`,
-			},
-		});
-	}, []);
-
-	useEffect(() => {
-		isOnboarded();
-	}, [isOnboarded]);
 
 	useEffect(() => {
 		if (
@@ -161,7 +150,6 @@ const OnboardProcessForm = () => {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log('FormValues----->', values);
-		const token = await getToken();
 
 		const eventValue = {
 			madyamikYear: values.madyamikYear,
@@ -177,24 +165,7 @@ const OnboardProcessForm = () => {
 		console.log(eventValue);
 
 		try {
-			const data = await toast.promise(
-				axios.post(
-					`${process.env.NEXT_PUBLIC_API_URL}/user/onboard`,
-					eventValue,
-					{
-						headers: {
-							Authorization: ` Bearer ${token}`,
-							'Content-Type': 'application/json',
-						},
-					}
-				),
-				{
-					loading: 'Loading',
-					success: 'Form Submitted Successfully',
-					error: 'Error while Submitting',
-				}
-			);
-
+			const data = await onboardUser(eventValue);
 			console.log(data);
 			localStorage.setItem('onboarded', 'true');
 			router.push('/dashboard');

@@ -19,6 +19,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
+import logo from '../../../../public/logo.png';
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -66,14 +67,26 @@ export default function LoginPage() {
 								>
 									<div className="w-full p-6 md:p-8">
 										<div className="flex w-full flex-col gap-6">
-											<div className="flex w-full flex-col items-center text-center">
-												<h1 className="text-2xl font-bold">Welcome back</h1>
+											<div className="flex w-full flex-col items-center gap-5 text-center">
+												<h1 className="flex items-center gap-4 text-2xl font-bold">
+													<Image
+														src={logo}
+														height={0}
+														width={40}
+														alt="Logo"
+														className="w-auto"
+														priority={true}
+													/>
+													<div className="flex flex-col font-baloo-da-2 text-sm font-bold leading-tight antialiased md:flex-row md:gap-2 md:text-lg lg:text-2xl">
+														<span>DDKKHAAA</span>
+													</div>
+												</h1>
 												<p className="text-balance text-muted-foreground">
 													Login to your DDKKHAAA account
 												</p>
 											</div>
 
-											<div className="mt-6 grid grid-cols-1 gap-4">
+											<div className="grid grid-cols-1 gap-4">
 												<Link
 													href={`${process.env.NEXT_PUBLIC_API_URL}/auth/google`}
 												>
@@ -136,11 +149,22 @@ export default function LoginPage() {
 												)}
 											/> */}
 
-											<Button type="submit" className="w-full rounded-full">
+											<Button
+												type="submit"
+												size={'lg'}
+												className="w-full rounded-full"
+											>
 												Login
 											</Button>
 
-											<div className="flex flex-col gap-2 text-center text-sm">
+											<div className="flex flex-col gap-2 text-center font-inter text-sm">
+												<div>
+													By logging in or signing up using the options above,
+													you agree to Hashnode&apos;s Terms & Conditions and
+													Privacy Policy
+												</div>
+											</div>
+											{/* <div className="flex flex-col gap-2 text-center text-sm">
 												<div>
 													Don&apos;t have an account?{' '}
 													<Link
@@ -159,7 +183,7 @@ export default function LoginPage() {
 														forget password
 													</Link>
 												</div>
-											</div>
+											</div> */}
 										</div>
 									</div>
 								</form>

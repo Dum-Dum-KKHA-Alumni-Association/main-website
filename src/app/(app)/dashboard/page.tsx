@@ -1,3 +1,4 @@
+'use client';
 import {
 	Card,
 	CardContent,
@@ -8,10 +9,25 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { PencilLine } from 'lucide-react';
 
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import EventCard from './components/EventCard';
+import { isUserOnboarded } from '@/utils/apis/user-apis';
+import { useRouter } from 'next/navigation';
 
-const page = () => {
+const DashboardPage = () => {
+	const router = useRouter();
+	const isOnboarded = useCallback(async () => {
+		const data = await isUserOnboarded();
+		console.log('onboard data', data);
+
+		if (!data) {
+			router.push('/onboard');
+		}
+	}, [router]);
+
+	useEffect(() => {
+		isOnboarded();
+	}, [isOnboarded]);
 	return (
 		<section className="w-full">
 			<section className="mx-auto flex h-auto w-full max-w-5xl flex-1 flex-col px-5 md:px-10">
@@ -96,4 +112,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default DashboardPage;

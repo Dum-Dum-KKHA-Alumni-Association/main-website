@@ -138,6 +138,7 @@ const AppNavbar = () => {
 						</nav>
 					</section>
 				</section>
+
 				<UserProfileAvatar />
 			</section>
 			<Separator />
