@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: 'https',
+				hostname: 'www.ddkkhaaa.org',
+			},
+			{
+				protocol: 'https',
 				hostname: 'cdn.sanity.io',
 				pathname: `/images/**`,
 			},

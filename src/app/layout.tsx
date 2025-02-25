@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'react-hot-toast';
 import TanstackProvider from '@/lib/provider/tanstack-provider';
 import MiniSideCallout from '@/components/MiniSideCallout';
@@ -22,20 +21,11 @@ export default function RootLayout({
 				gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
 			/>
 			<body>
-				<ClerkProvider
-					appearance={{
-						elements: {
-							formButtonPrimary:
-								'bg-primary hover:bg-[#f3f4f6] hover:text-black',
-						},
-					}}
-				>
-					<TanstackProvider>
-						{children}
-						<MiniSideCallout />
-					</TanstackProvider>
-					<Toaster />
-				</ClerkProvider>
+				<TanstackProvider>
+					{children}
+					<MiniSideCallout />
+				</TanstackProvider>
+				<Toaster />
 			</body>
 		</html>
 	);
