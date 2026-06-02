@@ -11,7 +11,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { ArrowUpRight, Menu } from 'lucide-react';
+import {  Menu } from 'lucide-react';
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -36,12 +36,7 @@ import {
 import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoInstagram, IoLogoYoutube } from 'react-icons/io';
 import logo from '../../public/logo.png';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from './ui/accordion';
+
 import { MdOutlineEmail } from 'react-icons/md';
 import { motion } from 'motion/react';
 import { useAnimation } from 'motion/react';
@@ -302,7 +297,7 @@ const Navbar = () => {
 										Magazine
 									</Link>
 
-									<Accordion type="single" collapsible className="w-full">
+									{/* <Accordion type="single" collapsible className="w-full">
 										<AccordionItem value="item-1">
 											<AccordionTrigger className="w-full py-2 text-base font-semibold">
 												Community
@@ -322,7 +317,7 @@ const Navbar = () => {
 												))}
 											</AccordionContent>
 										</AccordionItem>
-									</Accordion>
+									</Accordion> */}
 
 									<Link href={'/gallery'} className="w-full border-b py-2">
 										Gallery
@@ -351,12 +346,12 @@ const Navbar = () => {
 					</section>
 
 					{/* <UserProfileAvatar /> */}
-					<Link href={'/sign-in'}>
+					{/* <Link href={'/sign-in'}>
 						<Button className="bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700]">
 							{' '}
 							Log in
 						</Button>
-					</Link>
+					</Link> */}
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
