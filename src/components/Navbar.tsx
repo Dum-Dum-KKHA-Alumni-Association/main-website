@@ -11,7 +11,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import { ArrowUpRight, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -36,12 +36,7 @@ import {
 import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoInstagram, IoLogoYoutube } from 'react-icons/io';
 import logo from '../../public/logo.png';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from './ui/accordion';
+
 import { MdOutlineEmail } from 'react-icons/md';
 import { motion } from 'motion/react';
 import { useAnimation } from 'motion/react';
@@ -280,12 +275,9 @@ const Navbar = () => {
 										Home
 									</Link>
 									<Link href={'/about'} className="w-full border-b py-2">
-										About Us
+										About
 									</Link>
-									<Link
-										href={'/our-initiative'}
-										className="w-full border-b py-2"
-									>
+									<Link href={'/initiatives'} className="w-full border-b py-2">
 										Initiatives
 									</Link>
 									{/* <Link
@@ -302,7 +294,7 @@ const Navbar = () => {
 										Magazine
 									</Link>
 
-									<Accordion type="single" collapsible className="w-full">
+									{/* <Accordion type="single" collapsible className="w-full">
 										<AccordionItem value="item-1">
 											<AccordionTrigger className="w-full py-2 text-base font-semibold">
 												Community
@@ -322,7 +314,7 @@ const Navbar = () => {
 												))}
 											</AccordionContent>
 										</AccordionItem>
-									</Accordion>
+									</Accordion> */}
 
 									<Link href={'/gallery'} className="w-full border-b py-2">
 										Gallery
@@ -339,22 +331,27 @@ const Navbar = () => {
 									<Link href={'/contact'} className="w-full border-b py-2">
 										Contact
 									</Link>
+									<Link href={'/donation'} className="w-full border-b py-2">
+										Donation
+									</Link>
 								</div>
 
 								<SheetFooter className="mt-10">
-									<Button className="w-full bg-[#FFD700]" variant={'outline'}>
-										Join in
-									</Button>
+									<Link href={'/registration'}>
+										<Button className="w-full bg-[#FFD700]" variant={'outline'}>
+											Registration
+										</Button>
+									</Link>
 								</SheetFooter>
 							</SheetContent>
 						</Sheet>
 					</section>
 
 					{/* <UserProfileAvatar /> */}
-					<Link href={'/sign-in'}>
-						<Button className="bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700]">
+					<Link href={'/registration'}>
+						<Button className="hidden bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700] md:block">
 							{' '}
-							Log in
+							Registration
 						</Button>
 					</Link>
 				</section>
@@ -366,12 +363,12 @@ const Navbar = () => {
 							<NavigationMenuItem>
 								<Link href="/about" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										About Us
+										About
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link href="/our-initiative" legacyBehavior passHref>
+								<Link href="/initiatives" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Initiatives
 									</NavigationMenuLink>
@@ -521,6 +518,13 @@ const Navbar = () => {
 								<Link href="/contact" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Contact
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<Link href="/donation" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Donation
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>

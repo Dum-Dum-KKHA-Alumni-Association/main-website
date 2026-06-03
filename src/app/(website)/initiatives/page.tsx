@@ -30,7 +30,7 @@ const OurInitiativePage = async () => {
 	function sortByISOString(arr: Gallery[]) {
 		return arr.sort(
 			(a, b) =>
-				new Date(b.publishedAt!).getTime() - new Date(a.publishedAt!).getTime()
+				new Date(a.publishedAt!).getTime() - new Date(b.publishedAt!).getTime()
 		);
 	}
 	return (
