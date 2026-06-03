@@ -11,7 +11,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from './ui/sheet';
-import {  Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -275,12 +275,9 @@ const Navbar = () => {
 										Home
 									</Link>
 									<Link href={'/about'} className="w-full border-b py-2">
-										About Us
+										About
 									</Link>
-									<Link
-										href={'/our-initiative'}
-										className="w-full border-b py-2"
-									>
+									<Link href={'/initiatives'} className="w-full border-b py-2">
 										Initiatives
 									</Link>
 									{/* <Link
@@ -334,24 +331,29 @@ const Navbar = () => {
 									<Link href={'/contact'} className="w-full border-b py-2">
 										Contact
 									</Link>
+									<Link href={'/donation'} className="w-full border-b py-2">
+										Donation
+									</Link>
 								</div>
 
 								<SheetFooter className="mt-10">
-									<Button className="w-full bg-[#FFD700]" variant={'outline'}>
-										Join in
-									</Button>
+									<Link href={'/registration'}>
+										<Button className="w-full bg-[#FFD700]" variant={'outline'}>
+											Registration
+										</Button>
+									</Link>
 								</SheetFooter>
 							</SheetContent>
 						</Sheet>
 					</section>
 
 					{/* <UserProfileAvatar /> */}
-					{/* <Link href={'/sign-in'}>
-						<Button className="bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700]">
+					<Link href={'/registration'}>
+						<Button className="hidden bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700] md:block">
 							{' '}
-							Log in
+							Registration
 						</Button>
-					</Link> */}
+					</Link>
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
@@ -361,12 +363,12 @@ const Navbar = () => {
 							<NavigationMenuItem>
 								<Link href="/about" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										About Us
+										About
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link href="/our-initiative" legacyBehavior passHref>
+								<Link href="/initiatives" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Initiatives
 									</NavigationMenuLink>
@@ -516,6 +518,13 @@ const Navbar = () => {
 								<Link href="/contact" legacyBehavior passHref>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Contact
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<Link href="/donation" legacyBehavior passHref>
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Donation
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>

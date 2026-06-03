@@ -42,7 +42,7 @@ const AboutSection = () => {
 				>
 					<Clock size={45} />
 
-					<span className="my-2 text-5xl font-medium">92</span>
+					<span className="my-2 text-5xl font-medium">93</span>
 					<span className="text-lg">Years of Legacy</span>
 				</motion.section>
 				<motion.section
