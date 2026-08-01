@@ -337,9 +337,9 @@ const Navbar = () => {
 								</div>
 
 								<SheetFooter className="mt-10">
-									<Link href={'/registration'}>
-										<Button className="w-full bg-[#FFD700]" variant={'outline'}>
-											Registration
+									<Link href={'/uttoron2026_photos'}>
+										<Button className="w-full font-bold bg-[#FFD700]" variant={'outline'}>
+											📸 Uttoron 2026 Photos
 										</Button>
 									</Link>
 								</SheetFooter>
@@ -348,10 +348,10 @@ const Navbar = () => {
 					</section>
 
 					{/* <UserProfileAvatar /> */}
-					<Link href={'/registration'}>
+					<Link href={'/uttoron2026_photos'}>
 						<Button className="hidden bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700] md:block">
 							{' '}
-							Registration
+							Uttoron 2026 Photos
 						</Button>
 					</Link>
 				</section>
