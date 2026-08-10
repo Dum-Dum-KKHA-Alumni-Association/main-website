@@ -6,15 +6,13 @@ export const membershipFormSchema = z
 		higherSecondaryYear: z.string().max(4),
 		fullName: z.string().min(2).max(50),
 		primaryNumber: z
-			.string('Phone number is required',
-			)
+			.string('Phone number is required')
 			.refine((value) => isValidPhoneNumber(value), {
 				message: 'Invalid phone number',
 			}),
 		sameNumber: z.boolean().default(false).optional(),
 		whatsappNumber: z
-			.string('Phone number is required',
-			)
+			.string('Phone number is required')
 			.refine((value) => isValidPhoneNumber(value), {
 				message: 'Invalid phone number',
 			}),
@@ -22,24 +20,14 @@ export const membershipFormSchema = z
 		permanentAddress: z.string().min(2).max(50),
 		sameAddress: z.boolean().default(false).optional(),
 		deliveryAddress: z.string().min(2).max(50),
-		merchandise: z.string('Merchandise field is required',
-		),
-		size: z.string('Merchandise field is required',
-		),
-		sleeve: z.string('Merchandise field is required',
-		),
-		foodPreference: z.string('Food Preference field is required',
-		),
-		attend: z.string('Program Attend field is required',
-		),
-		noOfFamily: z
-			.string('Program Attend field is required',
-			)
-			.optional(),
-		dateOfBirth: z.date('A date of birth is required.',
-		),
-		bloodGroup: z.string('A date of birth is required.',
-		),
+		merchandise: z.string('Merchandise field is required'),
+		size: z.string('Merchandise field is required'),
+		sleeve: z.string('Merchandise field is required'),
+		foodPreference: z.string('Food Preference field is required'),
+		attend: z.string('Program Attend field is required'),
+		noOfFamily: z.string('Program Attend field is required').optional(),
+		dateOfBirth: z.date('A date of birth is required.'),
+		bloodGroup: z.string('A date of birth is required.'),
 		occupation: z.string().min(2).max(50),
 		// amount: z
 		// 	.string()

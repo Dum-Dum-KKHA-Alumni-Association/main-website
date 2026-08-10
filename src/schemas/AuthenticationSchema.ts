@@ -27,22 +27,19 @@ export const onboardSchema = z.object({
 	// fullName: z.string().min(2).max(50),
 	madyamikYear: z.string().max(4),
 	higherSecondaryYear: z.string().max(4),
-	dateOfBirth: z.date('A date of birth is required.',
-	),
+	dateOfBirth: z.date('A date of birth is required.'),
 	occupation: z.string().min(2).max(50),
 	permanentAddress: z.string().min(2).max(50),
 	sameAddress: z.boolean().default(false).optional(),
 	deliveryAddress: z.string().min(2).max(50),
 	primaryNumber: z
-		.string('Phone number is required',
-	)
+		.string('Phone number is required')
 		.refine((value) => isValidPhoneNumber(value), {
 			message: 'Invalid phone number',
 		}),
 	sameNumber: z.boolean().default(false).optional(),
 	whatsappNumber: z
-		.string('Phone number is required',
-	)
+		.string('Phone number is required')
 		.refine((value) => isValidPhoneNumber(value), {
 			message: 'Invalid phone number',
 		}),
