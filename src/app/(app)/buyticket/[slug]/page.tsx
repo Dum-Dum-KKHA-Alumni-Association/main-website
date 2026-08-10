@@ -20,15 +20,17 @@ import {
 } from '@/components/ui/select';
 
 import { Separator } from '@/components/ui/separator';
-import { bookingPreferenceSchema } from '@/schemas/TicketSchema';
+import {
+	BookingPreferenceInput,
+	bookingPreferenceSchema,
+} from '@/schemas/TicketSchema';
 import { useCheckoutStore } from '@/store/checkoutStore';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { z } from 'zod';
 
 const BuyTicketPage = () => {
 	// const slug = (await params).slug;
@@ -36,12 +38,12 @@ const BuyTicketPage = () => {
 	const addItem = useCheckoutStore((state) => state.addItem);
 	const router = useRouter();
 
-	const form = useForm<z.infer<typeof bookingPreferenceSchema>>({
+	const form = useForm<BookingPreferenceInput>({
 		resolver: zodResolver(bookingPreferenceSchema),
 		defaultValues: {},
 	});
 
-	async function onSubmit(values: z.infer<typeof bookingPreferenceSchema>) {
+	async function onSubmit(values: BookingPreferenceInput) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log(values);

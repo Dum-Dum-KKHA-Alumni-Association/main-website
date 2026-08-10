@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { ArrowLeft, ArrowRight, CalendarIcon } from 'lucide-react';
-import { Calendar } from '@/components/ui/calendar';
+// import { Calendar } from '@/components/ui/calendar';
 import {
 	Select,
 	SelectContent,
@@ -568,7 +568,7 @@ const RegistrationForm: FC<DonationFormProps> = ({
 															className="w-auto p-0"
 															align="start"
 														>
-															<Calendar
+															{/* <Calendar
 																mode="single"
 																selected={field.value}
 																onSelect={field.onChange}
@@ -576,8 +576,8 @@ const RegistrationForm: FC<DonationFormProps> = ({
 																	date > new Date() ||
 																	date < new Date('1900-01-01')
 																}
-																initialFocus
-															/>
+																// initialFocus
+															/> */}
 														</PopoverContent>
 													</Popover>
 													{/* <DatePicker selected={field.value} onSelect={field.onChange} /> */}

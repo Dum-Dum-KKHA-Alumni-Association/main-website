@@ -39,7 +39,7 @@ import { useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { Calendar } from '@/components/ui/calendar';
+// import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -403,15 +403,14 @@ const OnboardProcessForm = () => {
 													</FormControl>
 												</PopoverTrigger>
 												<PopoverContent className="w-auto p-0" align="start">
-													<Calendar
+													{/* <Calendar
 														mode="single"
 														selected={field.value}
 														onSelect={field.onChange}
 														disabled={(date) =>
 															date > new Date() || date < new Date('1900-01-01')
 														}
-														initialFocus
-													/>
+													/> */}
 												</PopoverContent>
 											</Popover>
 											{/* <DatePicker selected={field.value} onSelect={field.onChange} /> */}
