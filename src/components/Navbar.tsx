@@ -337,7 +337,9 @@ const Navbar = () => {
 								</div>
 
 								<SheetFooter className="mt-10">
-									<Link href={'/registration/bondu_chol_meet_2026'}>
+									<Link
+										href={'/registration/bondu_chol_sports-meet-2026/football-tournament'}
+									>
 										<Button
 											className="w-full bg-[#FFD700] font-bold"
 											variant={'outline'}
@@ -351,7 +353,9 @@ const Navbar = () => {
 					</section>
 
 					{/* <UserProfileAvatar /> */}
-					<Link href={'/registration/bondu_chol_meet_2026'}>
+					<Link
+						href={'/registration/bondu_chol_sports-meet-2026/football-tournament'}
+					>
 						<Button className="hidden bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700] md:block">
 							{' '}
 							Bondu Chol Meet 2026 Registration
