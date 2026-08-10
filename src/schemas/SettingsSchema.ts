@@ -6,27 +6,23 @@ export const profileFormSchema = z.object({
 	madyamikYear: z.string().max(4),
 	higherSecondaryYear: z.string().max(4),
 	primaryNumber: z
-		.string({
-			required_error: 'Phone number is required',
-		})
+		.string( 'Phone number is required')
 		.refine((value) => isValidPhoneNumber(value), {
 			message: 'Invalid phone number',
 		}),
 	whatsappNumber: z
-		.string({
-			required_error: 'Phone number is required',
-		})
+		.string(
+			 'Phone number is required',
+		)
 		.refine((value) => isValidPhoneNumber(value), {
 			message: 'Invalid phone number',
 		}),
 	permanentAddress: z.string().min(2).max(50),
 	deliveryAddress: z.string().min(2).max(50),
-	dateOfBirth: z.date({
-		required_error: 'A date of birth is required.',
-	}),
-	bloodGroup: z.string({
-		required_error: 'A date of birth is required.',
-	}),
+	dateOfBirth: z.date( 'A date of birth is required.',
+	),
+	bloodGroup: z.string( 'A date of birth is required.',
+	),
 	occupation: z.string().min(2).max(50),
 	linkedin: z
 		.string()
@@ -64,6 +60,6 @@ export const profileFormSchema = z.object({
 
 export const accountSchema = z.object({
 	membershipId: z.string().max(4),
-	email: z.coerce.string().email().min(5),
+	email: z.email().min(5),
 	password: z.string().min(8),
 });

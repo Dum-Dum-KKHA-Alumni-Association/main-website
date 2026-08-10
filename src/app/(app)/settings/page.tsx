@@ -1,7 +1,7 @@
 'use client';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
+// import { Calendar } from '@/components/ui/calendar';
 import {
 	Card,
 	CardContent,
@@ -339,15 +339,14 @@ export default function SettingsProfilePage() {
 													</FormControl>
 												</PopoverTrigger>
 												<PopoverContent className="w-auto p-0" align="start">
-													<Calendar
+													{/* <Calendar
 														mode="single"
 														selected={field.value}
 														onSelect={field.onChange}
 														disabled={(date) =>
 															date > new Date() || date < new Date('1900-01-01')
 														}
-														initialFocus
-													/>
+													/> */}
 												</PopoverContent>
 											</Popover>
 											{/* <DatePicker selected={field.value} onSelect={field.onChange} /> */}

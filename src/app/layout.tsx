@@ -20,7 +20,7 @@ export default function RootLayout({
 			<GoogleTagManager
 				gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}
 			/>
-			<body>
+			<body suppressHydrationWarning>
 				<TanstackProvider>
 					{children}
 					<MiniSideCallout />

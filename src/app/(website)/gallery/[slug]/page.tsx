@@ -6,7 +6,7 @@ import { Specific_Gallery_Series } from '@/sanity/actions/queries';
 import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 import { sanityFetch } from '@/sanity/lib/client';
 import { Gallery } from '@/types/sanity';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { SanityImageSource } from '@sanity/image-url';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import React, { cache } from 'react';

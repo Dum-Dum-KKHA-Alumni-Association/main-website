@@ -24,7 +24,7 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
+// import { Calendar } from '@/components/ui/calendar';
 
 const languages = [
 	{ label: 'English', value: 'en' },
@@ -47,11 +47,13 @@ const accountFormSchema = z.object({
 		.max(30, {
 			message: 'Name must not be longer than 30 characters.',
 		}),
+
 	dob: z.date({
-		required_error: 'A date of birth is required.',
+		error: 'A date of birth is required.',
 	}),
+
 	language: z.string({
-		required_error: 'Please select a language.',
+		error: 'Please select a language.',
 	}),
 });
 
@@ -120,15 +122,14 @@ export function AccountForm() {
 									</FormControl>
 								</PopoverTrigger>
 								<PopoverContent className="w-auto p-0" align="start">
-									<Calendar
+									{/* <Calendar
 										mode="single"
 										selected={field.value}
 										onSelect={field.onChange}
 										disabled={(date) =>
 											date > new Date() || date < new Date('1900-01-01')
 										}
-										initialFocus
-									/>
+									/> */}
 								</PopoverContent>
 							</Popover>
 							<FormDescription>

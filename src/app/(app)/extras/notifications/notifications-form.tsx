@@ -18,9 +18,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 
 const notificationsFormSchema = z.object({
-	type: z.enum(['all', 'mentions', 'none'], {
-		required_error: 'You need to select a notification type.',
-	}),
+	type: z.enum(['all', 'mentions', 'none'] as const),
 	mobile: z.boolean().default(false).optional(),
 	communication_emails: z.boolean().default(false).optional(),
 	social_emails: z.boolean().default(false).optional(),

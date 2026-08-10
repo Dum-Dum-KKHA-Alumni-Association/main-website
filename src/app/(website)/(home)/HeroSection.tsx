@@ -41,6 +41,7 @@ const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 							{hero.url ? (
 								<Link href={hero.url || '#'}>
 									<Image
+										priority
 										width={2000}
 										height={0}
 										alt="image"
@@ -50,6 +51,7 @@ const HeroSection: FC<HeroSectionProps> = ({ hero }) => {
 								</Link>
 							) : (
 								<Image
+									priority
 									width={2000}
 									height={0}
 									alt="image"

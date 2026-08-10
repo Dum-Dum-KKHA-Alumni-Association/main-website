@@ -338,7 +338,10 @@ const Navbar = () => {
 
 								<SheetFooter className="mt-10">
 									<Link href={'/uttoron2026_photos'}>
-										<Button className="w-full font-bold bg-[#FFD700]" variant={'outline'}>
+										<Button
+											className="w-full bg-[#FFD700] font-bold"
+											variant={'outline'}
+										>
 											📸 Uttoron 2026 Photos
 										</Button>
 									</Link>
