@@ -230,14 +230,16 @@ const AuthNavbar = () => {
 					<NavigationMenu className="hidden lg:flex">
 						<NavigationMenuList className="gap-2">
 							<NavigationMenuItem>
-								<Link href="/about" legacyBehavior passHref>
+								<Link href="/about">
+									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										About Us
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link href="/our-initiative" legacyBehavior passHref>
+								<Link href="/our-initiative">
+									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Initiatives
 									</NavigationMenuLink>
@@ -245,7 +247,8 @@ const AuthNavbar = () => {
 							</NavigationMenuItem>
 
 							<NavigationMenuItem>
-								<Link href="/remergencia-2025" legacyBehavior passHref>
+								<Link href="/remergencia-2025">
+									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink
 										className={
 											navigationMenuTriggerStyle() +
@@ -293,12 +296,8 @@ const AuthNavbar = () => {
 								</NavigationMenuContent>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link
-									href="https://ddkkhaaa.blogspot.com"
-									target={'_blank'}
-									legacyBehavior
-									passHref
-								>
+								<Link href="https://ddkkhaaa.blogspot.com" target={'_blank'}>
+									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Magazine
 									</NavigationMenuLink>
@@ -306,7 +305,8 @@ const AuthNavbar = () => {
 							</NavigationMenuItem>
 
 							<NavigationMenuItem>
-								<Link href="/opportunities" legacyBehavior passHref>
+								<Link href="/opportunities">
+									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Opportunities
 									</NavigationMenuLink>
@@ -314,7 +314,8 @@ const AuthNavbar = () => {
 							</NavigationMenuItem>
 
 							<NavigationMenuItem>
-								<Link href="/contact" legacyBehavior passHref>
+								<Link href="/contact">
+									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Contact
 									</NavigationMenuLink>

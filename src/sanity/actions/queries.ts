@@ -4,6 +4,35 @@ export const HOMEPAGE_QUERY = defineQuery(
 	`*[_type == "homePage"][0]{_createdAt, _type,_updatedAt,about,hero{"image":image.asset->url,title,url}[],"gallery":gallery[].asset->url}`
 );
 
+export const REGISTRATIONS_QUERY = defineQuery(
+	`*[_type == "registration"]{
+    _id,
+    _type,
+    title,
+    slug,
+    description,
+    eventDate,
+    lastRegistrationDate,
+    reg_links,
+    _createdAt
+    }`
+);
+
+export const Specific_Registration = (slug: string) =>
+	defineQuery(
+		`*[_type == 'registration' && slug.current == "${slug}"][0]{
+    _id,
+    _type,
+    title,
+    slug,
+    description,
+    eventDate,
+    lastRegistrationDate,
+    reg_links,
+    _createdAt
+    }`
+	);
+
 export const GALLERY_QUERY = defineQuery(
 	`*[_type == "gallery"]{_createdAt,_id,_type,collections,publishedAt,slug,thumbnail,title,_updatedAt}`
 );

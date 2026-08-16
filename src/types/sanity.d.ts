@@ -169,6 +169,39 @@ export type Videos = {
 	publishedAt?: string;
 };
 
+export type Registration = {
+	_id: string;
+	_type: 'registration';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	title?: string;
+	slug?: Slug;
+	description?: string;
+	eventDate?: string;
+	lastRegistrationDate?: string;
+	thumbnail?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		alt?: string;
+		_type: 'image';
+	};
+	reg_links?: Array<{
+		title?: string;
+		description?: string;
+		link?: string;
+		_type: 'reg_link';
+		_key: string;
+	}>;
+};
+
 export type Gallery = {
 	_id: string;
 	_type: 'gallery';
@@ -310,6 +343,7 @@ export type AllSanitySchemaTypes =
 	| Geopoint
 	| Post
 	| Events
+	| Registration
 	| Videos
 	| Gallery
 	| Slug
@@ -319,4 +353,5 @@ export type AllSanitySchemaTypes =
 	| SanityImageAsset
 	| SanityAssetSourceData
 	| SanityImageMetadata;
+
 export declare const internalGroqTypeReferenceTo: unique symbol;
