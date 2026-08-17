@@ -36,7 +36,7 @@ const EventBookingPage = async ({
 					<h3 className="text-center text-2xl font-semibold">
 						{registrationsData.title}
 					</h3>
-					
+
 					<section className="flex w-full flex-col items-center justify-center text-center md:flex-row md:gap-4">
 						{registrationsData?.reg_links?.map((registration) => (
 							<Link
