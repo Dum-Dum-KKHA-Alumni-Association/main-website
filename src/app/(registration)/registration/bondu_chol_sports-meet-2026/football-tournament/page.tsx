@@ -16,11 +16,11 @@ const BonduCholMeet2026Page = () => {
 	return (
 		<section>
 			<Navbar />
-			<Heading name={'Bondu Chol Meet 2026 '} />
+			<Heading name={'Bondu Chol Sports Meet 2026 '} />
 			<section className="mx-auto mt-10 w-full max-w-7xl gap-8 px-5">
 				<section className="flex w-full flex-col items-center justify-center">
 					<h3 className="text-center text-2xl font-semibold">
-						Bondu Chol Meet 2026
+						Bondu Chol Sports Meet 2026
 					</h3>
 					<section className="flex w-full flex-col items-center justify-center text-center md:flex-row md:gap-4">
 						<Link
@@ -33,14 +33,14 @@ const BonduCholMeet2026Page = () => {
 							<Card className="w-full">
 								<CardHeader className="flex w-full items-center pb-2">
 									<CardTitle className="text-2xl">
-										Bondu Chol Meet 2026
+										Alumni Football Tournament
 									</CardTitle>
 								</CardHeader>
 								<CardContent className="flex w-full items-center justify-center pb-2">
 									<IoSchool className="text-[70px] text-blue-600" />
 								</CardContent>
 								<CardFooter className="flex w-full items-center justify-center">
-									Bondu Chol Meet 2026 Registration
+									Registration
 								</CardFooter>
 							</Card>
 						</Link>
