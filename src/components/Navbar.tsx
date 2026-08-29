@@ -336,7 +336,19 @@ const Navbar = () => {
 									</Link>
 								</div>
 
-								<SheetFooter className="mt-10">
+								<SheetFooter className="mt-10 flex flex-col space-y-3">
+									<Link
+										href={
+											'/uttoron2026_photos'
+										}
+									>
+										<Button
+											className="w-full bg-[#0c5f1f] font-bold text-white"
+											variant={'outline'}
+										>
+											Uttoron 2026 Photos
+										</Button>
+									</Link>
 									<Link
 										href={
 											'/registration/bondu_chol_sports-meet-2026/football-tournament'
@@ -355,6 +367,20 @@ const Navbar = () => {
 					</section>
 
 					{/* <UserProfileAvatar /> */}
+					<section className='w-fit flex gap-2'>
+
+					<Link
+						href={
+							'/uttoron2026_photos'
+						}
+						>
+						<Button
+							className="w-full bg-[#0c5f1f] font-bold text-white"
+							variant={'outline'}
+						>
+							Uttoron 2026 Photos
+						</Button>
+					</Link>
 					<Link
 						href={
 							'/registration/bondu_chol_sports-meet-2026/football-tournament'
@@ -365,6 +391,7 @@ const Navbar = () => {
 							Bondu Chol Meet 2026 Registration
 						</Button>
 					</Link>
+						</section>
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
