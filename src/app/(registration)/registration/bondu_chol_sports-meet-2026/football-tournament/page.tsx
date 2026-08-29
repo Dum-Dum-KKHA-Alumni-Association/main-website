@@ -8,7 +8,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-import Link from 'next/link';
 
 import { IoSchool } from 'react-icons/io5';
 
@@ -22,15 +21,15 @@ const BonduCholMeet2026Page = () => {
 					<h3 className="text-center text-2xl font-semibold">
 						Bondu Chol Sports Meet 2026
 					</h3>
-					<section className="flex w-full flex-col items-center justify-center text-center md:flex-row md:gap-4">
-						<Link
-							className="mt-5 w-full max-w-80"
+					<section className="flex w-full flex-col pt-5 items-center justify-center text-center md:flex-row md:gap-4">
+						{/* <Link
+							className="mt-5 w-full max-w-80 "
 							href={
 								'https://docs.google.com/forms/d/e/1FAIpQLScAmAhUwsyoVxCcs1yinpzHP78HlUcY1OFvs_3V8f5uw5_fgA/viewform'
 							}
 							target="_blank"
-						>
-							<Card className="w-full">
+						> */}
+							<Card className=" opacity-80 " >
 								<CardHeader className="flex w-full items-center pb-2">
 									<CardTitle className="text-2xl">
 										Alumni Football Tournament
@@ -43,7 +42,7 @@ const BonduCholMeet2026Page = () => {
 									Registration
 								</CardFooter>
 							</Card>
-						</Link>
+						{/* </Link> */}
 					</section>
 				</section>
 			</section>
