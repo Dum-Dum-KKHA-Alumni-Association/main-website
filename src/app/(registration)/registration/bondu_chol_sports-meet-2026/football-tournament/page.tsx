@@ -21,7 +21,7 @@ const BonduCholMeet2026Page = () => {
 					<h3 className="text-center text-2xl font-semibold">
 						Bondu Chol Sports Meet 2026
 					</h3>
-					<section className="flex w-full flex-col pt-5 items-center justify-center text-center md:flex-row md:gap-4">
+					<section className="flex w-full flex-col items-center justify-center pt-5 text-center md:flex-row md:gap-4">
 						{/* <Link
 							className="mt-5 w-full max-w-80 "
 							href={
@@ -29,19 +29,19 @@ const BonduCholMeet2026Page = () => {
 							}
 							target="_blank"
 						> */}
-							<Card className=" opacity-80 " >
-								<CardHeader className="flex w-full items-center pb-2">
-									<CardTitle className="text-2xl">
-										Alumni Football Tournament
-									</CardTitle>
-								</CardHeader>
-								<CardContent className="flex w-full items-center justify-center pb-2">
-									<IoSchool className="text-[70px] text-blue-600" />
-								</CardContent>
-								<CardFooter className="flex w-full items-center justify-center">
-									Registration
-								</CardFooter>
-							</Card>
+						<Card className="opacity-80">
+							<CardHeader className="flex w-full items-center pb-2">
+								<CardTitle className="text-2xl">
+									Alumni Football Tournament
+								</CardTitle>
+							</CardHeader>
+							<CardContent className="flex w-full items-center justify-center pb-2">
+								<IoSchool className="text-[70px] text-blue-600" />
+							</CardContent>
+							<CardFooter className="flex w-full items-center justify-center">
+								Registration
+							</CardFooter>
+						</Card>
 						{/* </Link> */}
 					</section>
 				</section>

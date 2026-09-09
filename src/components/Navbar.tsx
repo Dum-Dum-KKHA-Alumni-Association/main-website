@@ -40,7 +40,6 @@ import logo from '../../public/logo.png';
 import { MdOutlineEmail } from 'react-icons/md';
 import { motion } from 'motion/react';
 import { useAnimation } from 'motion/react';
-import { Button } from './ui/button';
 
 const socialPlatform: {
 	icon?: ReactNode;
@@ -337,11 +336,7 @@ const Navbar = () => {
 								</div>
 
 								<SheetFooter className="mt-10 flex flex-col space-y-3">
-									<Link
-										href={
-											'/uttoron2026_photos'
-										}
-									>
+									{/* <Link href={'/uttoron2026_photos'}>
 										<Button
 											className="w-full bg-[#0c5f1f] font-bold text-white"
 											variant={'outline'}
@@ -360,38 +355,14 @@ const Navbar = () => {
 										>
 											Bondu Chol Meet 2026 Registration
 										</Button>
-									</Link>
+									</Link> */}
 								</SheetFooter>
 							</SheetContent>
 						</Sheet>
 					</section>
 
 					{/* <UserProfileAvatar /> */}
-					<section className='w-fit flex gap-2'>
-
-					<Link
-						href={
-							'/uttoron2026_photos'
-						}
-						>
-						<Button
-							className="w-full bg-[#0c5f1f] font-bold text-white"
-							variant={'outline'}
-						>
-							Uttoron 2026 Photos
-						</Button>
-					</Link>
-					<Link
-						href={
-							'/registration/bondu_chol_sports-meet-2026/football-tournament'
-						}
-					>
-						<Button className="hidden bg-[#FFD700] font-semibold text-secondary hover:text-[#FFD700] md:block">
-							{' '}
-							Bondu Chol Meet 2026 Registration
-						</Button>
-					</Link>
-						</section>
+					<section className="flex w-fit gap-2"></section>
 				</section>
 			</section>
 			<section className="w-full bg-secondary px-5 py-0.5">
