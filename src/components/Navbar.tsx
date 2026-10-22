@@ -327,6 +327,12 @@ const Navbar = () => {
 									>
 										Opportunities
 									</Link>
+									<Link
+										href={'/merchendise'}
+										className="w-full border-b py-2 font-bold text-primary"
+									>
+										Merchandise 🛍️
+									</Link>
 									<Link href={'/contact'} className="w-full border-b py-2">
 										Contact
 									</Link>
@@ -518,6 +524,14 @@ const Navbar = () => {
 									{/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Opportunities
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+
+							<NavigationMenuItem>
+								<Link href="/merchendise">
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Merchandise
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
