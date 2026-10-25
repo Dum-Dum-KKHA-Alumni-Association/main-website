@@ -181,7 +181,7 @@ const committees: Committee[] = [
 		id: 'finance',
 		name: 'Finance & Outreach Team',
 		description:
-			"Manages financial affairs, sponsorships, donations, and outreach programs.",
+			'Manages financial affairs, sponsorships, donations, and outreach programs.',
 		members: [
 			{
 				name: 'Sri Anirban Roy',
@@ -361,7 +361,7 @@ const MembershipPage = () => {
 
 				<Tabs defaultValue="executive" className="w-full">
 					<div className="mb-10 flex justify-center">
-						<TabsList className="grid h-auto w-full max-w-4xl grid-cols-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800 items-center sm:grid-cols-2 md:grid-cols-4">
+						<TabsList className="grid h-auto w-full max-w-4xl grid-cols-1 items-center rounded-xl bg-slate-100 p-1 dark:bg-slate-800 sm:grid-cols-2 md:grid-cols-4">
 							{committees.map((committee) => (
 								<TabsTrigger
 									key={committee.id}

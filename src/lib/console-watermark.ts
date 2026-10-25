@@ -16,7 +16,7 @@ export function showConsoleWatermark() {
 	);
 
 	console.log(
-		'%cDesigned & Initiated by %cMitanko Roy',
+		'%cDesigned & Initiated by %cMritanka Roy',
 		'color: #34d399; font-size: 13px; font-weight: bold;',
 		'color: #ffffff; font-size: 13px; font-weight: bold;'
 	);
