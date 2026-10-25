@@ -101,7 +101,7 @@ const committees: Committee[] = [
 	},
 	{
 		id: 'sports',
-		name: 'Sports Committee',
+		name: 'Sports Team',
 		description:
 			'Organizes athletic meets, the annual football tournament, and other sporting activities for the alumni community.',
 		members: [
@@ -140,7 +140,7 @@ const committees: Committee[] = [
 	},
 	{
 		id: 'cultural',
-		name: 'Cultural Committee',
+		name: 'Cultural Team',
 		description:
 			"Manages cultural events, festivals, Teacher's Day celebrations, and community gatherings.",
 		members: [
@@ -178,8 +178,47 @@ const committees: Committee[] = [
 		],
 	},
 	{
+		id: 'finance',
+		name: 'Finance & Outreach Team',
+		description:
+			"Manages financial affairs, sponsorships, donations, and outreach programs.",
+		members: [
+			{
+				name: 'Sri Anirban Roy',
+				designation: 'Convener',
+				passingYear: '2006',
+				tenure: '2024 - 2026',
+				email: 'cultural.convener@ddkkhaaa.com',
+			},
+			{
+				name: 'Sri Debasish Chakraborty',
+				designation: 'Co-Convener',
+				passingYear: '2009',
+				tenure: '2024 - 2026',
+			},
+			{
+				name: 'Sri Arnab Sen',
+				designation: 'Core Member',
+				passingYear: '2011',
+				tenure: '2024 - 2026',
+			},
+			{
+				name: 'Sri Nilanjan Guha',
+				designation: 'Core Member',
+				passingYear: '2015',
+				tenure: '2024 - 2026',
+			},
+			{
+				name: 'Sri Subhankar Dey',
+				designation: 'Core Member',
+				passingYear: '2017',
+				tenure: '2024 - 2026',
+			},
+		],
+	},
+	{
 		id: 'it-editorial',
-		name: 'IT & Editorial Committee',
+		name: 'IT & Communication Team',
 		description:
 			'Maintains the website, association portal, communications, newsletters, and digital presence.',
 		members: [
@@ -206,8 +245,36 @@ const committees: Committee[] = [
 		],
 	},
 	{
+		id: 'regulatory',
+		name: 'Regulatory Team',
+		description:
+			'Ensures the association operates in compliance with relevant laws, regulations, and guidelines. This team handles legal matters, policy compliance, and regulatory requirements.',
+		members: [
+			{
+				name: 'Sri Tejodeep Mitra Roy',
+				designation: 'Convener & Tech Lead',
+				passingYear: '2019',
+				tenure: '2024 - 2026',
+				email: 'it.admin@ddkkhaaa.com',
+				linkedin: '#',
+			},
+			{
+				name: 'Sri Srijan Sen',
+				designation: 'Co-Convener',
+				passingYear: '2020',
+				tenure: '2024 - 2026',
+			},
+			{
+				name: 'Sri Aniket Das',
+				designation: 'Core Member',
+				passingYear: '2021',
+				tenure: '2024 - 2026',
+			},
+		],
+	},
+	{
 		id: 'ex-committee',
-		name: 'Ex-Committee Members',
+		name: 'Ex-Committee & team Members',
 		description:
 			'Former executive committee members who continue to guide and support the association.',
 		members: [
@@ -294,7 +361,7 @@ const MembershipPage = () => {
 
 				<Tabs defaultValue="executive" className="w-full">
 					<div className="mb-10 flex justify-center">
-						<TabsList className="grid h-auto w-full max-w-4xl grid-cols-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800 sm:grid-cols-2 md:grid-cols-5">
+						<TabsList className="grid h-auto w-full max-w-4xl grid-cols-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800 items-center sm:grid-cols-2 md:grid-cols-4">
 							{committees.map((committee) => (
 								<TabsTrigger
 									key={committee.id}
@@ -338,7 +405,7 @@ const MembershipPage = () => {
 										<div className="flex items-center gap-3">
 											<div className="h-1 w-8 rounded bg-primary" />
 											<h5 className="text-lg font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-												Executive Officers & Leadership
+												{committee.name} Leadership
 											</h5>
 										</div>
 										<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

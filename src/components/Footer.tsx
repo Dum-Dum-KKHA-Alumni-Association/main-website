@@ -64,6 +64,14 @@ const Footer = () => {
 									</Link>
 								</li>
 								<li className="mb-4">
+									<Link
+										href="/merchendise"
+										className="font-semibold text-primary hover:underline"
+									>
+										Merchandise
+									</Link>
+								</li>
+								<li className="mb-4">
 									<Link href="/contact" className="hover:underline">
 										Contact
 									</Link>
@@ -154,7 +162,16 @@ const Footer = () => {
 						<span className="hover:underline">
 							Dum Dum Krishna Kumar Hindu Academy Alumni Association
 						</span>
-						. All Rights Reserved.
+						. All Rights Reserved / Developed By{' '}
+						<Link
+							href="https://flexerlabs.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="cursor-pointer text-blue-600 underline"
+						>
+							FlexerLabs
+						</Link>
+						.
 					</span>
 					<div className="mt-4 hidden space-x-6 sm:mt-0 sm:justify-center">
 						<Link

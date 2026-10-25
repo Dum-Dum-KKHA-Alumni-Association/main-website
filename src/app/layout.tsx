@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import TanstackProvider from '@/lib/provider/tanstack-provider';
 import MiniSideCallout from '@/components/MiniSideCallout';
 import { GoogleTagManager } from '@next/third-parties/google';
+import ConsoleWatermark from '@/components/ConsoleWatermark';
 
 export const metadata: Metadata = {
 	title: 'Dum Dum Krishna Kumar Hindu Academy Alumni Association',
@@ -22,6 +23,7 @@ export default function RootLayout({
 			/>
 			<body suppressHydrationWarning>
 				<TanstackProvider>
+					<ConsoleWatermark />
 					{children}
 					<MiniSideCallout />
 				</TanstackProvider>
