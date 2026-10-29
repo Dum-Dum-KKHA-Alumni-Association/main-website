@@ -1,11 +1,11 @@
-import CommingSoon from "@/components/CommingSoon";
+import CommingSoon from '@/components/CommingSoon';
 
 export default function MembershipLayout(
-// 	{
-// 	children, // will be a page or nested layout
-// }: {
-// 	children: React.ReactNode;
-// }
+	// 	{
+	// 	children, // will be a page or nested layout
+	// }: {
+	// 	children: React.ReactNode;
+	// }
 ) {
 	return (
 		<main>

@@ -9,14 +9,16 @@ export const metadata: Metadata = {
 };
 
 export default function MerchendiseLayout(
-// 	{
-// 	children,
-// }: {
-// 	children: React.ReactNode;
-// }
+	// 	{
+	// 	children,
+	// }: {
+	// 	children: React.ReactNode;
+	// }
 ) {
-	return <>
-	<CommingSoon/>
-	{/* {children} */}
-	</>;
+	return (
+		<>
+			<CommingSoon />
+			{/* {children} */}
+		</>
+	);
 }
