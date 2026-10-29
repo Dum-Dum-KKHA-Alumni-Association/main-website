@@ -20,7 +20,7 @@ export default function ConsoleWatermark() {
 		);
 
 		console.log(
-			'%cDesigned & Initiated by Mitanko Roy',
+			'%cDesigned & Initiated by Mitanka Roy',
 			'background:#1e1b4b;color:white;font-size:16px;font-weight:bold;padding:10px;border-radius:6px;'
 		);
 
